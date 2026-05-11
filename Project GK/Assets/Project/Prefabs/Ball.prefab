@@ -95,8 +95,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1b4f2a1265caad40940e7355d814af9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BallScript
+  enteredGoal: 0
   despawnTime: 1
-  velocity: {x: 0, y: 0, z: 0}
+  currentVelocity: {x: 0, y: 0, z: 0}
+  ballCatchable: 0
 --- !u!1 &7728408646085547911
 GameObject:
   m_ObjectHideFlags: 0

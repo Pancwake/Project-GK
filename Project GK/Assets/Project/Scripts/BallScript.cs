@@ -12,12 +12,16 @@ public class BallScript : MonoBehaviour
     [SerializeField] bool ballCatchable;
 
     Rigidbody rb;
+    Collider col;
+
+    bool repelled;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         ballCatchable = false;
         rb = GetComponent<Rigidbody>();
+        col = GetComponent<Collider>();
     }
 
     // Update is called once per frame
@@ -44,15 +48,15 @@ public class BallScript : MonoBehaviour
     public void ContinueVelocity()
     {
         StartDespawn();
-        rb = GetComponent<Rigidbody>();
+        col.isTrigger = false;
         rb.isKinematic = false;
         rb.linearVelocity = currentVelocity;
     }
 
-    public void SetVelocity(Vector3 velocity)
+    public void RepellBall(Vector3 velocity)
     {
-        StartDespawn();
-        rb = GetComponent<Rigidbody>();
+        repelled = true;
+        col.isTrigger = false;
         rb.isKinematic = false;
         rb.linearVelocity = velocity;
     }
@@ -66,6 +70,19 @@ public class BallScript : MonoBehaviour
     {
         yield return new WaitForSeconds(despawnTime);
 
+        DestroyBall();
+    }
+
+    public void DestroyBall()
+    {
         Destroy(this.gameObject);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (repelled)
+        {
+            StartDespawn(); //Only start despawn after hitting the ground
+        } 
     }
 }

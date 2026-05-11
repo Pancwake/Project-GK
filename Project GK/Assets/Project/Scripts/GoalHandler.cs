@@ -17,11 +17,6 @@ public class GoalHandler : MonoBehaviour
         
     }
 
-    public void CatchBall()
-    {
-
-    }
-
     public void Goal(GameObject ball)
     {
         BallScript ballScript = ball.GetComponent<BallScript>();

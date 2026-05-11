@@ -7,8 +7,6 @@ public class CatchHandler : MonoBehaviour
 
     BallShooter ballShooter;
 
-    [SerializeField] bool ballCatchable;
-
     RaycastHit hit;
 
     [SerializeField] LayerMask ballLayer;
@@ -18,8 +16,16 @@ public class CatchHandler : MonoBehaviour
     [SerializeField] float catchTime; //How early the button can be pressed to still count as a catch
     [SerializeField] float catchCooldown; //How long the player has to wait before being able to catch again (Anti spam)
     [SerializeField] [Range(0f, 100f)] int catchAreaPercentage; //The percentage of the area that the ball can be caught in
+    [SerializeField] float repelForce = 1f;
+    [SerializeField] float holdTime = 1f; //Time to hold the ball after catching
+
     Coroutine catchTimerCoroutine;
     Coroutine catchCooldownCoroutine;
+
+    bool ballInteractedWith;
+    bool ballHeld;
+
+    GameObject ball;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -36,6 +42,12 @@ public class CatchHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (ballHeld)
+        {
+            HoldBall();
+            return;
+        }
+
         if (canCatch)
         {
             if (Input.GetMouseButtonDown(0))
@@ -56,6 +68,11 @@ public class CatchHandler : MonoBehaviour
         CheckCollission();
     }
 
+    void HoldBall()
+    {
+        //Hold ball animation
+    }
+
     IEnumerator CatchTimer()
     {
         yield return new WaitForSeconds(catchTime);
@@ -72,12 +89,17 @@ public class CatchHandler : MonoBehaviour
 
     void CheckCollission()
     {
+        if (ballInteractedWith) //If ball already interacted (prevents constant checking)
+            return;
+
         Vector3 mousePos = Input.mousePosition;
         mousePos.z = 10f;
         mousePos = cam.ScreenToWorldPoint(mousePos);
 
         if (Physics.Raycast(cam.transform.position, mousePos - cam.transform.position, out hit, 100f, ballLayer)) //If ball hit
         {
+            ball = hit.collider.gameObject;
+
             if (hit.collider.GetComponent<BallScript>().GetCatchable()) //If ball can be caught currently
             {
                 if (TryCatching()) //If ball caught
@@ -88,6 +110,8 @@ public class CatchHandler : MonoBehaviour
                 {
                     RepelBall();
                 }
+
+                ballInteractedWith = true;
             }
         }
 
@@ -96,7 +120,6 @@ public class CatchHandler : MonoBehaviour
 
     bool TryCatching()
     {
-        //Add center check
         Vector3 hitPosition = hit.point;
         hitPosition.z = hit.transform.position.z; //Level it with the ball for distance to middle check
 
@@ -111,15 +134,39 @@ public class CatchHandler : MonoBehaviour
 
     public void CatchBall()
     {
+        ballHeld = true;
+        StartCoroutine(LetGoOfBall());
+
         GameManager.Instance.CatchBall();
-        ballShooter.CatchBall();
 
         ResetShot();
     }
 
+    IEnumerator LetGoOfBall()
+    {
+        yield return new WaitForSeconds(holdTime);
+
+        ballHeld = false;
+        ball.GetComponent<BallScript>().DestroyBall();
+    }
+
     void RepelBall()
     {
+        var ballScript = hit.collider.GetComponent<BallScript>();
 
+        //Direction = target - start
+        var hitDirection = hit.transform.position - hit.point; //Direction from hit point 
+
+        var velocity = hitDirection.normalized * repelForce;
+
+        Debug.Log("Repel velocity: " + velocity);
+
+        ballScript.RepellBall(velocity);
+
+        //ballScript.ContinueVelocity();
+
+        GameManager.Instance.RepelBall();
+        ResetShot();
     }
 
     public void Goal()
@@ -129,8 +176,6 @@ public class CatchHandler : MonoBehaviour
 
     void ResetShot()
     {
-        ballCatchable = false;
+        ballInteractedWith = false;
     }
-
-
 }

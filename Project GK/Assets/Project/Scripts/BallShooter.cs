@@ -54,7 +54,11 @@ public class BallShooter : MonoBehaviour
 
     public void CatchBall()
     {
-        spawnedBall.SetActive(false);
+        ResetShoot();
+    }
+
+    public void RepelBall()
+    {
         ResetShoot();
     }
 

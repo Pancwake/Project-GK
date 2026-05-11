@@ -20,7 +20,6 @@ public class GoalMouthHandler : MonoBehaviour
     {
         if (other.CompareTag("Ball"))
         {
-            other.GetComponent<Collider>().isTrigger = false;
 
             goalHandler.Goal(other.gameObject);
         }

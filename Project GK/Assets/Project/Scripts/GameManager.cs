@@ -30,8 +30,13 @@ public class GameManager : MonoBehaviour
     public void CatchBall()
     {
         Debug.Log("Ball caught");
-        goalHandler.CatchBall();
         ballShooter.CatchBall();
+    }
+
+    public void RepelBall()
+    {
+        Debug.Log("Ball repelled");
+        ballShooter.RepelBall();
     }
 
     public void Goal()
