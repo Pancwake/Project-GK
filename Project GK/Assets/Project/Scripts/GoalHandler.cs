@@ -28,12 +28,7 @@ public class GoalHandler : MonoBehaviour
         if (ballScript.enteredGoal)
             return;
 
-        ballScript.StartDespawn();
-        Rigidbody ballRB = ball.GetComponent<Rigidbody>();
-        ballRB.isKinematic = false;
-        ballRB.linearVelocity = ballScript.velocity;
-
-        Debug.Log("Set velocity");
+        ballScript.ContinueVelocity();
 
         ballScript.Goal();
 

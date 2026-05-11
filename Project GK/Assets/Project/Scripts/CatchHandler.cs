@@ -35,9 +35,6 @@ public class CatchHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (ballCatchable)
-            CheckCollission();
-
         if (canCatch)
         {
             if (Input.GetMouseButtonDown(0))
@@ -54,6 +51,8 @@ public class CatchHandler : MonoBehaviour
                 catchCooldownCoroutine = StartCoroutine(CatchCooldown());
             }
         }
+
+        CheckCollission();
     }
 
     IEnumerator CatchTimer()
@@ -73,16 +72,21 @@ public class CatchHandler : MonoBehaviour
     void CheckCollission()
     {
         Vector3 mousePos = Input.mousePosition;
-
         mousePos.z = 10f;
-
         mousePos = cam.ScreenToWorldPoint(mousePos);
 
         if (Physics.Raycast(cam.transform.position, mousePos - cam.transform.position, out hit, 100f, ballLayer)) //If ball hit
         {
-            if(TryCatching()) //If ball caught
+            if (hit.collider.GetComponent<BallScript>().GetCatchable()) //If ball can be caught currently
             {
-                CatchBall();
+                if (TryCatching()) //If ball caught
+                {
+                    CatchBall();
+                }
+                else
+                {
+                    RepelBall();
+                }
             }
         }
 
@@ -119,19 +123,5 @@ public class CatchHandler : MonoBehaviour
         ballCatchable = false;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Ball"))
-        {
-            ballCatchable = true;
-        }
-    }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Ball"))
-        {
-            ballCatchable = false;
-        }
-    }
 }

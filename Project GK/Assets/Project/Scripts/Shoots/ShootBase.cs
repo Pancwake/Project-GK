@@ -62,7 +62,7 @@ public class ShootBase : MonoBehaviour
         if (lastBallPosition != Vector3.zero)
         {
             var velocity = (currentBallPosition - lastBallPosition) / Time.deltaTime;
-            ballScript.velocity = velocity;
+            ballScript.currentVelocity = velocity;
         }
 
         lastBallPosition = ball.transform.position;

@@ -7,12 +7,17 @@ public class BallScript : MonoBehaviour
 
     [SerializeField] float despawnTime = 1f;
 
-    public Vector3 velocity;
+    public Vector3 currentVelocity;
+
+    [SerializeField] bool ballCatchable;
+
+    Rigidbody rb;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        ballCatchable = false;
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -24,6 +29,32 @@ public class BallScript : MonoBehaviour
     public void Goal()
     {
         enteredGoal = true;
+    }
+
+    public void SetCatchable(bool catchable)
+    {
+        ballCatchable = catchable;
+    }
+
+    public bool GetCatchable()
+    {
+        return ballCatchable;
+    }
+
+    public void ContinueVelocity()
+    {
+        StartDespawn();
+        rb = GetComponent<Rigidbody>();
+        rb.isKinematic = false;
+        rb.linearVelocity = currentVelocity;
+    }
+
+    public void SetVelocity(Vector3 velocity)
+    {
+        StartDespawn();
+        rb = GetComponent<Rigidbody>();
+        rb.isKinematic = false;
+        rb.linearVelocity = velocity;
     }
 
     public void StartDespawn()
