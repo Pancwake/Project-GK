@@ -401,7 +401,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 591801510}
-  - component: {fileID: 591801509}
+  - component: {fileID: 591801511}
   - component: {fileID: 591801508}
   - component: {fileID: 591801507}
   - component: {fileID: 591801506}
@@ -490,26 +490,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 591801505}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &591801509
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 591801505}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62dcbb77cac106e40acf957f2c191edb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CatchHandler
-  ballCatchable: 0
-  ballLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  canCatch: 0
-  isCatching: 0
-  catchTime: 0.1
-  catchCooldown: 0.2
 --- !u!4 &591801510
 Transform:
   m_ObjectHideFlags: 0
@@ -525,6 +505,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 532821487}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &591801511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 591801505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0830ace13e2dabb4689fffbb31d5aedf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CatchAreaScript
 --- !u!1 &615145431
 GameObject:
   m_ObjectHideFlags: 0
@@ -1350,6 +1342,7 @@ MonoBehaviour:
   isCatching: 0
   catchTime: 0.1
   catchCooldown: 0.3
+  catchAreaPercentage: 30
 --- !u!4 &1479867879
 Transform:
   m_ObjectHideFlags: 0
