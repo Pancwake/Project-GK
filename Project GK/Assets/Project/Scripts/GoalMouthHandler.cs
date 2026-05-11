@@ -22,7 +22,7 @@ public class GoalMouthHandler : MonoBehaviour
         {
             other.GetComponent<Collider>().isTrigger = false;
 
-            goalHandler.Goal();
+            goalHandler.Goal(other.gameObject);
         }
     }
 }

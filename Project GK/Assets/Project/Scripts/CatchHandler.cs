@@ -37,10 +37,15 @@ public class CatchHandler : MonoBehaviour
 
         if (Physics.Raycast(cam.transform.position, mousePos - cam.transform.position, out hit, 100f, ballLayer))
         {
-            CatchBall();
+            TryCatching();
         }
 
         Debug.DrawRay(cam.transform.position, (mousePos - cam.transform.position) * 100f, Color.red);
+    }
+
+    void TryCatching()
+    {
+
     }
 
     public void CatchBall()
@@ -49,6 +54,11 @@ public class CatchHandler : MonoBehaviour
         ballShooter.CatchBall();
 
         ResetShot();
+    }
+
+    void RepelBall()
+    {
+
     }
 
     public void Goal()

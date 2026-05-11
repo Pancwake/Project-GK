@@ -22,8 +22,21 @@ public class GoalHandler : MonoBehaviour
 
     }
 
-    public void Goal()
+    public void Goal(GameObject ball)
     {
+        BallScript ballScript = ball.GetComponent<BallScript>();
+        if (ballScript.enteredGoal)
+            return;
+
+        ballScript.StartDespawn();
+        Rigidbody ballRB = ball.GetComponent<Rigidbody>();
+        ballRB.isKinematic = false;
+        ballRB.linearVelocity = ballScript.velocity;
+
+        Debug.Log("Set velocity");
+
+        ballScript.Goal();
+
         GameManager.Instance.Goal();
 
         ballShooter.ResetShoot();
