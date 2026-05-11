@@ -51,8 +51,8 @@ public class RisingShoot : ShootBase
         base.DoShoot();
     }
 
-    public override void EndShoot()
+    public override void ResetShoot()
     {
-        base.EndShoot();
+        base.ResetShoot();
     }
 }

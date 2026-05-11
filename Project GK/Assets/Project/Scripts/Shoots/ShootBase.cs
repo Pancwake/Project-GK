@@ -52,7 +52,7 @@ public class ShootBase : MonoBehaviour
 
     }
 
-    public virtual void EndShoot()
+    public virtual void ResetShoot()
     {
         shooting = false;
     }

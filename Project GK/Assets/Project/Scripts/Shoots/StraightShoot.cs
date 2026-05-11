@@ -51,8 +51,8 @@ public class StraightShoot : ShootBase
         ball.transform.position = Vector3.Lerp(startPos, targetPos, t);
     }
 
-    public override void EndShoot()
+    public override void ResetShoot()
     {
-        base.EndShoot();
+        base.ResetShoot();
     }
 }

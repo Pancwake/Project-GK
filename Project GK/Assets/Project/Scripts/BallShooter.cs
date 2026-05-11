@@ -42,7 +42,7 @@ public class BallShooter : MonoBehaviour
         float rngX = Random.Range(goalXMin, goalXMax);
         float rngY = Random.Range(goalYMin, goalYMax);
 
-        var target = new Vector3(rngX, rngY, goal.transform.position.z);
+        var target = new Vector3(rngX, rngY, goalMouth.transform.position.z);
 
         //Instantiate(ballPrefab, shootPosition, Quaternion.identity);
         spawnedBall = Instantiate(ballPrefab, ballSpawnPos.position, Quaternion.identity);
@@ -52,9 +52,20 @@ public class BallShooter : MonoBehaviour
         shooting = true;
     }
 
-    public void EndShoot()
+    public void CatchBall()
     {
-        shootScript.EndShoot();
+        spawnedBall.SetActive(false);
+        ResetShoot();
+    }
+
+    public void Goal()
+    {
+        ResetShoot();
+    }
+
+    public void ResetShoot()
+    {
+        shootScript.ResetShoot();
         shooting = false;
     }
 }

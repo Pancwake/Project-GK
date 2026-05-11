@@ -17,10 +17,15 @@ public class GoalHandler : MonoBehaviour
         
     }
 
+    public void CatchBall()
+    {
+
+    }
+
     public void Goal()
     {
-        Debug.Log("GOAL!");
+        GameManager.Instance.Goal();
 
-        ballShooter.EndShoot();
+        ballShooter.ResetShoot();
     }
 }
