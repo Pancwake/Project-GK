@@ -27,8 +27,6 @@ public class ShootBase : MonoBehaviour
 
     public virtual void Update()
     {
-        Debug.Log(shooting);
-
         if (shooting)
         {
             CalculateTrajectory();
