@@ -1,4 +1,6 @@
+using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 public class BallShooter : MonoBehaviour
 {
@@ -7,13 +9,16 @@ public class BallShooter : MonoBehaviour
     [SerializeField] GameObject ballPrefab;
     GameObject spawnedBall;
 
-    [SerializeField] float shootHeightMin;
-    [SerializeField] float shootHeightMax;
+    [SerializeField] Transform ballSpawnPos;
+
+    bool shooting;
+
+    ShootBase shootScript;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        shootScript = GetComponent<ShootBase>();
     }
 
     // Update is called once per frame
@@ -21,11 +26,11 @@ public class BallShooter : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            ShootBall();
+            StartShoot();
         }
     }
 
-    void ShootBall()
+    void StartShoot()
     {
         Vector2 goalSize = goalMouth.GetComponent<Collider>().bounds.size;
 
@@ -37,42 +42,19 @@ public class BallShooter : MonoBehaviour
         float rngX = Random.Range(goalXMin, goalXMax);
         float rngY = Random.Range(goalYMin, goalYMax);
 
-        Vector3 shootPosition = new Vector3(rngX, rngY, goal.transform.position.z);
-        
+        var target = new Vector3(rngX, rngY, goal.transform.position.z);
+
         //Instantiate(ballPrefab, shootPosition, Quaternion.identity);
-        spawnedBall = Instantiate(ballPrefab, transform.position, Quaternion.identity);
-        LobShoot(shootPosition);
+        spawnedBall = Instantiate(ballPrefab, ballSpawnPos.position, Quaternion.identity);
+
+        shootScript.StartShoot(spawnedBall, target);
+
+        shooting = true;
     }
 
-    void LobShoot(Vector3 shootPos)
+    public void EndShoot()
     {
-        float shootHeight = Random.Range(shootHeightMin, shootHeightMax);
-
-        float shootRelativeYPos = shootPos.y - transform.position.y;
-        float highPoint = shootRelativeYPos + shootHeight;
-
-        if (shootRelativeYPos < 0)
-            highPoint = shootHeight;
-
-        ShootToPosition(shootPos, highPoint);
-    }
-
-    void ShootToPosition(Vector3 targetPos, float trajectoryHeight)
-    {
-        Vector3 velocity = CalculateShootVelocity(spawnedBall.transform.position, targetPos, trajectoryHeight);
-
-        spawnedBall.GetComponent<Rigidbody>().linearVelocity = velocity;
-    }
-
-    Vector3 CalculateShootVelocity(Vector3 startPos, Vector3 endPos, float trajectoryHeight)
-    {
-        float gravity = Physics.gravity.y;
-        float displacementY = endPos.y - startPos.y;
-        Vector3 displacementXZ = new Vector3(endPos.x - startPos.x, 0f, endPos.z - startPos.z);
-
-        Vector3 velocityY = Vector3.up * Mathf.Sqrt(-2 * gravity * trajectoryHeight);
-        Vector3 velocityXZ = displacementXZ / (Mathf.Sqrt(-2 * trajectoryHeight / gravity) + Mathf.Sqrt(2 * (displacementY - trajectoryHeight) / gravity));
-
-        return velocityXZ + velocityY;
+        shootScript.EndShoot();
+        shooting = false;
     }
 }

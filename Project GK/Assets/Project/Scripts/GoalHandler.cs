@@ -3,10 +3,12 @@ using UnityEngine.Rendering.Universal;
 
 public class GoalHandler : MonoBehaviour
 {
+    BallShooter ballShooter;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        ballShooter = FindFirstObjectByType<BallShooter>();
     }
 
     // Update is called once per frame
@@ -18,5 +20,7 @@ public class GoalHandler : MonoBehaviour
     public void Goal()
     {
         Debug.Log("GOAL!");
+
+        ballShooter.EndShoot();
     }
 }
