@@ -992,7 +992,7 @@ MonoBehaviour:
   goal: {fileID: 532821486}
   goalMouth: {fileID: 860946634}
   ballPrefab: {fileID: 5830056157333830587, guid: b319bf14ea316ed41b8426a96538a8c1, type: 3}
-  shootSpeed: 0.2
+  ballSpawnPos: {fileID: 912598406}
 --- !u!114 &1223931938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1002,10 +1002,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1223931935}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 177ec253990f384428972de3e442f7c6, type: 3}
+  m_Script: {fileID: 11500000, guid: 47d6b302a49910844ac74ac3ba8c6a8a, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RisingShoot
-  shootSpeed: 2
+  m_EditorClassIdentifier: Assembly-CSharp::StraightShoot
+  shootSpeed: 10
 --- !u!1 &1347296913
 GameObject:
   m_ObjectHideFlags: 0

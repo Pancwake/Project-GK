@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class RisingShoot : ShootBase
+public class StraightShoot : ShootBase
 {
     public override void Start()
     {
@@ -10,11 +10,7 @@ public class RisingShoot : ShootBase
     public override void Update()
     {
         base.Update();
-
-        if (shooting)
-            CalculateTrajectory();
     }
-
 
     public override void StartShoot(GameObject ball, Vector3 targetPos)
     {
@@ -30,6 +26,7 @@ public class RisingShoot : ShootBase
 
         Vector3 prev = start;
 
+        //Draw trajectory in debug
         for (int i = 1; i <= trajectorySteps; i++)
         {
             float t = i / (float)trajectorySteps;
@@ -45,6 +42,13 @@ public class RisingShoot : ShootBase
     public override void DoShoot()
     {
         base.DoShoot();
+
+        shootElapsedTime += Time.deltaTime;
+
+        float t = shootElapsedTime / shootDuration;
+        t = Mathf.Clamp01(t);
+
+        ball.transform.position = Vector3.Lerp(startPos, targetPos, t);
     }
 
     public override void EndShoot()
