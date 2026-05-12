@@ -3,6 +3,14 @@ using UnityEngine;
 
 public class CatchHandler : MonoBehaviour
 {
+    [SerializeField] GameObject handsCatchPrefab;
+    [SerializeField] GameObject hansPunchPrefab;
+
+    [SerializeField] float maxCatchRotationDistance = 4f; //The catch distance for the hands to be fully rotated
+
+    GameObject spawnedCatchObject;
+    GameObject spawnedPunchObject;
+
     Camera cam;
 
     BallShooter ballShooter;
@@ -135,18 +143,43 @@ public class CatchHandler : MonoBehaviour
     public void CatchBall()
     {
         ballHeld = true;
+        SpawnCatchHands();
         StartCoroutine(LetGoOfBall());
 
         GameManager.Instance.CatchBall();
+    }
 
-        ResetShot();
+    void SpawnCatchHands()
+    {
+        Vector3 middle = transform.position;
+        Vector3 catchPosition = new Vector3(ball.transform.position.x, ball.transform.position.y, transform.position.z);
+        float catchDistance = Vector3.Distance(middle, catchPosition); //How far away the ball was from the middle when caught
+        Vector3 catchDirection = (catchPosition - middle).normalized; //Where the ball was caught relative to the player position (middle of the goal)
+
+        // ADD THIS: normalize distance into 0–1
+        float t = Mathf.Clamp01(catchDistance / maxCatchRotationDistance);
+
+        // base rotation (no tilt)
+        Quaternion baseRotation = Quaternion.identity;
+
+        // full directional rotation (your original logic)
+        Quaternion targetRotation = Quaternion.FromToRotation(Vector3.up, catchDirection);
+
+        // blend between them
+        Quaternion rotation = Quaternion.Slerp(baseRotation, targetRotation, t);
+
+        spawnedCatchObject = Instantiate(handsCatchPrefab, ball.transform.position, rotation);
     }
 
     IEnumerator LetGoOfBall()
     {
         yield return new WaitForSeconds(holdTime);
 
+        if (spawnedCatchObject != null)
+            Destroy(spawnedCatchObject);
+
         ballHeld = false;
+        ResetShot();
         ball.GetComponent<BallScript>().DestroyBall();
     }
 
