@@ -611,8 +611,8 @@ Transform:
   m_GameObject: {fileID: 591801505}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.00000058114523, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 1.22, z: -0}
-  m_LocalScale: {x: 7.32, y: 2.44, z: 0.3}
+  m_LocalPosition: {x: 0, y: 1.22, z: 0}
+  m_LocalScale: {x: 7.32, y: 2.44, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 532821487}
@@ -1334,7 +1334,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CatchHandler
   handsCatchPrefab: {fileID: 3504435381317681263, guid: 406ca74ceaad90e4aa95bdf0e29937df, type: 3}
-  hansPunchPrefab: {fileID: 0}
+  handsRepelPrefab: {fileID: 1859537930289863279, guid: cc769df2b0cbed247998bbc57b8f1225, type: 3}
+  maxCatchRotationDistance: 4
   ballLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -1345,7 +1346,7 @@ MonoBehaviour:
   catchAreaPercentage: 30
   repelForce: 10
   holdTime: 1
-  maxCatchRotationDistance: 4
+  repelTime: 1
 --- !u!4 &1479867879
 Transform:
   m_ObjectHideFlags: 0

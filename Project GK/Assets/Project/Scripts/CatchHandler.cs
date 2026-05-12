@@ -4,12 +4,12 @@ using UnityEngine;
 public class CatchHandler : MonoBehaviour
 {
     [SerializeField] GameObject handsCatchPrefab;
-    [SerializeField] GameObject hansPunchPrefab;
+    [SerializeField] GameObject handsRepelPrefab;
 
     [SerializeField] float maxCatchRotationDistance = 4f; //The catch distance for the hands to be fully rotated
 
     GameObject spawnedCatchObject;
-    GameObject spawnedPunchObject;
+    GameObject spawnedRepelObject;
 
     Camera cam;
 
@@ -26,6 +26,7 @@ public class CatchHandler : MonoBehaviour
     [SerializeField] [Range(0f, 100f)] int catchAreaPercentage; //The percentage of the area that the ball can be caught in
     [SerializeField] float repelForce = 1f;
     [SerializeField] float holdTime = 1f; //Time to hold the ball after catching
+    [SerializeField] float repelTime = 1f; //Time for the repel hands to stay after repelling
 
     Coroutine catchTimerCoroutine;
     Coroutine catchCooldownCoroutine;
@@ -51,10 +52,7 @@ public class CatchHandler : MonoBehaviour
     void Update()
     {
         if (ballHeld)
-        {
-            HoldBall();
             return;
-        }
 
         if (canCatch)
         {
@@ -74,11 +72,6 @@ public class CatchHandler : MonoBehaviour
         }
 
         CheckCollission();
-    }
-
-    void HoldBall()
-    {
-        //Hold ball animation
     }
 
     IEnumerator CatchTimer()
@@ -190,17 +183,41 @@ public class CatchHandler : MonoBehaviour
         //Direction = target - start
         var hitDirection = hit.transform.position - hit.point; //Direction from hit point 
 
+        SpawnRepelHands(hitDirection);
+
         var velocity = hitDirection.normalized * repelForce;
 
         Debug.Log("Repel velocity: " + velocity);
 
         ballScript.RepellBall(velocity);
 
-        //ballScript.ContinueVelocity();
-
         GameManager.Instance.RepelBall();
         ResetShot();
     }
+
+    void SpawnRepelHands(Vector3 hitDirection)
+    {
+        Vector3 hitPosition = hit.point;
+        hitPosition.z = hit.transform.position.z; //Level it with the ball
+
+        var repelDirection = (hit.transform.position - hitPosition).normalized;
+
+        // full directional rotation (your original logic)
+        Quaternion rotation = Quaternion.FromToRotation(Vector3.up, hitDirection);
+
+        spawnedRepelObject = Instantiate(handsRepelPrefab, ball.transform.position, rotation);
+
+        StartCoroutine(RemoveRepelHands());
+    }
+
+    IEnumerator RemoveRepelHands()
+    {
+        yield return new WaitForSeconds(repelTime);
+
+        if (spawnedRepelObject != null)
+            Destroy(spawnedRepelObject);
+    }
+
 
     public void Goal()
     {
