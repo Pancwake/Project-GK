@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class BallScript : MonoBehaviour
 {
-    public bool enteredGoal; 
-
     [SerializeField] float despawnTime = 1f;
 
     public Vector3 currentVelocity;
@@ -16,9 +14,12 @@ public class BallScript : MonoBehaviour
 
     bool repelled;
 
+    public bool ballInteractable;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        ballInteractable = true;
         ballCatchable = false;
         rb = GetComponent<Rigidbody>();
         col = GetComponent<Collider>();
@@ -30,9 +31,9 @@ public class BallScript : MonoBehaviour
         
     }
 
-    public void Goal()
+    public void StopInteraction()
     {
-        enteredGoal = true;
+        ballInteractable = false;
     }
 
     public void SetCatchable(bool catchable)

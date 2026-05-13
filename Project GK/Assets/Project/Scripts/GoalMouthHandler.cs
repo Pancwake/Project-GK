@@ -20,7 +20,6 @@ public class GoalMouthHandler : MonoBehaviour
     {
         if (other.CompareTag("Ball"))
         {
-
             goalHandler.Goal(other.gameObject);
         }
     }

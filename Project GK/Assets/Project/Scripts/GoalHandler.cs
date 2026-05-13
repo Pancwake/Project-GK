@@ -20,12 +20,13 @@ public class GoalHandler : MonoBehaviour
     public void Goal(GameObject ball)
     {
         BallScript ballScript = ball.GetComponent<BallScript>();
-        if (ballScript.enteredGoal)
+
+        if (!ballScript.ballInteractable)
             return;
 
-        ballScript.ContinueVelocity();
+        ballScript.StopInteraction();
 
-        ballScript.Goal();
+        ballScript.ContinueVelocity();
 
         GameManager.Instance.Goal();
 

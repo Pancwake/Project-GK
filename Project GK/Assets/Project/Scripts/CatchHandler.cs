@@ -102,6 +102,9 @@ public class CatchHandler : MonoBehaviour
         {
             ball = hit.collider.gameObject;
 
+            if (!ball.GetComponent<BallScript>().ballInteractable)
+                return;
+
             if (hit.collider.GetComponent<BallScript>().GetCatchable()) //If ball can be caught currently
             {
                 if (TryCatching()) //If ball caught
@@ -129,14 +132,13 @@ public class CatchHandler : MonoBehaviour
         var distance = Vector3.Distance(hitPosition, hit.transform.position); //Distance from where hit to the middle of the ball
         var maxDistanceToCatch = ballRadius * (float)(catchAreaPercentage / 100f); //The max distance the mouse can be away to allow a catch
 
-        Debug.Log("Catch: " + distance + " <= " + maxDistanceToCatch + " = " + (distance <= maxDistanceToCatch));
-
         return distance <= maxDistanceToCatch; //If distance is in the catch threshhold
     }
 
     public void CatchBall()
     {
         ballHeld = true;
+        ball.GetComponent<BallScript>().StopInteraction();
         SpawnCatchHands();
         StartCoroutine(LetGoOfBall());
 
@@ -180,6 +182,8 @@ public class CatchHandler : MonoBehaviour
     void RepelBall()
     {
         var ballScript = hit.collider.GetComponent<BallScript>();
+
+        ballScript.GetComponent<BallScript>().StopInteraction();
 
         //Direction = target - start
         var hitDirection = hit.transform.position - hit.point; //Direction from hit point 
