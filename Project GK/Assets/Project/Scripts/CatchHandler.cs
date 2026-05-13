@@ -70,8 +70,9 @@ public class CatchHandler : MonoBehaviour
                 catchCooldownCoroutine = StartCoroutine(CatchCooldown());
             }
         }
-
-        CheckCollission();
+        
+        if (isCatching)
+            CheckCollission();
     }
 
     IEnumerator CatchTimer()
