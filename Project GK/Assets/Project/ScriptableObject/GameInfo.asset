@@ -12,17 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0139fb3ee256b39428ff431d90dfab58, type: 3}
   m_Name: GameInfo
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
-  baseHealth: 100
+  baseMaxHealth: 100
   baseGoalHealthPenalty: 10
-  baseRepelPoints: 10
-  baseCatchPoints: 30
+  baseRepelPoints: 20
+  baseCatchPoints: 25
+  baseCatchHeal: 10
   basePointsMultiplierIncrease: 0.1
-  goalHealthPenalty: 0
-  repelPoints: 0
-  catchPoints: 0
-  pointsMultiplierIncrease: 0
-  maxHealth: 0
-  currentHealth: 0
-  points: 0
+  maxHealthUpgradeAmount: 10
+  goalHealthPenaltyUpgradeAmount: -1
+  catchHealUpgradeAmount: 5
+  pointsMultiplierIncreaseUpgradeAmount: 0.1
+  maxHealth: 130
+  goalHealthPenalty: 2
+  repelPoints: 10
+  catchPoints: 30
+  catchHeal: 35
+  pointsMultiplierIncrease: 0.6
+  currentHealth: 104
+  points: 10
   combo: 0
-  pointsMultiplier: 0
+  pointsMultiplier: 1

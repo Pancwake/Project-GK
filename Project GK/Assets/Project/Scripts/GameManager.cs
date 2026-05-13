@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     BallShooter ballShooter;
 
     public GameInfo gameInfo;
+    public UpgradeInfo upgradeInfo;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -29,12 +30,34 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            upgradeInfo.UseUpgrade(EUpgrades.maxHealth);
+            gameInfo.Upgrade(EUpgrades.maxHealth);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            upgradeInfo.UseUpgrade(EUpgrades.goalHealthPenalty);
+            gameInfo.Upgrade(EUpgrades.goalHealthPenalty);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            upgradeInfo.UseUpgrade(EUpgrades.catchHeal);
+            gameInfo.Upgrade(EUpgrades.catchHeal);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            upgradeInfo.UseUpgrade(EUpgrades.pointsMultiplierIncrease);
+            gameInfo.Upgrade(EUpgrades.pointsMultiplierIncrease);
+        }
     }
+
+
 
     public void CatchBall()
     {
         Debug.Log("Ball caught");
+        ChangeHealth(gameInfo.catchHeal);
         AddPoints(gameInfo.catchPoints);
         ballShooter.CatchBall();
     }
@@ -49,16 +72,17 @@ public class GameManager : MonoBehaviour
     public void Goal()
     {
         Debug.Log("Goal");
-        TakeDamage();
+        ChangeHealth(gameInfo.goalHealthPenalty);
+        gameInfo.combo = 0;
+        gameInfo.CalculateMultiplier();
         catchHandler.Goal();
         ballShooter.Goal();
     }
 
-    void TakeDamage()
+    void ChangeHealth(int amount)
     {
-        gameInfo.currentHealth -= gameInfo.goalHealthPenalty;
-        gameInfo.combo = 0;
-        gameInfo.CalculateMultiplier();
+        gameInfo.currentHealth += amount;
+
     }
 
     void AddPoints(int points)
@@ -71,5 +95,7 @@ public class GameManager : MonoBehaviour
     void ResetStats()
     {
         gameInfo.ResetStats();
+        upgradeInfo.ResetUpgrades();
+        //Do this on Start button instead
     }
 }
