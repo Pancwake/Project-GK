@@ -15,7 +15,6 @@ public class GameManager : MonoBehaviour
     BallShooter ballShooter;
 
     public GameInfo gameInfo;
-    public UpgradeInfo upgradeInfo;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -32,27 +31,21 @@ public class GameManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Alpha1))
         {
-            upgradeInfo.UseUpgrade(EUpgrades.maxHealth);
             gameInfo.Upgrade(EUpgrades.maxHealth);
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            upgradeInfo.UseUpgrade(EUpgrades.goalHealthPenalty);
             gameInfo.Upgrade(EUpgrades.goalHealthPenalty);
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            upgradeInfo.UseUpgrade(EUpgrades.catchHeal);
             gameInfo.Upgrade(EUpgrades.catchHeal);
         }
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            upgradeInfo.UseUpgrade(EUpgrades.pointsMultiplierIncrease);
             gameInfo.Upgrade(EUpgrades.pointsMultiplierIncrease);
         }
     }
-
-
 
     public void CatchBall()
     {
@@ -95,7 +88,6 @@ public class GameManager : MonoBehaviour
     void ResetStats()
     {
         gameInfo.ResetStats();
-        upgradeInfo.ResetUpgrades();
         //Do this on Start button instead
     }
 }

@@ -18,10 +18,6 @@ MonoBehaviour:
   baseCatchPoints: 25
   baseCatchHeal: 10
   basePointsMultiplierIncrease: 0.1
-  maxHealthUpgradeAmount: 10
-  goalHealthPenaltyUpgradeAmount: -1
-  catchHealUpgradeAmount: 5
-  pointsMultiplierIncreaseUpgradeAmount: 0.1
   maxHealth: 130
   goalHealthPenalty: 2
   repelPoints: 10
@@ -32,3 +28,4 @@ MonoBehaviour:
   points: 10
   combo: 0
   pointsMultiplier: 1
+  upgradeManager: {fileID: 11400000, guid: 13bfe694d8b31804eb6b980cf14e6d8a, type: 2}

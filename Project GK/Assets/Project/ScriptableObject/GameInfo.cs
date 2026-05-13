@@ -12,12 +12,6 @@ public class GameInfo : ScriptableObject
     [SerializeField] int baseCatchHeal;
     [SerializeField] float basePointsMultiplierIncrease;
 
-    [Header("Upgrade Amount")] //The amount a stat will be upgraded
-    [SerializeField] int maxHealthUpgradeAmount;
-    [SerializeField] int goalHealthPenaltyUpgradeAmount;
-    [SerializeField] int catchHealUpgradeAmount;
-    [SerializeField] float pointsMultiplierIncreaseUpgradeAmount;
-
     [Header("Do not change")]
 
     [Header("Gameplay Stats")] //Stats that stay static during gameplay and can maybe be upgraded
@@ -34,6 +28,8 @@ public class GameInfo : ScriptableObject
     public int combo;
     public float pointsMultiplier;
 
+    [SerializeField] UpgradeManager upgradeManager;
+
     public void CalculateMultiplier()
     {
         if (combo <= 0) //Dont do anything if no combo
@@ -45,28 +41,34 @@ public class GameInfo : ScriptableObject
 
     public void Upgrade(EUpgrades upgrade)
     {
+        float upgradeAmount = upgradeManager.GetUpgradeAmount(upgrade);
+
         switch (upgrade)
         {
             case EUpgrades.maxHealth:
-                maxHealth += maxHealthUpgradeAmount;
+                maxHealth += (int)upgradeAmount;
                 break;
             case EUpgrades.goalHealthPenalty:
-                goalHealthPenalty += goalHealthPenaltyUpgradeAmount;
+                goalHealthPenalty += (int)upgradeAmount;
                 break;
             case EUpgrades.catchHeal:
-                catchHeal += catchHealUpgradeAmount;
+                catchHeal += (int)upgradeAmount;
                 break;
             case EUpgrades.pointsMultiplierIncrease:
-                pointsMultiplierIncrease += pointsMultiplierIncreaseUpgradeAmount;
+                pointsMultiplierIncrease += upgradeAmount;
                 break;
             default:
                 Debug.LogError("No upgrade set for: " + upgrade.ToString());
                 break;
         }
+
+        upgradeManager.UseUpgrade(upgrade);
     }
 
     public void ResetStats()
     {
+        upgradeManager.ResetUpgrades();
+
         maxHealth = baseMaxHealth;
         goalHealthPenalty = baseGoalHealthPenalty;
         repelPoints = baseRepelPoints;
