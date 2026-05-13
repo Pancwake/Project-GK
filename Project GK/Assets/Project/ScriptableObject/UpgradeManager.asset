@@ -17,15 +17,30 @@ MonoBehaviour:
     upgradeLevel: 1
     upgradeName: Health1
     upgradeDescription: Increase health by 20
+    upgradeCost: 0
     upgradeAmount: 20
   - upgradeType: 0
     upgradeLevel: 2
     upgradeName: Health2
     upgradeDescription: Increase health by 30
+    upgradeCost: 0
     upgradeAmount: 30
+  - upgradeType: 2
+    upgradeLevel: 1
+    upgradeName: Healing1
+    upgradeDescription: Increase catch healing by 5
+    upgradeCost: 0
+    upgradeAmount: 5
+  - upgradeType: 1
+    upgradeLevel: 1
+    upgradeName: Damage1
+    upgradeDescription: Decrease damage taken by 2
+    upgradeCost: 0
+    upgradeAmount: 2
+  upgrades:
   - upgradeType: 0
     upgradeLevel: 1
     upgradeName: Health1
     upgradeDescription: Increase health by 20
+    upgradeCost: 0
     upgradeAmount: 20
-  upgrades: []
