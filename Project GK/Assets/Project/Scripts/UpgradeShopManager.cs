@@ -17,8 +17,6 @@ public class UpgradeShopManager : MonoBehaviour
 
     void Start()
     {
-        upgradeManager.ResetUpgrades(); //Only for debugging
-
         UpdateInfo();
         OpenShop();
     }
@@ -58,6 +56,11 @@ public class UpgradeShopManager : MonoBehaviour
     void UpdateInfo()
     {
         money.text = gameInfo.money.ToString();
+    }
+
+    public void ExitShop()
+    {
+        LevelManager.Instance.LoadNextLevel();
     }
 
     public int GetMoney()

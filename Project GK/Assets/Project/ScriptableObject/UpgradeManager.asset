@@ -29,15 +29,15 @@ MonoBehaviour:
       amount: 30
   - upgradeType: 1
     upgrades:
-    - type: 0
+    - type: 1
       image: {fileID: 0}
       name: Goal Health Penalty 1
       description: Decrease the amount of damage for taking a goal by 1
       price: 100
-      amount: -1
+      amount: 1
   - upgradeType: 2
     upgrades:
-    - type: 0
+    - type: 2
       image: {fileID: 0}
       name: Catch heal 1
       description: "Increase the amount of healing you get when catching the ball
@@ -46,10 +46,29 @@ MonoBehaviour:
       amount: 10
   - upgradeType: 3
     upgrades:
-    - type: 0
+    - type: 3
       image: {fileID: 0}
       name: wewe
       description: ewewewewew
       price: 100
       amount: 10
-  upgrades: []
+  upgrades:
+  - type: 0
+    image: {fileID: 0}
+    name: 'Max health 1 '
+    description: 'Increase max Health by 20 '
+    price: 60
+    amount: 20
+  - type: 2
+    image: {fileID: 0}
+    name: Catch heal 1
+    description: "Increase the amount of healing you get when catching the ball by
+      10\t"
+    price: 100
+    amount: 10
+  - type: 3
+    image: {fileID: 0}
+    name: wewe
+    description: ewewewewew
+    price: 100
+    amount: 10

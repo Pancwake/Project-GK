@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
 
     public GameInfo gameInfo;
 
+    public int currentShot; 
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -38,6 +40,8 @@ public class GameManager : MonoBehaviour
         ChangeHealth(gameInfo.catchHeal);
         AddPoints(gameInfo.catchMoneyReward);
         ballShooter.CatchBall();
+
+        NextShot();
     }
 
     public void RepelBall()
@@ -45,6 +49,8 @@ public class GameManager : MonoBehaviour
         Debug.Log("Ball repelled");
         AddPoints(gameInfo.repelMoneyReward);
         ballShooter.RepelBall();
+
+        NextShot();
     }
 
     public void Goal()
@@ -61,6 +67,12 @@ public class GameManager : MonoBehaviour
     {
         gameInfo.currentHealth += amount;
 
+        gameInfo.currentHealth = Mathf.Clamp(gameInfo.currentHealth, 0, gameInfo.maxHealth);
+
+        if (gameInfo.currentHealth <= 0)
+        {
+            LevelManager.Instance.LoadMainMenu();
+        }
     }
 
     void AddPoints(int points)
@@ -70,8 +82,18 @@ public class GameManager : MonoBehaviour
         gameInfo.money += (int)(points * gameInfo.moneyMultiplier);
     }
 
+    void NextShot()
+    {
+        currentShot++;
+
+        if (currentShot > gameInfo.shotsPerLevel) //If all shots saved this level
+        {
+            LevelManager.Instance.LoadShop();
+        }
+    }
+
     void ResetStats()
     {
-
+        currentShot = 1;
     }
 }

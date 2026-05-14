@@ -12,6 +12,9 @@ public class GameInfo : ScriptableObject
     [SerializeField] int baseCatchHeal;
     [SerializeField] float basePointsMultiplierIncrease;
 
+    [SerializeField] public int levelsPerStadium; //The amount of levels that are per stadium
+    [SerializeField] public int shotsPerLevel; //The amount of shots that are per level 
+
     [Header("Do not change")]
 
     [Header("Gameplay Stats")] //Stats that stay static during gameplay and can maybe be upgraded
@@ -21,6 +24,8 @@ public class GameInfo : ScriptableObject
     [SerializeField] public int catchMoneyReward;
     [SerializeField] public int catchHeal;
     [SerializeField] public float moneyMultiplierIncrease;
+
+    [SerializeField] public int currentStadiumLevel; //The level this stadium is currently on
 
     [Header("Active Stats")] //Stats that change in gameplay
     public int currentHealth;
@@ -51,6 +56,7 @@ public class GameInfo : ScriptableObject
         {
             case EUpgrades.maxHealth:
                 maxHealth += (int)upgradeAmount;
+                currentHealth += (int)upgradeAmount; //Heal the amount too
                 break;
             case EUpgrades.goalHealthPenalty:
                 goalHealthPenalty += (int)upgradeAmount;
@@ -84,6 +90,7 @@ public class GameInfo : ScriptableObject
         money = 0;
         combo = 0;
         moneyMultiplier = 1;
+        currentStadiumLevel = 1;
     }
 }
 
