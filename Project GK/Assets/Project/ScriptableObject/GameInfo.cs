@@ -6,10 +6,9 @@ public class GameInfo : ScriptableObject
 {
     [Header("Base Stats")] //The base numbers for each stat
     [SerializeField] int baseMaxHealth;
-    [SerializeField] int baseGoalHealthPenalty;
     [SerializeField] int baseRepelMoneyReward;
     [SerializeField] int baseCatchMoneyReward;
-    [SerializeField] int baseCatchHeal;
+    [SerializeField] int baseCatchHealPercentage;
     [SerializeField] float basePointsMultiplierIncrease;
 
     [SerializeField] public int levelsPerStadium; //The amount of levels that are per stadium
@@ -19,10 +18,9 @@ public class GameInfo : ScriptableObject
 
     [Header("Gameplay Stats")] //Stats that stay static during gameplay and can maybe be upgraded
     [SerializeField] public int maxHealth;
-    [SerializeField] public int goalHealthPenalty;
     [SerializeField] public int repelMoneyReward;
     [SerializeField] public int catchMoneyReward;
-    [SerializeField] public int catchHeal;
+    [SerializeField] public int catchHealPercentage;
     [SerializeField] public float moneyMultiplierIncrease;
 
     [SerializeField] public int currentStadiumLevel; //The level this stadium is currently on
@@ -58,11 +56,8 @@ public class GameInfo : ScriptableObject
                 maxHealth += (int)upgradeAmount;
                 currentHealth += (int)upgradeAmount; //Heal the amount too
                 break;
-            case EUpgrades.goalHealthPenalty:
-                goalHealthPenalty += (int)upgradeAmount;
-                break;
             case EUpgrades.catchHeal:
-                catchHeal += (int)upgradeAmount;
+                catchHealPercentage += (int)upgradeAmount;
                 break;
             case EUpgrades.pointsMultiplierIncrease:
                 moneyMultiplierIncrease += upgradeAmount;
@@ -80,10 +75,9 @@ public class GameInfo : ScriptableObject
         upgradeManager.ResetUpgrades();
 
         maxHealth = baseMaxHealth;
-        goalHealthPenalty = baseGoalHealthPenalty;
         repelMoneyReward = baseRepelMoneyReward;
         catchMoneyReward = baseCatchMoneyReward;
-        catchHeal = baseCatchHeal;
+        catchHealPercentage = baseCatchHealPercentage;
         moneyMultiplierIncrease = basePointsMultiplierIncrease;
 
         currentHealth = baseMaxHealth;
@@ -97,7 +91,6 @@ public class GameInfo : ScriptableObject
 public enum EUpgrades
 {
     maxHealth,
-    goalHealthPenalty,
     catchHeal,
     pointsMultiplierIncrease
 }

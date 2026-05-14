@@ -16,7 +16,10 @@ public class GameManager : MonoBehaviour
 
     public GameInfo gameInfo;
 
-    public int currentShot; 
+    public int currentShot;
+
+    [Header("Stadium stats")]
+    [SerializeField] int damageForGoal;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -37,7 +40,7 @@ public class GameManager : MonoBehaviour
     public void CatchBall()
     {
         Debug.Log("Ball caught");
-        ChangeHealth(gameInfo.catchHeal);
+        ChangeHealthPercentage(gameInfo.catchHealPercentage);
         AddPoints(gameInfo.catchMoneyReward);
         ballShooter.CatchBall();
 
@@ -56,7 +59,7 @@ public class GameManager : MonoBehaviour
     public void Goal()
     {
         Debug.Log("Goal");
-        ChangeHealth(gameInfo.goalHealthPenalty);
+        ChangeHealth(damageForGoal);
         gameInfo.combo = 0;
         gameInfo.CalculateMultiplier();
         catchHandler.Goal();
@@ -73,6 +76,12 @@ public class GameManager : MonoBehaviour
         {
             LevelManager.Instance.LoadMainMenu();
         }
+    }
+
+    void ChangeHealthPercentage(int percentage)
+    {
+        int healAmount = (int)(gameInfo.maxHealth * (percentage / 100)); //Get 10% of max health to heal
+        ChangeHealth(healAmount);
     }
 
     void AddPoints(int points)
