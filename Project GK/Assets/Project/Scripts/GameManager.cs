@@ -29,36 +29,21 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            gameInfo.Upgrade(EUpgrades.maxHealth);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            gameInfo.Upgrade(EUpgrades.goalHealthPenalty);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            gameInfo.Upgrade(EUpgrades.catchHeal);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            gameInfo.Upgrade(EUpgrades.pointsMultiplierIncrease);
-        }
+
     }
 
     public void CatchBall()
     {
         Debug.Log("Ball caught");
         ChangeHealth(gameInfo.catchHeal);
-        AddPoints(gameInfo.catchPoints);
+        AddPoints(gameInfo.catchMoneyReward);
         ballShooter.CatchBall();
     }
 
     public void RepelBall()
     {
         Debug.Log("Ball repelled");
-        AddPoints(gameInfo.repelPoints);
+        AddPoints(gameInfo.repelMoneyReward);
         ballShooter.RepelBall();
     }
 
@@ -82,12 +67,11 @@ public class GameManager : MonoBehaviour
     {
         gameInfo.combo += 1;
         gameInfo.CalculateMultiplier();
-        gameInfo.points += (int)(points * gameInfo.pointsMultiplier);
+        gameInfo.money += (int)(points * gameInfo.moneyMultiplier);
     }
 
     void ResetStats()
     {
-        gameInfo.ResetStats();
-        //Do this on Start button instead
+
     }
 }

@@ -7,42 +7,36 @@ using UnityEngine;
 public class UpgradeManager : ScriptableObject
 {
     [Header("List of all Upgrades")]
-    [SerializeField] List<Upgrade> baseUpgrades;
+    [SerializeField] List<Upgrades> baseUpgrades;
 
-    [Header("List of upgrades that have uses left")]
+    [Header("List of upgrades that can be bought")]
     public List<Upgrade> upgrades;
 
     public void ResetUpgrades()
     {
         upgrades = new List<Upgrade>();
 
-        foreach (Upgrade u in baseUpgrades)
+        foreach (Upgrades us in baseUpgrades)
         {
-            if (u.upgradeLevel == 1) //Only add level 1 upgrades
+            //Apply all types automatically
+            foreach (Upgrade u in us.upgrades)
             {
-                upgrades.Add(new Upgrade
-                {
-                    upgradeType = u.upgradeType,
-                    upgradeLevel = u.upgradeLevel,
-                    upgradeName = u.upgradeName,
-                    upgradeDescription = u.upgradeDescription,
-                    upgradeAmount = u.upgradeAmount,
-                });
+                u.type = us.upgradeType;
             }
+
+            Upgrade upgrade = us.upgrades[0]; //Add the first upgrade
+
+            upgrades.Add(upgrade);
         }
     }
 
-    public float GetUpgradeAmount(EUpgrades usingUpgrade)
+    public float GetUpgradeAmount(Upgrade upgrade)
     {
-        Upgrade upgrade = upgrades.Find(u => u.upgradeType == usingUpgrade);
-
-        return upgrade.upgradeAmount;
+        return upgrade.amount;
     }
 
-    public void UseUpgrade(EUpgrades usingUpgrade)
+    public void UseUpgrade(Upgrade upgrade)
     {
-        Upgrade upgrade = upgrades.Find(u => u.upgradeType == usingUpgrade);
-
         if (upgrade == null)
         {
             Debug.LogError("This upgrade does not exist anymore");
@@ -55,6 +49,7 @@ public class UpgradeManager : ScriptableObject
         if (nextLevelUpgrade != null)
         {
             int upgradeIndex = upgrades.IndexOf(upgrade);
+            upgrades[upgradeIndex] = nextLevelUpgrade;
         }
         else
         {
@@ -65,45 +60,38 @@ public class UpgradeManager : ScriptableObject
 
     public Upgrade UpgradeToNextLevel(Upgrade upgrade)
     {
-        int nextLevel = upgrade.upgradeLevel + 1;
+        Upgrades upgradesList = baseUpgrades.Find(us => us.upgradeType == upgrade.type);
 
-        bool upgradeFound = false;
-        Upgrade newUpgrade = null;
+        int nextLevel = upgradesList.upgrades.IndexOf(upgrade);
+        nextLevel += 1;
 
-        foreach (Upgrade nextUpgrade in baseUpgrades)
+        if (nextLevel < upgradesList.upgrades.Count)
         {
-            if (nextUpgrade.upgradeLevel == nextLevel && nextUpgrade.upgradeType == upgrade.upgradeType)
-            {
-                upgradeFound = true;
-                newUpgrade = nextUpgrade;
-                break;
-            }
+            Debug.Log("Upgrade " + upgrade.name + " to " + upgradesList.upgrades[nextLevel].name);
+
+            return upgradesList.upgrades[nextLevel];
         }
 
-        if (upgradeFound)
-        {
-            return newUpgrade;
-        }
-        else
-        {
-            return null;
-        } 
+        Debug.Log("Upgrade " + upgrade.name + " is the last in the line.");
+
+        return null;
     }
 }
 
 [Serializable]
 public class Upgrades
 {
+    public EUpgrades upgradeType;
     public List<Upgrade> upgrades;
 }
 
 [Serializable]
 public class Upgrade
 {
-    public EUpgrades upgradeType;
-    public int upgradeLevel;
-    public string upgradeName;
-    public string upgradeDescription;
-    public int upgradeCost;
-    public float upgradeAmount;
+    [HideInInspector] public EUpgrades type; //Hide because it gets assigned automatically
+    public Sprite image;
+    public string name;
+    [TextArea(2, 3)] public string description;
+    public int price;
+    public float amount;
 }

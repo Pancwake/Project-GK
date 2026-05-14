@@ -14,33 +14,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeManager
   baseUpgrades:
   - upgradeType: 0
-    upgradeLevel: 1
-    upgradeName: Health1
-    upgradeDescription: Increase health by 20
-    upgradeCost: 0
-    upgradeAmount: 20
-  - upgradeType: 0
-    upgradeLevel: 2
-    upgradeName: Health2
-    upgradeDescription: Increase health by 30
-    upgradeCost: 0
-    upgradeAmount: 30
-  - upgradeType: 2
-    upgradeLevel: 1
-    upgradeName: Healing1
-    upgradeDescription: Increase catch healing by 5
-    upgradeCost: 0
-    upgradeAmount: 5
+    upgrades:
+    - type: 0
+      image: {fileID: 0}
+      name: 'Max health 1 '
+      description: 'Increase max Health by 20 '
+      price: 60
+      amount: 20
+    - type: 0
+      image: {fileID: 0}
+      name: Max health 2
+      description: Increase max Health by 30
+      price: 80
+      amount: 30
   - upgradeType: 1
-    upgradeLevel: 1
-    upgradeName: Damage1
-    upgradeDescription: Decrease damage taken by 2
-    upgradeCost: 0
-    upgradeAmount: 2
-  upgrades:
-  - upgradeType: 0
-    upgradeLevel: 1
-    upgradeName: Health1
-    upgradeDescription: Increase health by 20
-    upgradeCost: 0
-    upgradeAmount: 20
+    upgrades:
+    - type: 0
+      image: {fileID: 0}
+      name: Goal Health Penalty 1
+      description: Decrease the amount of damage for taking a goal by 1
+      price: 100
+      amount: -1
+  - upgradeType: 2
+    upgrades:
+    - type: 0
+      image: {fileID: 0}
+      name: Catch heal 1
+      description: "Increase the amount of healing you get when catching the ball
+        by 10\t"
+      price: 100
+      amount: 10
+  - upgradeType: 3
+    upgrades:
+    - type: 0
+      image: {fileID: 0}
+      name: wewe
+      description: ewewewewew
+      price: 100
+      amount: 10
+  upgrades: []

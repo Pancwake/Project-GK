@@ -7,8 +7,8 @@ public class GameInfo : ScriptableObject
     [Header("Base Stats")] //The base numbers for each stat
     [SerializeField] int baseMaxHealth;
     [SerializeField] int baseGoalHealthPenalty;
-    [SerializeField] int baseRepelPoints;
-    [SerializeField] int baseCatchPoints;
+    [SerializeField] int baseRepelMoneyReward;
+    [SerializeField] int baseCatchMoneyReward;
     [SerializeField] int baseCatchHeal;
     [SerializeField] float basePointsMultiplierIncrease;
 
@@ -17,16 +17,16 @@ public class GameInfo : ScriptableObject
     [Header("Gameplay Stats")] //Stats that stay static during gameplay and can maybe be upgraded
     [SerializeField] public int maxHealth;
     [SerializeField] public int goalHealthPenalty;
-    [SerializeField] public int repelPoints;
-    [SerializeField] public int catchPoints;
+    [SerializeField] public int repelMoneyReward;
+    [SerializeField] public int catchMoneyReward;
     [SerializeField] public int catchHeal;
-    [SerializeField] public float pointsMultiplierIncrease;
+    [SerializeField] public float moneyMultiplierIncrease;
 
     [Header("Active Stats")] //Stats that change in gameplay
     public int currentHealth;
-    public int points;
+    public int money;
     public int combo;
-    public float pointsMultiplier;
+    public float moneyMultiplier;
 
     [SerializeField] UpgradeManager upgradeManager;
 
@@ -36,14 +36,18 @@ public class GameInfo : ScriptableObject
             return;
 
         //1.2 = 1 + (0.1 * (3 - 1)) 
-        pointsMultiplier = 1 + (pointsMultiplierIncrease * (combo - 1)); //combo -1 so it starts at the second hit
+        moneyMultiplier = 1 + (moneyMultiplierIncrease * (combo - 1)); //combo -1 so it starts at the second hit
     }
 
-    public void Upgrade(EUpgrades upgrade)
+    public void BuyUpgrade(Upgrade upgrade)
     {
         float upgradeAmount = upgradeManager.GetUpgradeAmount(upgrade);
 
-        switch (upgrade)
+        money -= upgrade.price;
+
+        EUpgrades upgradeType = upgrade.type;
+
+        switch (upgradeType)
         {
             case EUpgrades.maxHealth:
                 maxHealth += (int)upgradeAmount;
@@ -55,7 +59,7 @@ public class GameInfo : ScriptableObject
                 catchHeal += (int)upgradeAmount;
                 break;
             case EUpgrades.pointsMultiplierIncrease:
-                pointsMultiplierIncrease += upgradeAmount;
+                moneyMultiplierIncrease += upgradeAmount;
                 break;
             default:
                 Debug.LogError("No upgrade set for: " + upgrade.ToString());
@@ -71,15 +75,15 @@ public class GameInfo : ScriptableObject
 
         maxHealth = baseMaxHealth;
         goalHealthPenalty = baseGoalHealthPenalty;
-        repelPoints = baseRepelPoints;
-        catchPoints = baseCatchPoints;
+        repelMoneyReward = baseRepelMoneyReward;
+        catchMoneyReward = baseCatchMoneyReward;
         catchHeal = baseCatchHeal;
-        pointsMultiplierIncrease = basePointsMultiplierIncrease;
+        moneyMultiplierIncrease = basePointsMultiplierIncrease;
 
         currentHealth = baseMaxHealth;
-        points = 0;
+        money = 0;
         combo = 0;
-        pointsMultiplier = 1;
+        moneyMultiplier = 1;
     }
 }
 

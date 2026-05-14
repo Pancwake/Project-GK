@@ -14,18 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
   baseMaxHealth: 100
   baseGoalHealthPenalty: 10
-  baseRepelPoints: 20
-  baseCatchPoints: 25
+  baseRepelMoneyReward: 0
+  baseCatchMoneyReward: 0
   baseCatchHeal: 10
   basePointsMultiplierIncrease: 0.1
   maxHealth: 130
   goalHealthPenalty: 2
-  repelPoints: 10
-  catchPoints: 30
+  repelMoneyReward: 0
+  catchMoneyReward: 0
   catchHeal: 35
-  pointsMultiplierIncrease: 0.6
+  moneyMultiplierIncrease: 0
   currentHealth: 104
-  points: 10
+  money: 200
   combo: 0
-  pointsMultiplier: 1
+  moneyMultiplier: 0
   upgradeManager: {fileID: 11400000, guid: 13bfe694d8b31804eb6b980cf14e6d8a, type: 2}
