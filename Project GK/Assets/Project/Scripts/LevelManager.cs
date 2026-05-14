@@ -56,6 +56,11 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene(currentLevelIndex);
     }
 
+    public void LoadLoseScene()
+    {
+        SceneManager.LoadScene("LoseScreen");
+    }
+
     //Check if all difficulties for this level have been played
     public void LoadNextLevel()
     {

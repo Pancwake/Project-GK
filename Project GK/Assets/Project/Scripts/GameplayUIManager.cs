@@ -20,7 +20,7 @@ public class GameplayUIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateUI();
+        
     }
 
     public void UpdateUI()

@@ -24,10 +24,12 @@ public class BallShooter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            StartShoot();
-        }
+
+    }
+
+    public void Shoot()
+    {
+        StartShoot();
     }
 
     void StartShoot()

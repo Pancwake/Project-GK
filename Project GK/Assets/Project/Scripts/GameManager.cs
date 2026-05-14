@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -11,8 +12,8 @@ public class GameManager : MonoBehaviour
     }
 
     CatchHandler catchHandler;
-    GoalHandler goalHandler;
     BallShooter ballShooter;
+    GameplayUIManager gameplayUIManager;
 
     public GameInfo gameInfo;
 
@@ -21,20 +22,33 @@ public class GameManager : MonoBehaviour
     [Header("Stadium stats")]
     [SerializeField] int damageForGoal;
 
+    [SerializeField] float timeBetweenShots = 1f;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         catchHandler = FindFirstObjectByType<CatchHandler>();
-        goalHandler = FindFirstObjectByType<GoalHandler>();
         ballShooter = FindFirstObjectByType<BallShooter>();
+        gameplayUIManager = FindFirstObjectByType<GameplayUIManager>();
 
         ResetStats();
+
+        NextShot(false);
+
+        gameplayUIManager.UpdateUI();
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    IEnumerator startShootTimer()
+    {
+        yield return new WaitForSeconds(timeBetweenShots);
+
+        ballShooter.Shoot();
     }
 
     public void CatchBall()
@@ -44,7 +58,8 @@ public class GameManager : MonoBehaviour
         AddPoints(gameInfo.catchMoneyReward);
         ballShooter.CatchBall();
 
-        NextShot();
+        NextShot(true);
+        gameplayUIManager.UpdateUI();
     }
 
     public void RepelBall()
@@ -53,7 +68,8 @@ public class GameManager : MonoBehaviour
         AddPoints(gameInfo.repelMoneyReward);
         ballShooter.RepelBall();
 
-        NextShot();
+        NextShot(true);
+        gameplayUIManager.UpdateUI();
     }
 
     public void Goal()
@@ -64,6 +80,9 @@ public class GameManager : MonoBehaviour
         gameInfo.CalculateMultiplier();
         catchHandler.Goal();
         ballShooter.Goal();
+
+        NextShot(false);
+        gameplayUIManager.UpdateUI();
     }
 
     void ChangeHealth(int amount)
@@ -74,7 +93,7 @@ public class GameManager : MonoBehaviour
 
         if (gameInfo.currentHealth <= 0)
         {
-            LevelManager.Instance.LoadMainMenu();
+            StartCoroutine(LoseDelay());
         }
     }
 
@@ -91,14 +110,33 @@ public class GameManager : MonoBehaviour
         gameInfo.money += (int)(points * gameInfo.moneyMultiplier);
     }
 
-    void NextShot()
+    void NextShot(bool saved)
     {
-        currentShot++;
+        if (saved)
+            currentShot++;
 
         if (currentShot > gameInfo.shotsPerLevel) //If all shots saved this level
         {
-            LevelManager.Instance.LoadShop();
+            StartCoroutine(ShopDelay());
         }
+        else
+        {
+            StartCoroutine(startShootTimer());
+        }
+    }
+
+    IEnumerator ShopDelay()
+    {
+        yield return new WaitForSeconds(timeBetweenShots);
+
+        LevelManager.Instance.LoadLoseScene();
+    }
+
+    IEnumerator LoseDelay()
+    {
+        yield return new WaitForSeconds(timeBetweenShots);
+
+        LevelManager.Instance.LoadShop();
     }
 
     void ResetStats()
