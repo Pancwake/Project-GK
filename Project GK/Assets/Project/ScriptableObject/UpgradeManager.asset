@@ -17,41 +17,85 @@ MonoBehaviour:
     upgrades:
     - type: 0
       image: {fileID: 0}
-      name: 'Max health 1 '
+      name: MaxHealth I
       description: 'Increase max Health by 20 '
       price: 60
       amount: 20
     - type: 0
       image: {fileID: 0}
-      name: Max health 2
+      name: MaxHealth II
       description: Increase max Health by 30
       price: 80
       amount: 30
+    - type: 0
+      image: {fileID: 0}
+      name: MaxHealth III
+      description: Increase max Health by 50
+      price: 120
+      amount: 50
   - upgradeType: 1
     upgrades:
     - type: 1
       image: {fileID: 0}
-      name: Goal Health Penalty 1
-      description: Decrease the amount of damage for taking a goal by 1
-      price: 100
-      amount: 1
+      name: CatchHeal I
+      description: Increase the percentage of health healed when catching the ball
+        by 5%
+      price: 80
+      amount: 5
+    - type: 1
+      image: {fileID: 0}
+      name: CatchHeal II
+      description: Increase the percentage of health healed when catching the ball
+        by 10%
+      price: 120
+      amount: 10
+    - type: 1
+      image: {fileID: 0}
+      name: CatchHeal III
+      description: Increase the percentage of health healed when catching the ball
+        by 15%
+      price: 150
+      amount: 15
   - upgradeType: 2
     upgrades:
     - type: 2
       image: {fileID: 0}
-      name: Catch heal 1
-      description: "Increase the amount of healing you get when catching the ball
-        by 10\t"
-      price: 100
-      amount: 10
+      name: GoalArea I
+      description: 'Slightly increase the area in which the shoot can be blocked '
+      price: 120
+      amount: 0.1
+    - type: 2
+      image: {fileID: 0}
+      name: GoalArea II
+      description: 'Further increase the area in which the shoot can be blocked '
+      price: 150
+      amount: 0.2
+    - type: 2
+      image: {fileID: 0}
+      name: GoalArea II
+      description: 'Vastly increase the area in which the shoot can be blocked '
+      price: 180
+      amount: 0.3
   - upgradeType: 3
     upgrades:
     - type: 3
       image: {fileID: 0}
-      name: wewe
-      description: ewewewewew
+      name: CatchArea I
+      description: Slightly decrease the accuracy needed to catch the ball
       price: 100
+      amount: 5
+    - type: 3
+      image: {fileID: 0}
+      name: CatchArea II
+      description: Further decrease the accuracy needed to catch the ball
+      price: 150
       amount: 10
+    - type: 3
+      image: {fileID: 0}
+      name: CatchArea III
+      description: Vastly decrease the accuracy needed to catch the ball
+      price: 180
+      amount: 15
   upgrades:
   - type: 0
     image: {fileID: 0}

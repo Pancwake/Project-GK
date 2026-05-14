@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -13,8 +14,6 @@ public class CatchHandler : MonoBehaviour
 
     Camera cam;
 
-    BallShooter ballShooter;
-
     RaycastHit hit;
 
     [SerializeField] LayerMask ballLayer;
@@ -23,7 +22,6 @@ public class CatchHandler : MonoBehaviour
     [SerializeField] bool isCatching; //If the player is currently trying to catch
     [SerializeField] float catchTime; //How early the button can be pressed to still count as a catch
     [SerializeField] float catchCooldown; //How long the player has to wait before being able to catch again (Anti spam)
-    [SerializeField] [Range(0f, 100f)] int catchAreaPercentage; //The percentage of the area that the ball can be caught in
     [SerializeField] float repelForce = 1f;
     [SerializeField] float holdTime = 1f; //Time to hold the ball after catching
     [SerializeField] float repelTime = 1f; //Time for the repel hands to stay after repelling
@@ -36,6 +34,8 @@ public class CatchHandler : MonoBehaviour
 
     GameObject ball;
 
+    [SerializeField] GameInfo gameInfo;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -43,14 +43,22 @@ public class CatchHandler : MonoBehaviour
 
         cam = Camera.main;
 
-        ballShooter = FindFirstObjectByType<BallShooter>();
-
         canCatch = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Show catch area debug
+        float minZ = transform.position.z - 0.3f;
+        float maxZ = transform.position.z + gameInfo.goalAreaSize;
+        Vector3 minVec = new Vector3(transform.position.x, transform.position.y, minZ);
+        Vector3 maxVec = new Vector3(transform.position.x, transform.position.y, maxZ);
+        Vector3 dir = maxVec - minVec;
+        float distance = Vector3.Distance(minVec, maxVec);
+        //Debug.DrawRay(minVec, dir * distance, Color.greenYellow);
+        Debug.DrawLine(minVec, maxVec, Color.green);
+
         if (ballHeld)
             return;
 
@@ -105,6 +113,26 @@ public class CatchHandler : MonoBehaviour
             if (!ball.GetComponent<BallScript>().ballInteractable)
                 return;
 
+            float minZ = transform.position.z - 1f;
+            float maxZ = transform.position.z + gameInfo.goalAreaSize;
+
+            //Catch area float
+            if (hit.transform.position.z >= minZ && hit.transform.position.z <= maxZ) //If ball is in the catch area
+            {
+                if (TryCatching()) //If ball caught
+                {
+                    CatchBall();
+                }
+                else
+                {
+                    RepelBall();
+                }
+
+                ballInteractedWith = true;
+            }
+
+            //Catch area Trigger
+            /*
             if (hit.collider.GetComponent<BallScript>().GetCatchable()) //If ball can be caught currently
             {
                 if (TryCatching()) //If ball caught
@@ -118,6 +146,7 @@ public class CatchHandler : MonoBehaviour
 
                 ballInteractedWith = true;
             }
+            */
         }
 
         Debug.DrawRay(cam.transform.position, (mousePos - cam.transform.position) * 100f, Color.red);
@@ -130,7 +159,7 @@ public class CatchHandler : MonoBehaviour
 
         var ballRadius = hit.collider.bounds.extents.x;
         var distance = Vector3.Distance(hitPosition, hit.transform.position); //Distance from where hit to the middle of the ball
-        var maxDistanceToCatch = ballRadius * (float)(catchAreaPercentage / 100f); //The max distance the mouse can be away to allow a catch
+        var maxDistanceToCatch = ballRadius * (float)(gameInfo.catchAreaPercentage / 100f); //The max distance the mouse can be away to allow a catch
 
         return distance <= maxDistanceToCatch; //If distance is in the catch threshhold
     }

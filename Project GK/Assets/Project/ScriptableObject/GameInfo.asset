@@ -13,22 +13,24 @@ MonoBehaviour:
   m_Name: GameInfo
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
   baseMaxHealth: 100
-  baseGoalHealthPenalty: -10
   baseRepelMoneyReward: 20
   baseCatchMoneyReward: 25
   baseCatchHealPercentage: 10
   basePointsMultiplierIncrease: 0.1
+  baseGoalAreaSize: 0.3
+  baseCatchAreaPercentage: 10
   levelsPerStadium: 3
   shotsPerLevel: 5
-  maxHealth: 130
-  goalHealthPenalty: -10
+  maxHealth: 100
   repelMoneyReward: 20
   catchMoneyReward: 25
   catchHealPercentage: 10
   moneyMultiplierIncrease: 0.1
+  goalAreaSize: 0.3
+  catchAreaPercentage: 0
   currentStadiumLevel: 1
   currentHealth: 100
-  money: 52
+  money: 67
   combo: 2
   moneyMultiplier: 1.1
   upgradeManager: {fileID: 11400000, guid: 13bfe694d8b31804eb6b980cf14e6d8a, type: 2}

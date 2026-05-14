@@ -10,6 +10,8 @@ public class GameInfo : ScriptableObject
     [SerializeField] int baseCatchMoneyReward;
     [SerializeField] int baseCatchHealPercentage;
     [SerializeField] float basePointsMultiplierIncrease;
+    [SerializeField] float baseGoalAreaSize;
+    [SerializeField] int baseCatchAreaPercentage;
 
     [SerializeField] public int levelsPerStadium; //The amount of levels that are per stadium
     [SerializeField] public int shotsPerLevel; //The amount of shots that are per level 
@@ -22,6 +24,8 @@ public class GameInfo : ScriptableObject
     [SerializeField] public int catchMoneyReward;
     [SerializeField] public int catchHealPercentage;
     [SerializeField] public float moneyMultiplierIncrease;
+    [SerializeField] public float goalAreaSize;
+    [SerializeField] public int catchAreaPercentage;
 
     [SerializeField] public int currentStadiumLevel; //The level this stadium is currently on
 
@@ -56,11 +60,14 @@ public class GameInfo : ScriptableObject
                 maxHealth += (int)upgradeAmount;
                 currentHealth += (int)upgradeAmount; //Heal the amount too
                 break;
-            case EUpgrades.catchHeal:
+            case EUpgrades.catchHealPercentage:
                 catchHealPercentage += (int)upgradeAmount;
                 break;
-            case EUpgrades.pointsMultiplierIncrease:
-                moneyMultiplierIncrease += upgradeAmount;
+            case EUpgrades.goalAreaSize:
+                goalAreaSize += upgradeAmount;
+                break;
+            case EUpgrades.catchAreaPercentage:
+                catchAreaPercentage += (int)upgradeAmount;
                 break;
             default:
                 Debug.LogError("No upgrade set for: " + upgrade.ToString());
@@ -79,6 +86,8 @@ public class GameInfo : ScriptableObject
         catchMoneyReward = baseCatchMoneyReward;
         catchHealPercentage = baseCatchHealPercentage;
         moneyMultiplierIncrease = basePointsMultiplierIncrease;
+        goalAreaSize = baseGoalAreaSize;
+        catchAreaPercentage = baseCatchAreaPercentage;
 
         currentHealth = baseMaxHealth;
         money = 0;
@@ -91,6 +100,7 @@ public class GameInfo : ScriptableObject
 public enum EUpgrades
 {
     maxHealth,
-    catchHeal,
-    pointsMultiplierIncrease
+    catchHealPercentage,
+    goalAreaSize,
+    catchAreaPercentage,
 }
