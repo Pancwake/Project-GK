@@ -12,6 +12,9 @@ public class UpgradeManager : ScriptableObject
     [Header("List of upgrades that can be bought")]
     public List<Upgrade> upgrades;
 
+    public Upgrade heldUpgrade;
+    public int heldSlot;
+
     public void ResetUpgrades()
     {
         upgrades = new List<Upgrade>();
@@ -72,6 +75,12 @@ public class UpgradeManager : ScriptableObject
         Debug.Log("Upgrade " + upgrade.name + " is the last in the line.");
 
         return null;
+    }
+
+    public void AssignHeldUpgrade(Upgrade upgrade = null, int slot = 0)
+    {
+        heldUpgrade = upgrade;
+        heldSlot = slot;
     }
 }
 

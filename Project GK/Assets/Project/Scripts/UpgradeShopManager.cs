@@ -30,7 +30,7 @@ public class UpgradeShopManager : MonoBehaviour
     {
         availableUpgrades = new List<Upgrade>(upgradeManager.upgrades);
 
-        foreach (IndividualUpgradeShopHandler upgradeHandler in upgradeHandlers)
+        for (int i = 0; i < upgradeHandlers.Count; i++)
         {
             if (availableUpgrades.Count <= 0)
             {
@@ -38,9 +38,20 @@ public class UpgradeShopManager : MonoBehaviour
                 return;
             }
 
+            //Apply held upgrade to the right slot
+            if (upgradeManager.heldUpgrade != null)
+            {
+                if (i == upgradeManager.heldSlot)
+                {
+                    upgradeHandlers[i].ApplyUpgrade(this, upgradeManager.heldUpgrade);
+                    RemoveHeldUpgrade(); //Remove held upgrade after assigning
+                    continue;
+                }
+            }
+
             int rng = Random.Range(0, availableUpgrades.Count);
 
-            upgradeHandler.ApplyUpgrade(this, availableUpgrades[rng]);
+            upgradeHandlers[i].ApplyUpgrade(this, availableUpgrades[rng]);
 
             availableUpgrades.RemoveAt(rng); //Remove to not have duplicates
         }
@@ -61,6 +72,23 @@ public class UpgradeShopManager : MonoBehaviour
     public void ExitShop()
     {
         LevelManager.Instance.LoadNextLevel();
+    }
+
+    public void HoldUpgrade(Upgrade upgrade, IndividualUpgradeShopHandler upgradeHandler)
+    {
+        int upgradeIndex = upgradeHandlers.IndexOf(upgradeHandler);
+        upgradeManager.AssignHeldUpgrade(upgrade, upgradeIndex);
+
+        //Only allow 1 hold per shop visit
+        foreach (var upgradeH in upgradeHandlers)
+        {
+            upgradeH.HideHoldButton();
+        }
+    }
+
+    public void RemoveHeldUpgrade()
+    {
+        upgradeManager.AssignHeldUpgrade(); //Set automatically to null
     }
 
     public int GetMoney()
