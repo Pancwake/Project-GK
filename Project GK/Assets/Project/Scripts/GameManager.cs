@@ -58,6 +58,7 @@ public class GameManager : MonoBehaviour
     public void CatchBall()
     {
         Debug.Log("Ball caught");
+        SoundManager.Instance.PlaySFXFromList(SoundManager.Instance.catchSFX);
         ChangeHealthPercentage(gameInfo.catchHealPercentage);
 
         int healAmount = (int)((float)gameInfo.maxHealth * ((float)gameInfo.catchHealPercentage / 100f)); //Get 10% of max health to heal
@@ -73,6 +74,7 @@ public class GameManager : MonoBehaviour
     public void RepelBall()
     {
         Debug.Log("Ball repelled");
+        SoundManager.Instance.PlaySFXFromList(SoundManager.Instance.repelSFX);
         AddPoints(gameInfo.repelMoneyReward);
         ballShooter.RepelBall();
 

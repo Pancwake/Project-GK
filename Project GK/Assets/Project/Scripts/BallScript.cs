@@ -41,7 +41,7 @@ public class BallScript : MonoBehaviour
 
     public void ApplySpin(Vector3 direction, float speedModifier)
     {
-        spinDirection = direction;
+        spinDirection = direction.normalized;
         spinSpeed = baseSpinSpeed * speedModifier;
     }
 
