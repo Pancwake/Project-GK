@@ -22,18 +22,18 @@ MonoBehaviour:
   speedIncreasePercentagePerDifficulty: 20
   levelsPerStadium: 3
   shotsPerLevel: 5
-  maxHealth: 100
+  maxHealth: 120
   repelMoneyReward: 20
   catchMoneyReward: 25
   catchHealPercentage: 10
   moneyMultiplierIncrease: 0.1
   goalAreaSize: 0.3
-  catchAreaPercentage: 100
+  catchAreaPercentage: 15
   difficultySpeedModifier: 1
   upgradeSpeedModifier: 1
   currentStadiumLevel: 1
-  currentHealth: 100
-  money: 128
-  combo: 2
-  moneyMultiplier: 1.1
+  currentHealth: 50
+  money: 151
+  combo: 0
+  moneyMultiplier: 1
   upgradeManager: {fileID: 11400000, guid: 13bfe694d8b31804eb6b980cf14e6d8a, type: 2}

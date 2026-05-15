@@ -3,78 +3,134 @@ using UnityEngine.Rendering.Universal;
 
 public class ShootBase : MonoBehaviour
 {
-    protected float shootSpeed;
+    float shootSpeed;
 
-    protected GameObject ball;
-    protected BallScript ballScript;
-    protected BallShooter ballShooter;
-    protected Vector3 startPos;
-    protected Vector3 targetPos;
+    GameObject ball;
+    BallScript ballScript;
+    BallShooter ballShooter;
 
-    protected float shootDuration;
-    protected float shootElapsedTime;
+    Vector3 startPos;
+    Vector3 controlA;
+    Vector3 controlB;
+    Vector3 targetPos;
 
-    protected bool shooting;
+    float t;
+    float duration;
+    bool shooting;
 
-    protected int trajectorySteps = 30;
+    int trajectorySteps = 30;
 
     Vector3 lastBallPosition;
     Vector3 currentBallPosition;
 
-    public virtual void Start()
+    Rigidbody ballRB;
+
+    float curveStrength;
+    float arcHeight;
+    Vector2 curveDirection;
+
+    public void Start()
     {
         ballShooter = GetComponent<BallShooter>();
     }
 
-    public virtual void Update()
+    public void Update()
     {
-        if (shooting)
+        if (!shooting) 
+            return;
+
+        ball.transform.position = Bezier(t, startPos, controlA, controlB, targetPos);
+        ball.GetComponent<BallScript>().ApplyPosition();
+
+        t += Time.deltaTime / duration;
+
+        //At end of shoot
+        if (t >= 1f)
         {
-            CalculateTrajectory();
-            DoShoot();
+            t = 1f;
+            shooting = false;
+
+            ballRB.isKinematic = false;
+            ball.GetComponent<BallScript>().ContinueVelocity();
         }
+
+        DebugBezierCurve();
     }
 
-    public virtual void StartShoot(GameObject ball, Vector3 targetPos, float shotSpeed)
+    public void StartShoot(GameObject ball, Vector3 targetPos, float shotSpeed, float curveStrength, float arcHeight, Vector2 curveDirection)
     {
-        this.shootSpeed = shotSpeed;
         this.ball = ball;
-        ballScript = ball.GetComponent<BallScript>();
         this.targetPos = targetPos;
+        this.shootSpeed = shotSpeed;
+        this.curveStrength = curveStrength;
+        this.arcHeight = arcHeight;
+        this.curveDirection = curveDirection;
 
-        var spinModifier = shotSpeed / 10;
-        ballScript.ApplySpin(ballShooter.spinDirection, spinModifier);
-
-        lastBallPosition = Vector3.zero;
+        ballRB = ball.GetComponent<Rigidbody>();
+        ballRB.linearVelocity = Vector3.zero;
+        ballRB.isKinematic = true;
 
         startPos = ball.transform.position;
+        this.targetPos = targetPos;
 
-        shootDuration = Vector3.Distance(startPos, targetPos) / shootSpeed;
+        float distance = Vector3.Distance(startPos, this.targetPos);
+        duration = distance / shotSpeed;
 
-        shootElapsedTime = 0f;
+        t = 0f;
         shooting = true;
+
+        // Direction
+        Vector3 dir = (this.targetPos - startPos).normalized;
+
+        // Side direction for curve
+        Vector3 right = Vector3.Cross(Vector3.up, dir).normalized;
+
+        Vector3 curveOffset = right * curveDirection.x + Vector3.up * curveDirection.y;
+
+        // Control points define curve shape
+        controlA = startPos + dir * (distance * 0.25f) + Vector3.up * arcHeight;
+
+        controlB = startPos + dir * (distance * 0.75f) + curveOffset * curveStrength + Vector3.up * arcHeight;
+
+        ballScript = ball.GetComponent<BallScript>();
+        ballScript.ApplySpin(ballShooter.spinDirection, shotSpeed / 10f);
     }
 
-    public virtual void CalculateTrajectory()
+    Vector3 Bezier(float t, Vector3 a, Vector3 b, Vector3 c, Vector3 d)
     {
+        float u = 1 - t;
 
+        return
+            u * u * u * a +
+            3 * u * u * t * b +
+            3 * u * t * t * c +
+            t * t * t * d;
     }
 
-    public virtual void DoShoot()
+    void DebugBezierCurve()
     {
-        //Caluclate velocity from position difference
-        currentBallPosition = ball.transform.position;
+        int steps = 30;
 
-        if (lastBallPosition != Vector3.zero)
+        Vector3 prev = startPos;
+
+        for (int i = 1; i <= steps; i++)
         {
-            var velocity = (currentBallPosition - lastBallPosition) / Time.deltaTime;
-            ballScript.currentVelocity = velocity;
+            float t = i / (float)steps;
+
+            Vector3 point = Bezier(t, startPos, controlA, controlB, targetPos);
+
+            Debug.DrawLine(prev, point, Color.green);
+
+            prev = point;
         }
 
-        lastBallPosition = ball.transform.position;
+        // Optional: visualize key points
+        Debug.DrawLine(startPos, controlA, Color.yellow);
+        Debug.DrawLine(controlA, controlB, Color.yellow);
+        Debug.DrawLine(controlB, targetPos, Color.yellow);
     }
 
-    public virtual void ResetShoot()
+    public void ResetShoot()
     {
         shooting = false;
     }

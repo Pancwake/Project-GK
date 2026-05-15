@@ -17,8 +17,24 @@ public class BallShooter : MonoBehaviour
 
     [SerializeField] GameInfo gameInfo;
 
+    [Header("Shoot Parameters")]
+
+    [Header("Speed")]
     [SerializeField] float baseShootSpeed = 10f;
 
+    [Header("Curve Strength")]
+    [SerializeField] float minCurveStrength = 2f;
+    [SerializeField] float maxCurveStrength = 2f;
+
+    [Header("Arc Height")]
+    [SerializeField] float minArcHeight = 2f;
+    [SerializeField] float maxArcHeight = 2f;
+
+    [Header("Curve Direction")]
+    [SerializeField] Vector2 minCurveDirection = Vector2.up;
+    [SerializeField] Vector2 maxCurveDirection = Vector2.up;
+
+    [Header("Visual Spin")]
     [SerializeField] public Vector3 spinDirection = Vector3.right;
 
     float shootSpeed;
@@ -55,18 +71,31 @@ public class BallShooter : MonoBehaviour
         float rngX = Random.Range(goalXMin, goalXMax);
         float rngY = Random.Range(goalYMin, goalYMax);
 
-        var target = new Vector3(rngX, rngY, goalMouth.transform.position.z);
+        var target = new Vector3(rngX, rngY, goal.transform.position.z);
 
         //Instantiate(ballPrefab, shootPosition, Quaternion.identity);
         spawnedBall = Instantiate(ballPrefab, ballSpawnPos.position, Quaternion.identity);
 
-        shootScript.StartShoot(spawnedBall, target, shootSpeed);
+        float curveStrength = Random.Range(minCurveStrength, maxCurveStrength);
+        float arcHeight = Random.Range(minArcHeight, maxArcHeight);
+        Vector2 curveDirection = RandomBetween(minCurveDirection, maxCurveDirection);
+
+        shootScript.StartShoot(spawnedBall, target, shootSpeed, curveStrength, arcHeight, curveDirection);
 
         shooting = true;
     }
 
+    Vector2 RandomBetween(Vector2 a, Vector2 b)
+    {
+        return new Vector2(
+            Random.Range(Mathf.Min(a.x, b.x), Mathf.Max(a.x, b.x)),
+            Random.Range(Mathf.Min(a.y, b.y), Mathf.Max(a.y, b.y))
+        );
+    }
+
     public void CatchBall()
     {
+        spawnedBall.GetComponent<BallScript>().Catch();
         ResetShoot();
     }
 

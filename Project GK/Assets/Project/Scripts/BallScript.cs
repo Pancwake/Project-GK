@@ -5,7 +5,9 @@ public class BallScript : MonoBehaviour
 {
     [SerializeField] float despawnTime = 1f;
 
-    public Vector3 currentVelocity;
+    Vector3 lastPosition;
+    Vector3 currentPosition;
+    Vector3 currentVelocity;
 
     [SerializeField] bool ballCatchable;
 
@@ -65,12 +67,29 @@ public class BallScript : MonoBehaviour
         return ballCatchable;
     }
 
+    //Calculate velocity depending on positions
+    public void ApplyPosition()
+    {
+        lastPosition = currentPosition;
+
+        currentPosition = transform.position;
+
+        currentVelocity = (currentPosition - lastPosition) / Time.deltaTime;
+    }
+
     public void ContinueVelocity()
     {
         StartDespawn();
         col.isTrigger = false;
         rb.isKinematic = false;
         rb.linearVelocity = currentVelocity;
+    }
+
+    public void Catch()
+    {
+        rb.isKinematic = true;
+        rb.linearVelocity = Vector3.zero;
+
     }
 
     public void RepellBall(Vector3 velocity)

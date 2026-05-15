@@ -3334,6 +3334,34 @@ PrefabInstance:
       propertyPath: goalMouth
       value: 
       objectReference: {fileID: 860946634}
+    - target: {fileID: 2276123073906544165, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
+      propertyPath: minArcHeight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2276123073906544165, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
+      propertyPath: baseShootSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2276123073906544165, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
+      propertyPath: minCurveStrength
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2276123073906544165, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
+      propertyPath: maxCurveDirection.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2276123073906544165, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
+      propertyPath: maxCurveDirection.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2276123073906544165, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
+      propertyPath: minCurveDirection.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2276123073906544165, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
+      propertyPath: minCurveDirection.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3197598896961299962, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -3378,11 +3406,32 @@ PrefabInstance:
       propertyPath: m_Name
       value: StraightShootStriker
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8697139053704264698, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4237556815911955914, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3624606247940622130}
   m_SourcePrefab: {fileID: 100100000, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
+--- !u!1 &3624606247940622129 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4237556815911955914, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
+  m_PrefabInstance: {fileID: 3624606247940622128}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3624606247940622130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3624606247940622129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80550ee7ee59b4044b7bceb9907046f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShootBase
 --- !u!1001 &7055052721594843226
 PrefabInstance:
   m_ObjectHideFlags: 0
