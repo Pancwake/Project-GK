@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -10,6 +11,10 @@ public class GameplayUIManager : MonoBehaviour
 
     [SerializeField] GameInfo gameInfo;
     GameManager gameManager;
+
+    [SerializeField] GameObject catchText;
+    [SerializeField] TextMeshProUGUI healAmountText;
+    [SerializeField] float catchTextTime = 0.5f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -38,5 +43,23 @@ public class GameplayUIManager : MonoBehaviour
 
         string shotText = (gameManager.currentShot - 1) + "/" + gameInfo.shotsPerLevel;
         shot.text = shotText;
+    }
+
+    public void ShowCatchText(int amount)
+    {
+        string text = "+" + amount.ToString() + " health!";
+
+        healAmountText.text = text;
+
+        catchText.SetActive(true);
+
+        StartCoroutine(RemoveCatchText());
+    }
+
+    IEnumerator RemoveCatchText()
+    {
+        yield return new WaitForSeconds(catchTextTime);
+
+        catchText.SetActive(false);
     }
 }

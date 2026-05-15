@@ -59,6 +59,10 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Ball caught");
         ChangeHealthPercentage(gameInfo.catchHealPercentage);
+
+        int healAmount = (int)((float)gameInfo.maxHealth * ((float)gameInfo.catchHealPercentage / 100f)); //Get 10% of max health to heal
+        gameplayUIManager.ShowCatchText(healAmount);
+
         AddPoints(gameInfo.catchMoneyReward);
         ballShooter.CatchBall();
 
@@ -104,7 +108,7 @@ public class GameManager : MonoBehaviour
 
     void ChangeHealthPercentage(int percentage)
     {
-        int healAmount = (int)(gameInfo.maxHealth * (percentage / 100)); //Get 10% of max health to heal
+        int healAmount = (int)((float)gameInfo.maxHealth * ((float)gameInfo.catchHealPercentage / 100f)); //Get 10% of max health to heal
         ChangeHealth(healAmount);
     }
 
