@@ -55,6 +55,11 @@ public class GameManager : MonoBehaviour
         ballShooter.Shoot();
     }
 
+    public void FailSafe()
+    {
+        NextShot(false);
+    }
+
     public void CatchBall()
     {
         Debug.Log("Ball caught");

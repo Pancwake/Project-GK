@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
@@ -10,6 +11,8 @@ public class BallShooter : MonoBehaviour
     GameObject spawnedBall;
 
     [SerializeField] Transform ballSpawnPos;
+
+    [SerializeField] float failSafeTimer = 5f;
 
     bool shooting;
 
@@ -39,6 +42,8 @@ public class BallShooter : MonoBehaviour
 
     float shootSpeed;
 
+    Coroutine failSafeCoroutine;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -55,6 +60,11 @@ public class BallShooter : MonoBehaviour
     {
         //First apply difficulty modifier, then the upgrade modifier
         shootSpeed = (baseShootSpeed * gameInfo.difficultySpeedModifier) * gameInfo.upgradeSpeedModifier;
+
+        if(failSafeCoroutine != null)
+            StopCoroutine(failSafeCoroutine);
+
+        failSafeCoroutine = StartCoroutine(FailSafe());
 
         StartShoot();
     }
@@ -107,6 +117,15 @@ public class BallShooter : MonoBehaviour
     public void Goal()
     {
         ResetShoot();
+    }
+
+    IEnumerator FailSafe()
+    {
+        yield return new WaitForSeconds(failSafeTimer);
+
+        Destroy(spawnedBall);
+        ResetShoot();
+        GameManager.Instance.FailSafe();
     }
 
     public void ResetShoot()
