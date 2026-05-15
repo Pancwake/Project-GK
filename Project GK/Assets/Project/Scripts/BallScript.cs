@@ -20,6 +20,8 @@ public class BallScript : MonoBehaviour
     Vector3 spinDirection;
     float spinSpeed;
 
+    [SerializeField] GameObject ballMesh;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -45,7 +47,7 @@ public class BallScript : MonoBehaviour
 
     void Spin()
     {
-        transform.Rotate(spinDirection * spinSpeed * Time.deltaTime);
+        ballMesh.transform.Rotate(spinDirection * spinSpeed * Time.deltaTime);
     }
 
     public void StopInteraction()
