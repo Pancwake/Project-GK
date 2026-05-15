@@ -56,6 +56,7 @@ public class IndividualUpgradeShopHandler : MonoBehaviour
 
     public void HoldUpgrade()
     {
+        upgradeShopManager.HoldUpgrade(upgrade, this);
         ShowHeld();
     }
 

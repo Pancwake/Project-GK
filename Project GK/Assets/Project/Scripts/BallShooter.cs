@@ -19,6 +19,8 @@ public class BallShooter : MonoBehaviour
 
     [SerializeField] float baseShootSpeed = 10f;
 
+    [SerializeField] public Vector3 spinDirection = Vector3.right;
+
     float shootSpeed;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] float timeBetweenShots = 1f;
 
+    public bool levelOver;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -95,6 +97,7 @@ public class GameManager : MonoBehaviour
 
         if (gameInfo.currentHealth <= 0)
         {
+            levelOver = true;
             StartCoroutine(LoseDelay());
         }
     }
@@ -119,10 +122,13 @@ public class GameManager : MonoBehaviour
 
         if (currentShot > gameInfo.shotsPerLevel) //If all shots saved this level
         {
+            levelOver = true;
             StartCoroutine(ShopDelay());
         }
         else
         {
+            if (levelOver)
+                return;
             StartCoroutine(startShootTimer());
         }
     }

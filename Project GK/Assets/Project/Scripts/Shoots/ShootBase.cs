@@ -35,12 +35,15 @@ public class ShootBase : MonoBehaviour
         }
     }
 
-    public virtual void StartShoot(GameObject ball, Vector3 targetPos, float speed)
+    public virtual void StartShoot(GameObject ball, Vector3 targetPos, float shotSpeed)
     {
-        this.shootSpeed = speed;
+        this.shootSpeed = shotSpeed;
         this.ball = ball;
         ballScript = ball.GetComponent<BallScript>();
         this.targetPos = targetPos;
+
+        var spinModifier = shotSpeed / 10;
+        ballScript.ApplySpin(ballShooter.spinDirection, spinModifier);
 
         lastBallPosition = Vector3.zero;
 

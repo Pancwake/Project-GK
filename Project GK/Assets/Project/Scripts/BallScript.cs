@@ -16,6 +16,10 @@ public class BallScript : MonoBehaviour
 
     public bool ballInteractable;
 
+    [SerializeField] float baseSpinSpeed = 1000f;
+    Vector3 spinDirection;
+    float spinSpeed;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -28,7 +32,20 @@ public class BallScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //Only spin if still flying
+        if(ballInteractable)
+            Spin();
+    }
+
+    public void ApplySpin(Vector3 direction, float speedModifier)
+    {
+        spinDirection = direction;
+        spinSpeed = baseSpinSpeed * speedModifier;
+    }
+
+    void Spin()
+    {
+        transform.Rotate(spinDirection * spinSpeed * Time.deltaTime);
     }
 
     public void StopInteraction()

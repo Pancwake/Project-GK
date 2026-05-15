@@ -97,10 +97,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1b4f2a1265caad40940e7355d814af9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BallScript
-  enteredGoal: 0
   despawnTime: 1
   currentVelocity: {x: 0, y: 0, z: 0}
   ballCatchable: 0
+  ballInteractable: 0
+  spinSpeed: 2000
 --- !u!114 &2366440889612827303
 MonoBehaviour:
   m_ObjectHideFlags: 0
