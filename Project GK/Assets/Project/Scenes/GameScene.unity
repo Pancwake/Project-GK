@@ -1669,7 +1669,7 @@ GameObject:
   - component: {fileID: 1223931937}
   - component: {fileID: 1223931938}
   m_Layer: 0
-  m_Name: BallShooter
+  m_Name: Striker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1708,6 +1708,8 @@ MonoBehaviour:
   goalMouth: {fileID: 860946634}
   ballPrefab: {fileID: 5830056157333830587, guid: b319bf14ea316ed41b8426a96538a8c1, type: 3}
   ballSpawnPos: {fileID: 912598406}
+  gameInfo: {fileID: 11400000, guid: f0576d067313aa74d8267a9f5e449dd1, type: 2}
+  baseShootSpeed: 10
 --- !u!114 &1223931938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1720,7 +1722,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47d6b302a49910844ac74ac3ba8c6a8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StraightShoot
-  shootSpeed: 10
 --- !u!1 &1284642925
 GameObject:
   m_ObjectHideFlags: 0

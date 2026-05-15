@@ -15,104 +15,32 @@ MonoBehaviour:
   baseUpgrades:
   - upgradeType: 0
     upgrades:
-    - type: 0
-      image: {fileID: 0}
-      name: MaxHealth I
-      description: 'Increase max Health by 20 '
-      price: 60
-      amount: 20
-    - type: 0
-      image: {fileID: 0}
-      name: MaxHealth II
-      description: Increase max Health by 30
-      price: 80
-      amount: 30
-    - type: 0
-      image: {fileID: 0}
-      name: MaxHealth III
-      description: Increase max Health by 50
-      price: 120
-      amount: 50
+    - {fileID: 11400000, guid: e44a8ef1cf60c794796db554a9fca638, type: 2}
+    - {fileID: 11400000, guid: 28be32576658eac4f9aa4043cada49d3, type: 2}
+    - {fileID: 11400000, guid: 24903c66695ab2a45970a29b15d29de0, type: 2}
   - upgradeType: 1
     upgrades:
-    - type: 1
-      image: {fileID: 0}
-      name: CatchHeal I
-      description: Increase the percentage of health healed when catching the ball
-        by 5%
-      price: 80
-      amount: 5
-    - type: 1
-      image: {fileID: 0}
-      name: CatchHeal II
-      description: Increase the percentage of health healed when catching the ball
-        by 10%
-      price: 120
-      amount: 10
-    - type: 1
-      image: {fileID: 0}
-      name: CatchHeal III
-      description: Increase the percentage of health healed when catching the ball
-        by 15%
-      price: 150
-      amount: 15
+    - {fileID: 11400000, guid: d9d928f0bb66b75479f52966289330e5, type: 2}
+    - {fileID: 11400000, guid: aa7114a7c677df547b17c1259eb625a5, type: 2}
+    - {fileID: 11400000, guid: 3bbca1ec491c8fc46966bd7b7774ff8a, type: 2}
   - upgradeType: 2
     upgrades:
-    - type: 2
-      image: {fileID: 0}
-      name: GoalArea I
-      description: 'Slightly increase the area in which the shoot can be blocked '
-      price: 120
-      amount: 0.1
-    - type: 2
-      image: {fileID: 0}
-      name: GoalArea II
-      description: 'Further increase the area in which the shoot can be blocked '
-      price: 150
-      amount: 0.2
-    - type: 2
-      image: {fileID: 0}
-      name: GoalArea II
-      description: 'Vastly increase the area in which the shoot can be blocked '
-      price: 180
-      amount: 0.3
+    - {fileID: 11400000, guid: fe977c2fb80d9ae45839d4404347a36e, type: 2}
+    - {fileID: 11400000, guid: 0260d14e1a7220d48a33a5bf7b76a88a, type: 2}
+    - {fileID: 11400000, guid: 95c919e41f43cfb4cb13879cb4cb2052, type: 2}
   - upgradeType: 3
     upgrades:
-    - type: 3
-      image: {fileID: 0}
-      name: CatchArea I
-      description: Slightly decrease the accuracy needed to catch the ball
-      price: 100
-      amount: 5
-    - type: 3
-      image: {fileID: 0}
-      name: CatchArea II
-      description: Further decrease the accuracy needed to catch the ball
-      price: 150
-      amount: 10
-    - type: 3
-      image: {fileID: 0}
-      name: CatchArea III
-      description: Vastly decrease the accuracy needed to catch the ball
-      price: 180
-      amount: 15
+    - {fileID: 11400000, guid: 685f4b8221b69da4f8529d3acfdad66b, type: 2}
+    - {fileID: 11400000, guid: cf7172f601af4fa4aa52c1de1fb50a9d, type: 2}
+    - {fileID: 11400000, guid: ddc025c0d752a55428a1f0e6fd8955e9, type: 2}
+  - upgradeType: 4
+    upgrades:
+    - {fileID: 11400000, guid: c44446280c2668145856a3e49b08ed93, type: 2}
+    - {fileID: 11400000, guid: 947926521e3c8d14cb5e77b7f23c4558, type: 2}
+    - {fileID: 11400000, guid: 129eee872d6ec20438d763d3f8498fe7, type: 2}
   upgrades:
-  - type: 0
-    image: {fileID: 0}
-    name: 'Max health 1 '
-    description: 'Increase max Health by 20 '
-    price: 60
-    amount: 20
-  - type: 2
-    image: {fileID: 0}
-    name: Catch heal 1
-    description: "Increase the amount of healing you get when catching the ball by
-      10\t"
-    price: 100
-    amount: 10
-  - type: 3
-    image: {fileID: 0}
-    name: wewe
-    description: ewewewewew
-    price: 100
-    amount: 10
+  - {fileID: 11400000, guid: e44a8ef1cf60c794796db554a9fca638, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

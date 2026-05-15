@@ -19,9 +19,9 @@ public class RisingShoot : ShootBase
     }
 
 
-    public override void StartShoot(GameObject ball, Vector3 targetPos)
+    public override void StartShoot(GameObject ball, Vector3 targetPos, float speed)
     {
-        base.StartShoot(ball, targetPos);
+        base.StartShoot(ball, targetPos, speed);
     }
 
     public override void CalculateTrajectory()

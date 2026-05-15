@@ -68,7 +68,8 @@ public class LevelManager : MonoBehaviour
 
         if (gameInfo.currentStadiumLevel > gameInfo.levelsPerStadium) //If above max difficulty
         {
-            gameInfo.currentStadiumLevel = 1; //Reset difficulty
+            //Reset difficulty
+            gameInfo.currentStadiumLevel = 1; 
             currentLevelIndex += 1;
             SceneManager.LoadScene(currentLevelIndex);
         }

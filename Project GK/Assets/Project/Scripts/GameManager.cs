@@ -33,6 +33,8 @@ public class GameManager : MonoBehaviour
 
         ResetStats();
 
+        gameInfo.CalculateDifficulty();
+
         NextShot(false);
 
         gameplayUIManager.UpdateUI();
@@ -129,14 +131,14 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(timeBetweenShots);
 
-        LevelManager.Instance.LoadLoseScene();
+        LevelManager.Instance.LoadShop();
     }
 
     IEnumerator LoseDelay()
     {
         yield return new WaitForSeconds(timeBetweenShots);
 
-        LevelManager.Instance.LoadShop();
+        LevelManager.Instance.LoadLoseScene();
     }
 
     void ResetStats()

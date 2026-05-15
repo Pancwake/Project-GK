@@ -18,11 +18,8 @@ public class UpgradeManager : ScriptableObject
 
         foreach (Upgrades us in baseUpgrades)
         {
-            //Apply all types automatically
-            foreach (Upgrade u in us.upgrades)
-            {
-                u.type = us.upgradeType;
-            }
+            if (us == null)
+                Debug.LogError("Upgrade not set");
 
             Upgrade upgrade = us.upgrades[0]; //Add the first upgrade
 
@@ -83,15 +80,4 @@ public class Upgrades
 {
     public EUpgrades upgradeType;
     public List<Upgrade> upgrades;
-}
-
-[Serializable]
-public class Upgrade
-{
-    [HideInInspector] public EUpgrades type; //Hide because it gets assigned automatically
-    public Sprite image;
-    public string name;
-    [TextArea(2, 3)] public string description;
-    public int price;
-    public float amount;
 }

@@ -3,10 +3,11 @@ using UnityEngine.Rendering.Universal;
 
 public class ShootBase : MonoBehaviour
 {
-    [SerializeField] protected float shootSpeed;
+    protected float shootSpeed;
 
     protected GameObject ball;
     protected BallScript ballScript;
+    protected BallShooter ballShooter;
     protected Vector3 startPos;
     protected Vector3 targetPos;
 
@@ -22,7 +23,7 @@ public class ShootBase : MonoBehaviour
 
     public virtual void Start()
     {
-        
+        ballShooter = GetComponent<BallShooter>();
     }
 
     public virtual void Update()
@@ -34,8 +35,9 @@ public class ShootBase : MonoBehaviour
         }
     }
 
-    public virtual void StartShoot(GameObject ball, Vector3 targetPos)
+    public virtual void StartShoot(GameObject ball, Vector3 targetPos, float speed)
     {
+        this.shootSpeed = speed;
         this.ball = ball;
         ballScript = ball.GetComponent<BallScript>();
         this.targetPos = targetPos;
@@ -57,6 +59,7 @@ public class ShootBase : MonoBehaviour
 
     public virtual void DoShoot()
     {
+        //Caluclate velocity from position difference
         currentBallPosition = ball.transform.position;
 
         if (lastBallPosition != Vector3.zero)

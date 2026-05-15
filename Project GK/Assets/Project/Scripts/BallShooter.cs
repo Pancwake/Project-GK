@@ -15,6 +15,12 @@ public class BallShooter : MonoBehaviour
 
     ShootBase shootScript;
 
+    [SerializeField] GameInfo gameInfo;
+
+    [SerializeField] float baseShootSpeed = 10f;
+
+    float shootSpeed;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -29,6 +35,9 @@ public class BallShooter : MonoBehaviour
 
     public void Shoot()
     {
+        //First apply difficulty modifier, then the upgrade modifier
+        shootSpeed = (baseShootSpeed * gameInfo.difficultySpeedModifier) * gameInfo.upgradeSpeedModifier;
+
         StartShoot();
     }
 
@@ -49,7 +58,7 @@ public class BallShooter : MonoBehaviour
         //Instantiate(ballPrefab, shootPosition, Quaternion.identity);
         spawnedBall = Instantiate(ballPrefab, ballSpawnPos.position, Quaternion.identity);
 
-        shootScript.StartShoot(spawnedBall, target);
+        shootScript.StartShoot(spawnedBall, target, shootSpeed);
 
         shooting = true;
     }

@@ -12,6 +12,7 @@ public class GameInfo : ScriptableObject
     [SerializeField] float basePointsMultiplierIncrease;
     [SerializeField] float baseGoalAreaSize;
     [SerializeField] int baseCatchAreaPercentage;
+    [SerializeField] float speedIncreasePercentagePerDifficulty;
 
     [SerializeField] public int levelsPerStadium; //The amount of levels that are per stadium
     [SerializeField] public int shotsPerLevel; //The amount of shots that are per level 
@@ -26,6 +27,8 @@ public class GameInfo : ScriptableObject
     [SerializeField] public float moneyMultiplierIncrease;
     [SerializeField] public float goalAreaSize;
     [SerializeField] public int catchAreaPercentage;
+    [SerializeField] public float difficultySpeedModifier;
+    [SerializeField] public float upgradeSpeedModifier;
 
     [SerializeField] public int currentStadiumLevel; //The level this stadium is currently on
 
@@ -57,17 +60,22 @@ public class GameInfo : ScriptableObject
         switch (upgradeType)
         {
             case EUpgrades.maxHealth:
-                maxHealth += (int)upgradeAmount;
+                maxHealth += (int)upgradeAmount; //Increase max health by that amount
                 currentHealth += (int)upgradeAmount; //Heal the amount too
                 break;
             case EUpgrades.catchHealPercentage:
                 catchHealPercentage += (int)upgradeAmount;
                 break;
-            case EUpgrades.goalAreaSize:
-                goalAreaSize += upgradeAmount;
+            case EUpgrades.goalAreaPercentage:
+                float sizeIncrease = baseGoalAreaSize * (float)upgradeAmount; //Get percentage increase
+                goalAreaSize += sizeIncrease; //Increase size by that amount
                 break;
             case EUpgrades.catchAreaPercentage:
-                catchAreaPercentage += (int)upgradeAmount;
+                catchAreaPercentage += (int)upgradeAmount; //Increase catching area by that amount
+                break;
+            case EUpgrades.shootSpeedDecreasePercent:
+                float percentage = (float)(upgradeAmount/100);
+                upgradeSpeedModifier -= (float)percentage;
                 break;
             default:
                 Debug.LogError("No upgrade set for: " + upgrade.ToString());
@@ -75,6 +83,17 @@ public class GameInfo : ScriptableObject
         }
 
         upgradeManager.UseUpgrade(upgrade);
+    }
+
+    public void CalculateDifficulty()
+    {
+        if (currentStadiumLevel <= 1)
+        {
+            difficultySpeedModifier = 1;
+            return;
+        }
+        
+        difficultySpeedModifier = 1 + ((currentStadiumLevel - 1) * (speedIncreasePercentagePerDifficulty / 100)); //Level 2: (2 - 1) * 0.2f = 1 increase 
     }
 
     public void ResetStats()
@@ -94,6 +113,8 @@ public class GameInfo : ScriptableObject
         combo = 0;
         moneyMultiplier = 1;
         currentStadiumLevel = 1;
+        difficultySpeedModifier = 1;
+        upgradeSpeedModifier = 1;
     }
 }
 
@@ -101,6 +122,7 @@ public enum EUpgrades
 {
     maxHealth,
     catchHealPercentage,
-    goalAreaSize,
+    goalAreaPercentage,
     catchAreaPercentage,
+    shootSpeedDecreasePercent,
 }

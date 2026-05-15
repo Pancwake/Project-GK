@@ -25,6 +25,9 @@ public class GameplayUIManager : MonoBehaviour
 
     public void UpdateUI()
     {
+        if (gameManager == null)
+            gameManager = FindFirstObjectByType<GameManager>();
+
         string healthText = gameInfo.currentHealth + "/" + gameInfo.maxHealth;
         health.text = healthText;
 
@@ -33,7 +36,7 @@ public class GameplayUIManager : MonoBehaviour
         string levelText = gameInfo.currentStadiumLevel + "/" + gameInfo.levelsPerStadium;
         level.text = levelText;
 
-        string shotText = gameManager.currentShot + "/" + gameInfo.shotsPerLevel;
+        string shotText = (gameManager.currentShot - 1) + "/" + gameInfo.shotsPerLevel;
         shot.text = shotText;
     }
 }
