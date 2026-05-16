@@ -118,7 +118,7 @@ public class ShootBase : MonoBehaviour
             prev = point;
         }
 
-        // Optional: visualize key points
+        //Show key points
         Debug.DrawLine(startPos, controlA, Color.yellow);
         Debug.DrawLine(controlA, controlB, Color.yellow);
         Debug.DrawLine(controlB, targetPos, Color.yellow);

@@ -11,7 +11,7 @@ public class BallShooter : MonoBehaviour
     [SerializeField] GameObject ballPrefab;
     GameObject spawnedBall;
 
-    [SerializeField] Transform ballSpawnPos;
+    [SerializeField] public Transform ballSpawnPos;
 
     [SerializeField] float failSafeTimer = 5f;
 
@@ -22,22 +22,23 @@ public class BallShooter : MonoBehaviour
     [Header("Shoot Parameters")]
 
     [Header("Speed")]
-    [SerializeField] float baseShootSpeed = 10f;
+    [SerializeField] public float baseShootSpeed = 10f;
 
     [Header("Curve Strength")]
-    [SerializeField] float minCurveStrength = 2f;
-    [SerializeField] float maxCurveStrength = 2f;
+    [SerializeField] public float minCurveStrength = 2f;
+    [SerializeField] public float maxCurveStrength = 2f;
 
     [Header("Arc Height")]
-    [SerializeField] float minArcHeight = 2f;
-    [SerializeField] float maxArcHeight = 2f;
+    [SerializeField] public float minArcHeight = 2f;
+    [SerializeField] public float maxArcHeight = 2f;
 
     [Header("Curve Direction")]
-    [SerializeField] Vector2 minCurveDirection = Vector2.up;
-    [SerializeField] Vector2 maxCurveDirection = Vector2.up;
+    [SerializeField] public Vector2 minCurveDirection = Vector2.up;
+    [SerializeField] public Vector2 maxCurveDirection = Vector2.up;
+
+    Vector3 spinDirection = Vector3.right;
 
     [Header("Visual Spin")]
-    Vector3 spinDirection = Vector3.right;
     [SerializeField] float spinStrengthMultiplier = 0.25f;
     [SerializeField] float minSpinStrength = 1f;
     [SerializeField] float maxSpinStrength = 10;
@@ -71,7 +72,7 @@ public class BallShooter : MonoBehaviour
         StartShoot();
     }
 
-    void StartShoot()
+    public Vector3 GetTarget()
     {
         Vector2 goalSize = goalMouth.GetComponent<Collider>().bounds.size;
 
@@ -84,6 +85,13 @@ public class BallShooter : MonoBehaviour
         float rngY = Random.Range(goalYMin, goalYMax);
 
         var target = new Vector3(rngX, rngY, goal.transform.position.z);
+
+        return target;
+    }
+
+    void StartShoot()
+    {
+        Vector3 target = GetTarget();
 
         //Instantiate(ballPrefab, shootPosition, Quaternion.identity);
         spawnedBall = Instantiate(ballPrefab, ballSpawnPos.position, Quaternion.identity);

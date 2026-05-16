@@ -3450,11 +3450,11 @@ PrefabInstance:
       objectReference: {fileID: 860946634}
     - target: {fileID: 2276123073906544165, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
       propertyPath: maxArcHeight
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2276123073906544165, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
       propertyPath: minArcHeight
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2276123073906544165, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
       propertyPath: baseShootSpeed
@@ -3462,7 +3462,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2276123073906544165, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
       propertyPath: maxCurveStrength
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2276123073906544165, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
       propertyPath: minCurveStrength
@@ -3470,19 +3470,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2276123073906544165, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
       propertyPath: maxCurveDirection.x
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2276123073906544165, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
       propertyPath: maxCurveDirection.y
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 2276123073906544165, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
       propertyPath: minCurveDirection.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2276123073906544165, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
       propertyPath: minCurveDirection.y
-      value: 0
+      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 2276123073906544165, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
       propertyPath: spinStrengthMultiplier
@@ -3536,8 +3536,31 @@ PrefabInstance:
     - {fileID: 8697139053704264698, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4237556815911955914, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
+      insertIndex: 2
+      addedObject: {fileID: 3624606247940622134}
   m_SourcePrefab: {fileID: 100100000, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
+--- !u!1 &3624606247940622129 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4237556815911955914, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
+  m_PrefabInstance: {fileID: 3624606247940622128}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3624606247940622134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3624606247940622129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4450fbc43f890f94f9c56a157416be82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShootTrajectoryDrawer
+  samples: 50
+  stepsPerTrajectory: 20
+  debugDuration: 5
 --- !u!1001 &7055052721594843226
 PrefabInstance:
   m_ObjectHideFlags: 0
