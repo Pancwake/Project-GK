@@ -20,7 +20,7 @@ MonoBehaviour:
   baseGoalAreaSize: 0.5
   baseCatchAreaPercentage: 10
   speedIncreasePercentagePerDifficulty: 20
-  baseRepelBoxCastRadius: 0.05
+  baseForgivingRepelRadius: 0
   levelsPerStadium: 3
   shotsPerLevel: 5
   maxHealth: 1174
@@ -29,13 +29,13 @@ MonoBehaviour:
   catchHealPercentage: 10
   moneyMultiplierIncrease: 0.1
   goalAreaSize: 1
-  catchAreaPercentage: 100
+  catchAreaPercentage: 10
   difficultySpeedModifier: 1
   upgradeSpeedModifier: 1
-  repelBoxCastRadius: 0.05
+  forgivingRepelRadius: 0
   currentStadiumLevel: 1
-  currentHealth: 971
-  money: 718
-  combo: 1
-  moneyMultiplier: 1
+  currentHealth: 1174
+  money: 807
+  combo: 4
+  moneyMultiplier: 1.3
   upgradeManager: {fileID: 11400000, guid: 13bfe694d8b31804eb6b980cf14e6d8a, type: 2}

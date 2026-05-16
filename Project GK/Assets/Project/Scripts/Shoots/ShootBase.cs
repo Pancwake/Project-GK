@@ -90,9 +90,6 @@ public class ShootBase : MonoBehaviour
         controlA = startPos + dir * (distance * 0.25f) + Vector3.up * arcHeight;
 
         controlB = startPos + dir * (distance * 0.75f) + curveOffset * curveStrength + Vector3.up * arcHeight;
-
-        ballScript = ball.GetComponent<BallScript>();
-        ballScript.ApplySpin(ballShooter.spinDirection, shotSpeed / 10f);
     }
 
     Vector3 Bezier(float t, Vector3 a, Vector3 b, Vector3 c, Vector3 d)
@@ -108,13 +105,11 @@ public class ShootBase : MonoBehaviour
 
     void DebugBezierCurve()
     {
-        int steps = 30;
-
         Vector3 prev = startPos;
 
-        for (int i = 1; i <= steps; i++)
+        for (int i = 1; i <= trajectorySteps; i++)
         {
-            float t = i / (float)steps;
+            float t = i / (float)trajectorySteps;
 
             Vector3 point = Bezier(t, startPos, controlA, controlB, targetPos);
 

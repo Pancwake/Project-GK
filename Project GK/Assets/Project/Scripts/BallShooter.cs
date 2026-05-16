@@ -2,6 +2,7 @@ using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
+using static UnityEngine.GraphicsBuffer;
 
 public class BallShooter : MonoBehaviour
 {
@@ -13,8 +14,6 @@ public class BallShooter : MonoBehaviour
     [SerializeField] Transform ballSpawnPos;
 
     [SerializeField] float failSafeTimer = 5f;
-
-    bool shooting;
 
     ShootBase shootScript;
 
@@ -38,7 +37,10 @@ public class BallShooter : MonoBehaviour
     [SerializeField] Vector2 maxCurveDirection = Vector2.up;
 
     [Header("Visual Spin")]
-    [SerializeField] public Vector3 spinDirection = Vector3.right;
+    Vector3 spinDirection = Vector3.right;
+    [SerializeField] float spinStrengthMultiplier = 0.25f;
+    [SerializeField] float minSpinStrength = 1f;
+    [SerializeField] float maxSpinStrength = 10;
 
     float shootSpeed;
 
@@ -90,9 +92,60 @@ public class BallShooter : MonoBehaviour
         float arcHeight = Random.Range(minArcHeight, maxArcHeight);
         Vector2 curveDirection = RandomBetween(minCurveDirection, maxCurveDirection);
 
-        shootScript.StartShoot(spawnedBall, target, shootSpeed, curveStrength, arcHeight, curveDirection);
+        ApplySpin(curveDirection, arcHeight, shootSpeed, ballSpawnPos.position, target);
 
-        shooting = true;
+        shootScript.StartShoot(spawnedBall, target, shootSpeed, curveStrength, arcHeight, curveDirection);
+    }
+
+    void ApplySpin(Vector2 curveDirection, float arcHeight, float shootSpeed, Vector3 startPos, Vector3 targetPos)
+    {
+        //Apply spin to the ball
+        Vector3 spin = CalculateSpin(curveDirection, arcHeight, shootSpeed, ballSpawnPos.position, targetPos);
+
+        Vector3 spinDir = spin.normalized;
+        float spinStrength = spin.magnitude;
+
+        //Apply forward spin if shot is straight
+        if (spinDir.sqrMagnitude < 0.01f)
+        {
+            Vector3 forward = (targetPos - startPos).normalized;
+            Vector3 fallbackSpinAxis = Vector3.Cross(Vector3.up, forward);
+            spinDir = fallbackSpinAxis;
+        }
+
+        Debug.Log("Spin strenght before clamp: " + spinStrength);
+
+        spinStrength = Mathf.Clamp(spinStrength, minSpinStrength, maxSpinStrength);
+
+        Debug.Log("Spin strenght after clamp: " + spinStrength);
+
+        float finalSpinStrength = spinStrength * spinStrengthMultiplier * (shootSpeed / 10f);
+
+        Debug.Log("Apply spin");
+        var ballScript = spawnedBall.GetComponent<BallScript>();
+        ballScript.ApplySpin(spinDir, finalSpinStrength);
+    }
+
+    Vector3 CalculateSpin(Vector2 curveDirection, float arcHeight, float shootSpeed, Vector3 startPos, Vector3 targetPos)
+    {
+        Vector3 forward = (targetPos - startPos).normalized;
+        Vector3 right = Vector3.Cross(Vector3.up, forward).normalized;
+
+        // side spin (curl)
+        float sideSpin = curveDirection.x;
+
+        // vertical spin (dip / lift)
+        float verticalSpin = curveDirection.y;
+
+        // arc adds “backspin feel”
+        float arcSpin = arcHeight;
+
+        Vector3 spin =
+            (right * sideSpin) +      // curl left/right
+            (Vector3.up * verticalSpin) + // lift/drop spin
+            (-forward * arcSpin);     // backspin / topspin influence
+
+        return spin * shootSpeed;
     }
 
     Vector2 RandomBetween(Vector2 a, Vector2 b)
@@ -131,6 +184,5 @@ public class BallShooter : MonoBehaviour
     public void ResetShoot()
     {
         shootScript.ResetShoot();
-        shooting = false;
     }
 }
