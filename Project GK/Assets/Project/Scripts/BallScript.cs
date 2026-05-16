@@ -87,9 +87,12 @@ public class BallScript : MonoBehaviour
 
     public void Catch()
     {
-        rb.isKinematic = true;
-        rb.linearVelocity = Vector3.zero;
+        if (!rb.isKinematic)
+        {
+            rb.linearVelocity = Vector3.zero;
+        }
 
+        rb.isKinematic = true;     
     }
 
     public void RepellBall(Vector3 velocity)
@@ -114,6 +117,7 @@ public class BallScript : MonoBehaviour
 
     public void DestroyBall()
     {
+        GameManager.Instance.NextShot();
         Destroy(this.gameObject);
     }
 

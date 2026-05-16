@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
 
         gameInfo.CalculateDifficulty();
 
-        NextShot(false);
+        NextShot();
 
         gameplayUIManager.UpdateUI();
     }
@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
 
     public void FailSafe()
     {
-        NextShot(false);
+        EndShot(false);
     }
 
     public void CatchBall()
@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
         AddPoints(gameInfo.catchMoneyReward);
         ballShooter.CatchBall();
 
-        NextShot(true);
+        EndShot(true);
         gameplayUIManager.UpdateUI();
     }
 
@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour
         AddPoints(gameInfo.repelMoneyReward);
         ballShooter.RepelBall();
 
-        NextShot(true);
+        EndShot(true);
         gameplayUIManager.UpdateUI();
     }
 
@@ -96,7 +96,7 @@ public class GameManager : MonoBehaviour
         catchHandler.Goal();
         ballShooter.Goal();
 
-        NextShot(false);
+        NextShot();
         gameplayUIManager.UpdateUI();
     }
 
@@ -126,7 +126,7 @@ public class GameManager : MonoBehaviour
         gameInfo.money += (int)(points * gameInfo.moneyMultiplier);
     }
 
-    void NextShot(bool saved)
+    void EndShot(bool saved)
     {
         if (saved)
             currentShot++;
@@ -144,13 +144,12 @@ public class GameManager : MonoBehaviour
                 StartCoroutine(LoadDelay(ESceneToLoad.shop));
             }     
         }
-        else
-        {
-            if (levelOver)
-                return;
+    }
 
-            StartCoroutine(startShootTimer());
-        }
+    public void NextShot()
+    {
+        catchHandler.ResetShot();
+        StartCoroutine(startShootTimer());
     }
 
     IEnumerator LoadDelay(ESceneToLoad scene)

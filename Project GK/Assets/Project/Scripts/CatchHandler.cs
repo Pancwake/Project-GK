@@ -33,8 +33,8 @@ public class CatchHandler : MonoBehaviour
     Coroutine catchTimerCoroutine;
     Coroutine catchCooldownCoroutine;
 
-    bool ballInteractedWith;
-    bool ballHeld;
+    public bool ballInteractedWith;
+    public bool ballHeld;
 
     GameObject ball;
 
@@ -117,7 +117,7 @@ public class CatchHandler : MonoBehaviour
         if (Physics.Raycast(cam.transform.position, mousePos - cam.transform.position, out hit, 100f, ballLayer)) //If ball hit
         {
             ball = hit.collider.gameObject;
-
+            
             if (!ball.GetComponent<BallScript>().ballInteractable)
                 return;
 
@@ -269,7 +269,6 @@ public class CatchHandler : MonoBehaviour
         ballScript.RepellBall(velocity);
 
         GameManager.Instance.RepelBall();
-        ResetShot();
     }
 
     void SpawnRepelHands(Vector3 hitDirection)
@@ -296,7 +295,7 @@ public class CatchHandler : MonoBehaviour
         ResetShot();
     }
 
-    void ResetShot()
+    public void ResetShot()
     {
         ballInteractedWith = false;
     }
