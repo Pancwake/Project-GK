@@ -29,13 +29,13 @@ MonoBehaviour:
   catchHealPercentage: 10
   moneyMultiplierIncrease: 0.1
   goalAreaSize: 1
-  catchAreaPercentage: 15
+  catchAreaPercentage: 100
   difficultySpeedModifier: 1
   upgradeSpeedModifier: 1
   repelBoxCastRadius: 0.05
   currentStadiumLevel: 1
-  currentHealth: 864
-  money: 673
-  combo: 0
+  currentHealth: 971
+  money: 718
+  combo: 1
   moneyMultiplier: 1
   upgradeManager: {fileID: 11400000, guid: 13bfe694d8b31804eb6b980cf14e6d8a, type: 2}

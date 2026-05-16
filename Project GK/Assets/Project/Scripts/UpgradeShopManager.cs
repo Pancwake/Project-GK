@@ -29,6 +29,7 @@ public class UpgradeShopManager : MonoBehaviour
     void OpenShop()
     {
         availableUpgrades = new List<Upgrade>(upgradeManager.upgrades);
+        availableUpgrades.Remove(upgradeManager.heldUpgrade); //Remove the held upgrade from available upgrades to assure its placed at the correct slot
 
         for (int i = 0; i < upgradeHandlers.Count; i++)
         {

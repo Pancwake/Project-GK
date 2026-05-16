@@ -160,7 +160,7 @@ public class CatchHandler : MonoBehaviour
         {
             Vector3 direction = (mousePos - cam.transform.position).normalized;
 
-            if (Physics.BoxCast(cam.transform.position, Vector3.one * gameInfo.repelBoxCastRadius, direction, out hit, Quaternion.identity, 100f, ballLayer))
+            if (Physics.BoxCast(cam.transform.position, Vector3.one * gameInfo.forgivingRepelRadius, direction, out hit, Quaternion.identity, 100f, ballLayer))
             {
                 ball = hit.collider.gameObject;
 
@@ -182,7 +182,7 @@ public class CatchHandler : MonoBehaviour
 
         //Debug
         Vector3 castDirection = (mousePos - cam.transform.position).normalized;
-        DrawBoxCast.DrawBoxCastBox(cam.transform.position, Vector3.one * gameInfo.repelBoxCastRadius, Quaternion.identity, castDirection, 100f, Color.yellow);
+        DrawBoxCast.DrawBoxCastBox(cam.transform.position, Vector3.one * gameInfo.forgivingRepelRadius, Quaternion.identity, castDirection, 100f, Color.yellow);
         Debug.DrawRay(cam.transform.position, (mousePos - cam.transform.position) * 100f, Color.red);
     }
 

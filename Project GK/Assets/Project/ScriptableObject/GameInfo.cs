@@ -13,7 +13,7 @@ public class GameInfo : ScriptableObject
     [SerializeField] float baseGoalAreaSize;
     [SerializeField] int baseCatchAreaPercentage;
     [SerializeField] float speedIncreasePercentagePerDifficulty;
-    [SerializeField] float baseRepelBoxCastRadius;
+    [SerializeField] float baseForgivingRepelRadius;
 
     [SerializeField] public int levelsPerStadium; //The amount of levels that are per stadium
     [SerializeField] public int shotsPerLevel; //The amount of shots that are per level 
@@ -30,7 +30,7 @@ public class GameInfo : ScriptableObject
     [SerializeField] public int catchAreaPercentage;
     [SerializeField] public float difficultySpeedModifier;
     [SerializeField] public float upgradeSpeedModifier;
-    [SerializeField] public float repelBoxCastRadius;
+    [SerializeField] public float forgivingRepelRadius;
 
     [SerializeField] public int currentStadiumLevel; //The level this stadium is currently on
 
@@ -69,15 +69,19 @@ public class GameInfo : ScriptableObject
                 catchHealPercentage += (int)upgradeAmount;
                 break;
             case EUpgrades.goalAreaPercentage:
-                float sizeIncrease = baseGoalAreaSize * (float)upgradeAmount; //Get percentage increase
+                float sizeIncrease = baseGoalAreaSize * (float)(upgradeAmount / 100); //Get percentage increase
                 goalAreaSize += sizeIncrease; //Increase size by that amount
                 break;
             case EUpgrades.catchAreaPercentage:
                 catchAreaPercentage += (int)upgradeAmount; //Increase catching area by that amount
                 break;
             case EUpgrades.shootSpeedDecreasePercent:
-                float percentage = (float)(upgradeAmount/100);
-                upgradeSpeedModifier -= (float)percentage;
+                float speedPercentage = (float)(upgradeAmount/100);
+                upgradeSpeedModifier -= (float)speedPercentage;
+                break;
+            case EUpgrades.forgivingRepelRadiusIncreasePercent:
+                float repelBoxRadiusIncrease = baseForgivingRepelRadius * (float)(upgradeAmount / 100);
+                forgivingRepelRadius += (float)repelBoxRadiusIncrease;
                 break;
             default:
                 Debug.LogError("No upgrade set for: " + upgrade.ToString());
@@ -109,7 +113,7 @@ public class GameInfo : ScriptableObject
         moneyMultiplierIncrease = basePointsMultiplierIncrease;
         goalAreaSize = baseGoalAreaSize;
         catchAreaPercentage = baseCatchAreaPercentage;
-        repelBoxCastRadius = baseRepelBoxCastRadius;
+        forgivingRepelRadius = baseForgivingRepelRadius;
 
         currentHealth = baseMaxHealth;
         money = 0;
@@ -128,4 +132,5 @@ public enum EUpgrades
     goalAreaPercentage,
     catchAreaPercentage,
     shootSpeedDecreasePercent,
+    forgivingRepelRadiusIncreasePercent,
 }

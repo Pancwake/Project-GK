@@ -38,9 +38,16 @@ MonoBehaviour:
     - {fileID: 11400000, guid: c44446280c2668145856a3e49b08ed93, type: 2}
     - {fileID: 11400000, guid: 947926521e3c8d14cb5e77b7f23c4558, type: 2}
     - {fileID: 11400000, guid: 129eee872d6ec20438d763d3f8498fe7, type: 2}
+  - upgradeType: 5
+    upgrades:
+    - {fileID: 11400000, guid: 574a796ce7901224cb1412053810fa90, type: 2}
+    - {fileID: 11400000, guid: 07b17882c4018914c8c9dd5ac12731a2, type: 2}
+    - {fileID: 11400000, guid: 6cbca4c9f34e9ef48a028d804befd4ab, type: 2}
   upgrades:
   - {fileID: 11400000, guid: e44a8ef1cf60c794796db554a9fca638, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  heldUpgrade: {fileID: 0}
+  heldSlot: 0
