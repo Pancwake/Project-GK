@@ -6,21 +6,20 @@ using UnityEngine;
 public class CustomCursorHandler : MonoBehaviour
 {
     [SerializeField] Canvas cursorCanvas;
-    //[SerializeField] GameObject cursorRoot;
+    [SerializeField] GameObject cursorRoot;
     [SerializeField] GameObject cursorImage;
 
-    public RectTransform cursorRoot;
-    public RectTransform cursorMiddle;
+    [SerializeField] RectTransform cursorMiddle;
+    [SerializeField] RectTransform cursorTop;
+    [SerializeField] RectTransform cursorBottom;
+    [SerializeField] RectTransform cursorLeft;
+    [SerializeField] RectTransform cursorRight;
 
     Vector2 mousePos;
 
     [SerializeField] GameInfo gameInfo;
 
     Camera cam;
-
-    [SerializeField]
-    [UnityEngine.Range(0.1f, 1f)]
-    float timeScale;
 
     private void Start()
     {
@@ -32,9 +31,6 @@ public class CustomCursorHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Time.timeScale = timeScale;
-        CalculateCursorSize();
-
         RectTransformUtility.ScreenPointToLocalPointInRectangle(cursorCanvas.transform as RectTransform, Input.mousePosition, cursorCanvas.worldCamera, out mousePos);
 
         cursorRoot.transform.localPosition = mousePos;
@@ -76,5 +72,25 @@ public class CustomCursorHandler : MonoBehaviour
         float scaleY = (screenHalfHeight * 2f) / baseSize;
 
         cursorMiddle.localScale = new Vector3(scaleX, scaleY, 1f);
+
+        PlaceEdgeVisualizers();
+    }
+
+    void PlaceEdgeVisualizers()
+    {
+        float height = cursorMiddle.rect.height * cursorMiddle.localScale.y; 
+        float halfHeight = height * 0.5f;
+
+        Vector3 topEdge = cursorMiddle.up * halfHeight;
+        Vector3 bottomEdge = (-cursorMiddle.up) * halfHeight;
+        Vector3 leftEdge = (-cursorMiddle.right) * halfHeight;
+        Vector3 rightEdge = cursorMiddle.right * halfHeight;
+
+        Debug.Log("Height: " + halfHeight);
+
+        cursorTop.transform.localPosition = topEdge;
+        cursorBottom.transform.localPosition = bottomEdge;
+        cursorLeft.transform.localPosition = leftEdge;
+        cursorRight.transform.localPosition = rightEdge;
     }
 }
