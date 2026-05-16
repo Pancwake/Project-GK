@@ -16,5 +16,5 @@ MonoBehaviour:
   image: {fileID: 0}
   uName: Catch Heal I
   description: Increase percentage healed by catching by 3%
-  price: 80
+  price: 50
   amount: 3

@@ -20,8 +20,6 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] GameInfo gameInfo;
 
-    int currentLevelIndex;
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -39,26 +37,24 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-    public void StartGame()
-    {
-        //Load first level
-        currentLevelIndex = 1;
-        SceneManager.LoadScene(currentLevelIndex); 
-    }
-
     public void LoadShop()
     {
         SceneManager.LoadScene("UpgradeShop");
     }
 
-    public void LoadCurrentLevel()
+    public void LoadStadium()
     {
-        SceneManager.LoadScene(currentLevelIndex);
+        SceneManager.LoadScene(gameInfo.currentStadiumIndex);
     }
 
     public void LoadLoseScene()
     {
         SceneManager.LoadScene("LoseScreen");
+    }
+
+    public void LoadWinScene()
+    {
+        SceneManager.LoadScene("WinSrceen");
     }
 
     //Check if all difficulties for this level have been played
@@ -69,13 +65,13 @@ public class LevelManager : MonoBehaviour
         if (gameInfo.currentStadiumLevel > gameInfo.levelsPerStadium) //If above max difficulty
         {
             //Reset difficulty
+            gameInfo.currentStadiumIndex += 1; //Enter next stadium
             gameInfo.currentStadiumLevel = 1; 
-            currentLevelIndex += 1;
-            SceneManager.LoadScene(currentLevelIndex);
+            SceneManager.LoadScene(gameInfo.currentStadiumIndex);
         }
         else
         {
-            LoadCurrentLevel();
+            LoadStadium();
         }
     }
 }

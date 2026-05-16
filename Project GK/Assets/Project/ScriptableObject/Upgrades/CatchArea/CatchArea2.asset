@@ -16,5 +16,5 @@ MonoBehaviour:
   image: {fileID: 0}
   uName: Catch Area II
   description: Makes catching the ball even easier.
-  price: 130
+  price: 110
   amount: 8

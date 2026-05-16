@@ -1935,23 +1935,31 @@ PrefabInstance:
       objectReference: {fileID: 860946634}
     - target: {fileID: 2276123073906544165, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
       propertyPath: maxArcHeight
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2276123073906544165, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
       propertyPath: minArcHeight
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2276123073906544165, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
       propertyPath: baseShootSpeed
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2276123073906544165, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
-      propertyPath: maxCurveStrength
+      propertyPath: maxSpinStrength
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2276123073906544165, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
+      propertyPath: minSpinStrength
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2276123073906544165, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
+      propertyPath: maxCurveStrength
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2276123073906544165, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
       propertyPath: minCurveStrength
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2276123073906544165, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
       propertyPath: maxCurveDirection.x
@@ -1959,7 +1967,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2276123073906544165, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
       propertyPath: maxCurveDirection.y
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2276123073906544165, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
       propertyPath: minCurveDirection.x
@@ -1967,7 +1975,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2276123073906544165, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
       propertyPath: minCurveDirection.y
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2276123073906544165, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
       propertyPath: spinStrengthMultiplier
@@ -2015,7 +2023,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4237556815911955914, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
       propertyPath: m_Name
-      value: StraightShootStriker
+      value: SlowStraightShoot
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8697139053704264698, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
@@ -2046,6 +2054,7 @@ MonoBehaviour:
   samples: 50
   stepsPerTrajectory: 20
   debugDuration: 5
+  drawKeyPoints: 0
 --- !u!1001 &5987062151857863954
 PrefabInstance:
   m_ObjectHideFlags: 0

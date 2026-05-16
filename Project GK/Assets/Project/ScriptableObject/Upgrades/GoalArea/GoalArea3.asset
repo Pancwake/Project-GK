@@ -17,5 +17,5 @@ MonoBehaviour:
   uName: Goal Area III
   description: 'Increases your defensive reach by 50%, doubling your initial area,
     making shots increibly easy to save. '
-  price: 150
+  price: 160
   amount: 50

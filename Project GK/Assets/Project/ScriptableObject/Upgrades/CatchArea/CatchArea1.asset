@@ -16,5 +16,5 @@ MonoBehaviour:
   image: {fileID: 0}
   uName: Catch Area I
   description: Makes catching the ball marginally easier.
-  price: 100
+  price: 80
   amount: 5

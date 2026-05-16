@@ -16,5 +16,5 @@ MonoBehaviour:
   image: {fileID: 0}
   uName: Catch Area III
   description: Makes catching the ball incredibly easy.
-  price: 160
+  price: 150
   amount: 12

@@ -17,5 +17,5 @@ MonoBehaviour:
   uName: Goal Area II
   description: 'Increases your defensive reach by 30%, making shots even easier to
     save. '
-  price: 120
+  price: 140
   amount: 30

@@ -109,7 +109,7 @@ public class GameManager : MonoBehaviour
         if (gameInfo.currentHealth <= 0)
         {
             levelOver = true;
-            StartCoroutine(LoseDelay());
+            StartCoroutine(LoadDelay(ESceneToLoad.loseScreen));
         }
     }
 
@@ -134,32 +134,52 @@ public class GameManager : MonoBehaviour
         if (currentShot > gameInfo.shotsPerLevel) //If all shots saved this level
         {
             levelOver = true;
-            StartCoroutine(ShopDelay());
+
+            if (gameInfo.currentStadiumIndex >= gameInfo.stadiumAmount) //If at last stadium load win scene
+            {
+                StartCoroutine(LoadDelay(ESceneToLoad.winScreen));
+            }
+            else //Load shop after every level
+            {
+                StartCoroutine(LoadDelay(ESceneToLoad.shop));
+            }     
         }
         else
         {
             if (levelOver)
                 return;
+
             StartCoroutine(startShootTimer());
         }
     }
 
-    IEnumerator ShopDelay()
+    IEnumerator LoadDelay(ESceneToLoad scene)
     {
         yield return new WaitForSeconds(timeBetweenShots);
 
-        LevelManager.Instance.LoadShop();
-    }
-
-    IEnumerator LoseDelay()
-    {
-        yield return new WaitForSeconds(timeBetweenShots);
-
-        LevelManager.Instance.LoadLoseScene();
+        switch (scene)
+        {
+            case ESceneToLoad.shop:
+                LevelManager.Instance.LoadShop();
+                break;
+            case ESceneToLoad.winScreen:
+                LevelManager.Instance.LoadWinScene();
+                break;
+            case ESceneToLoad.loseScreen:
+                LevelManager.Instance.LoadLoseScene();
+                break;
+        }
     }
 
     void ResetStats()
     {
         currentShot = 1;
     }
+}
+
+public enum ESceneToLoad
+{
+    shop,
+    winScreen,
+    loseScreen,
 }

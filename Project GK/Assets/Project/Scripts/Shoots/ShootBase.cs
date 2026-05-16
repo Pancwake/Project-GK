@@ -87,7 +87,7 @@ public class ShootBase : MonoBehaviour
         Vector3 curveOffset = right * curveDirection.x + Vector3.up * curveDirection.y;
 
         // Control points define curve shape
-        controlA = startPos + dir * (distance * 0.25f) + Vector3.up * arcHeight;
+        controlA = startPos + dir * (distance * 0.25f) + curveOffset * curveStrength + Vector3.up * arcHeight;
 
         controlB = startPos + dir * (distance * 0.75f) + curveOffset * curveStrength + Vector3.up * arcHeight;
     }

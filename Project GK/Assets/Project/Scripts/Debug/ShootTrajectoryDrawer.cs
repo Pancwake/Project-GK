@@ -13,6 +13,7 @@ public class ShootTrajectoryDrawer : MonoBehaviour
     public int samples = 6;
     public int stepsPerTrajectory = 25;
     public float debugDuration = 5f;
+    public bool drawKeyPoints = false;
 
     [ContextMenu("Draw Trajectory Sweep")]
     public void DrawTrajectorySweep()
@@ -59,7 +60,7 @@ public class ShootTrajectoryDrawer : MonoBehaviour
         Vector3 curveOffset = right * curveDirection.x + Vector3.up * curveDirection.y;
 
         // Control points define curve shape
-        controlA = startPos + dir * (distance * 0.25f) + Vector3.up * arcHeight;
+        controlA = startPos + dir * (distance * 0.25f) + curveOffset * curveStrength + Vector3.up * arcHeight;
 
         controlB = startPos + dir * (distance * 0.75f) + curveOffset * curveStrength + Vector3.up * arcHeight;
 
@@ -81,10 +82,13 @@ public class ShootTrajectoryDrawer : MonoBehaviour
             prev = point;
         }
 
-        // Optional: visualize key points
-        Debug.DrawLine(startPos, controlA, Color.yellow, debugDuration);
-        Debug.DrawLine(controlA, controlB, Color.yellow, debugDuration);
-        Debug.DrawLine(controlB, targetPos, Color.yellow, debugDuration);
+        if (drawKeyPoints)
+        {
+            // Optional: visualize key points
+            Debug.DrawLine(startPos, controlA, Color.yellow, debugDuration);
+            Debug.DrawLine(controlA, controlB, Color.yellow, debugDuration);
+            Debug.DrawLine(controlB, targetPos, Color.yellow, debugDuration);
+        }
     }
 
     Vector3 Bezier(float t, Vector3 a, Vector3 b, Vector3 c, Vector3 d)

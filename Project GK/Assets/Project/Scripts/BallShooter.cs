@@ -121,15 +121,10 @@ public class BallShooter : MonoBehaviour
             spinDir = fallbackSpinAxis;
         }
 
-        Debug.Log("Spin strenght before clamp: " + spinStrength);
-
         spinStrength = Mathf.Clamp(spinStrength, minSpinStrength, maxSpinStrength);
-
-        Debug.Log("Spin strenght after clamp: " + spinStrength);
 
         float finalSpinStrength = spinStrength * spinStrengthMultiplier * (shootSpeed / 10f);
 
-        Debug.Log("Apply spin");
         var ballScript = spawnedBall.GetComponent<BallScript>();
         ballScript.ApplySpin(spinDir, finalSpinStrength);
     }

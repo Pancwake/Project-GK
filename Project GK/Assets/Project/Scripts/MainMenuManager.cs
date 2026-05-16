@@ -21,6 +21,6 @@ public class MainMenuManager : MonoBehaviour
     {
         gameInfo.ResetStats();
 
-        LevelManager.Instance.StartGame();
+        LevelManager.Instance.LoadStadium();
     }
 }
