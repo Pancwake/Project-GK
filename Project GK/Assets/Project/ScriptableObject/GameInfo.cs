@@ -13,6 +13,7 @@ public class GameInfo : ScriptableObject
     [SerializeField] float baseGoalAreaSize;
     [SerializeField] int baseCatchAreaPercentage;
     [SerializeField] float speedIncreasePercentagePerDifficulty;
+    [SerializeField] float baseRepelBoxCastRadius;
 
     [SerializeField] public int levelsPerStadium; //The amount of levels that are per stadium
     [SerializeField] public int shotsPerLevel; //The amount of shots that are per level 
@@ -29,6 +30,7 @@ public class GameInfo : ScriptableObject
     [SerializeField] public int catchAreaPercentage;
     [SerializeField] public float difficultySpeedModifier;
     [SerializeField] public float upgradeSpeedModifier;
+    [SerializeField] public float repelBoxCastRadius;
 
     [SerializeField] public int currentStadiumLevel; //The level this stadium is currently on
 
@@ -107,6 +109,7 @@ public class GameInfo : ScriptableObject
         moneyMultiplierIncrease = basePointsMultiplierIncrease;
         goalAreaSize = baseGoalAreaSize;
         catchAreaPercentage = baseCatchAreaPercentage;
+        repelBoxCastRadius = baseRepelBoxCastRadius;
 
         currentHealth = baseMaxHealth;
         money = 0;

@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.UIElements;
 
 public class CatchHandler : MonoBehaviour
 {
@@ -51,15 +53,7 @@ public class CatchHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Show catch area debug
-        float minZ = transform.position.z - 0.3f;
-        float maxZ = transform.position.z + gameInfo.goalAreaSize;
-        Vector3 minVec = new Vector3(transform.position.x, transform.position.y, minZ);
-        Vector3 maxVec = new Vector3(transform.position.x, transform.position.y, maxZ);
-        Vector3 dir = maxVec - minVec;
-        float distance = Vector3.Distance(minVec, maxVec);
-        //Debug.DrawRay(minVec, dir * distance, Color.greenYellow);
-        Debug.DrawLine(minVec, maxVec, Color.green);
+        DrawDebugs();
 
         if (ballHeld)
             return;
@@ -83,6 +77,18 @@ public class CatchHandler : MonoBehaviour
         
         if (isCatching)
             CheckCollission();
+    }
+
+    void DrawDebugs()
+    {
+        //Show catch area debug
+        float minZ = transform.position.z - 0.3f;
+        float maxZ = transform.position.z + gameInfo.goalAreaSize;
+        Vector3 minVec = new Vector3(transform.position.x, transform.position.y, minZ);
+        Vector3 maxVec = new Vector3(transform.position.x, transform.position.y, maxZ);
+        Vector3 dir = maxVec - minVec;
+        float distance = Vector3.Distance(minVec, maxVec);
+        Debug.DrawLine(minVec, maxVec, Color.green);
     }
 
     IEnumerator CatchTimer()
@@ -150,7 +156,33 @@ public class CatchHandler : MonoBehaviour
             }
             */
         }
+        else //If raycast didn't hit anything
+        {
+            Vector3 direction = (mousePos - cam.transform.position).normalized;
 
+            if (Physics.BoxCast(cam.transform.position, Vector3.one * gameInfo.repelBoxCastRadius, direction, out hit, Quaternion.identity, 100f, ballLayer))
+            {
+                ball = hit.collider.gameObject;
+
+                if (!ball.GetComponent<BallScript>().ballInteractable)
+                    return;
+
+                float minZ = transform.position.z - 1f;
+                float maxZ = transform.position.z + gameInfo.goalAreaSize;
+
+                //Catch area float
+                if (hit.transform.position.z >= minZ && hit.transform.position.z <= maxZ) //If ball is in the catch area
+                {
+                    RepelBall(); //Only repel ball with boxcast so catching requires more precision
+
+                    ballInteractedWith = true;
+                }
+            }
+        }
+
+        //Debug
+        Vector3 castDirection = (mousePos - cam.transform.position).normalized;
+        DrawBoxCast.DrawBoxCastBox(cam.transform.position, Vector3.one * gameInfo.repelBoxCastRadius, Quaternion.identity, castDirection, 100f, Color.yellow);
         Debug.DrawRay(cam.transform.position, (mousePos - cam.transform.position) * 100f, Color.red);
     }
 
@@ -230,14 +262,9 @@ public class CatchHandler : MonoBehaviour
         //Convert to world space
         hitDirection = transform.TransformDirection(localDir).normalized;
 
-        Debug.Log("Local Hit Direction: " + localDir);
-        Debug.Log("World Hit Direction: " + hitDirection);
-
         SpawnRepelHands(hitDirection);
 
         var velocity = hitDirection.normalized * repelForce;
-
-        Debug.Log("Repel velocity: " + velocity);
 
         ballScript.RepellBall(velocity);
 
