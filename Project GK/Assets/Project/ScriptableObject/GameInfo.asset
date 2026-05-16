@@ -32,7 +32,7 @@ MonoBehaviour:
   difficultySpeedModifier: 1
   upgradeSpeedModifier: 1
   currentStadiumLevel: 1
-  currentHealth: 50
+  currentHealth: 100
   money: 151
   combo: 0
   moneyMultiplier: 1

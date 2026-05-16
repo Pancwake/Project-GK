@@ -67,7 +67,6 @@ public class ShootBase : MonoBehaviour
         this.curveDirection = curveDirection;
 
         ballRB = ball.GetComponent<Rigidbody>();
-        ballRB.linearVelocity = Vector3.zero;
         ballRB.isKinematic = true;
 
         startPos = ball.transform.position;

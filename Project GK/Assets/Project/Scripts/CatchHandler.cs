@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class CatchHandler : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class CatchHandler : MonoBehaviour
     [SerializeField] float repelForce = 1f;
     [SerializeField] float holdTime = 1f; //Time to hold the ball after catching
     [SerializeField] float repelTime = 1f; //Time for the repel hands to stay after repelling
+    [SerializeField] float minForwardRepelDirection = 0.1f; //The minimum forward velocity a repelled ball needs to have (prevents it from going into the goal after repel)
 
     Coroutine catchTimerCoroutine;
     Coroutine catchCooldownCoroutine;
@@ -215,7 +217,21 @@ public class CatchHandler : MonoBehaviour
         ballScript.GetComponent<BallScript>().StopInteraction();
 
         //Direction = target - start
-        var hitDirection = hit.transform.position - hit.point; //Direction from hit point 
+        //World direction
+        var hitDirection = (hit.transform.position - hit.point).normalized; //Direction from hit point 
+
+        //Convert to local direction (to get local forward and not rely on world space)
+        Vector3 localDir = transform.InverseTransformDirection(hitDirection);
+
+        //Check if its going less than the minimum
+        if (localDir.z < minForwardRepelDirection)
+            localDir.z = minForwardRepelDirection;
+
+        //Convert to world space
+        hitDirection = transform.TransformDirection(localDir).normalized;
+
+        Debug.Log("Local Hit Direction: " + localDir);
+        Debug.Log("World Hit Direction: " + hitDirection);
 
         SpawnRepelHands(hitDirection);
 
@@ -231,12 +247,7 @@ public class CatchHandler : MonoBehaviour
 
     void SpawnRepelHands(Vector3 hitDirection)
     {
-        Vector3 hitPosition = hit.point;
-        hitPosition.z = hit.transform.position.z; //Level it with the ball
-
-        var repelDirection = (hit.transform.position - hitPosition).normalized;
-
-        // full directional rotation (your original logic)
+        //Get rotation from hit direction
         Quaternion rotation = Quaternion.FromToRotation(Vector3.up, hitDirection);
 
         spawnedRepelObject = Instantiate(handsRepelPrefab, ball.transform.position, rotation);
