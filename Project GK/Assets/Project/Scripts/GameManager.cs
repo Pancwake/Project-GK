@@ -96,7 +96,7 @@ public class GameManager : MonoBehaviour
         catchHandler.Goal();
         ballShooter.Goal();
 
-        NextShot();
+        //NextShot();
         gameplayUIManager.UpdateUI();
     }
 
