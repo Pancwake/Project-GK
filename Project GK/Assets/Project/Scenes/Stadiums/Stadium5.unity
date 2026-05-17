@@ -900,7 +900,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2276123073906544165, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
       propertyPath: minArcHeight
-      value: 0.5
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 2276123073906544165, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
       propertyPath: baseShootSpeed
@@ -964,7 +964,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2276123073906544165, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
       propertyPath: curveDirectionRandoms.Array.data[1].maxCurveDirection.x
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2276123073906544165, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
       propertyPath: curveDirectionRandoms.Array.data[1].maxCurveDirection.y
@@ -1048,7 +1048,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4450fbc43f890f94f9c56a157416be82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShootTrajectoryDrawer
-  samples: 50
+  samples: 2
   stepsPerTrajectory: 20
   debugDuration: 5
   drawKeyPoints: 0

@@ -27,7 +27,8 @@ public class ShootBase : MonoBehaviour
 
     float curveStrength;
     float arcHeight;
-    Vector2 curveDirection;
+    Vector2 curveDirectionA;
+    Vector2 curveDirectionB;
 
     public void Start()
     {
@@ -57,14 +58,15 @@ public class ShootBase : MonoBehaviour
         DebugBezierCurve();
     }
 
-    public void StartShoot(GameObject ball, Vector3 targetPos, float shotSpeed, float curveStrength, float arcHeight, Vector2 curveDirection)
+    public void StartShoot(GameObject ball, Vector3 targetPos, float shotSpeed, float curveStrength, float arcHeight, Vector2 curveDirectionA, Vector2 curveDirectionB)
     {
         this.ball = ball;
         this.targetPos = targetPos;
         this.shootSpeed = shotSpeed;
         this.curveStrength = curveStrength;
         this.arcHeight = arcHeight;
-        this.curveDirection = curveDirection;
+        this.curveDirectionA = curveDirectionA;
+        this.curveDirectionB = curveDirectionB;
 
         ballRB = ball.GetComponent<Rigidbody>();
         ballRB.isKinematic = true;
@@ -84,12 +86,13 @@ public class ShootBase : MonoBehaviour
         // Side direction for curve
         Vector3 right = Vector3.Cross(Vector3.up, dir).normalized;
 
-        Vector3 curveOffset = right * curveDirection.x + Vector3.up * curveDirection.y;
+        Vector3 curveOffsetA = right * curveDirectionA.x + Vector3.up * curveDirectionA.y;
+        Vector3 curveOffsetB = right * curveDirectionB.x + Vector3.up * curveDirectionB.y;
 
         // Control points define curve shape
-        controlA = startPos + dir * (distance * 0.25f) + curveOffset * curveStrength + Vector3.up * arcHeight;
+        controlA = startPos + dir * (distance * 0.25f) + curveOffsetA * curveStrength + Vector3.up * arcHeight;
 
-        controlB = startPos + dir * (distance * 0.75f) + curveOffset * curveStrength + Vector3.up * arcHeight;
+        controlB = startPos + dir * (distance * 0.75f) + curveOffsetA * curveStrength + Vector3.up * arcHeight + curveOffsetB;
     }
 
     Vector3 Bezier(float t, Vector3 a, Vector3 b, Vector3 c, Vector3 d)

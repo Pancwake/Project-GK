@@ -38,7 +38,8 @@ public class BallShooter : MonoBehaviour
     //If min direction was -2 and max was 2 then the curve could be 0
     //With this I can make it from -2 to -1 and 1 to 2 so it can never be 0
     [Header("Curve Direction")]
-    [SerializeField] public List<CurveDirectionRandom> curveDirectionRandoms;
+    [SerializeField] public List<CurveDirectionRandom> curveDirectionARandoms;
+    [SerializeField] public List<CurveDirectionRandom> curveDirectionBRandoms;
 
     Vector3 spinDirection = Vector3.right;
 
@@ -103,17 +104,22 @@ public class BallShooter : MonoBehaviour
         float curveStrength = UnityEngine.Random.Range(minCurveStrength, maxCurveStrength);
         float arcHeight = UnityEngine.Random.Range(minArcHeight, maxArcHeight);
 
-        int rng = UnityEngine.Random.Range(0, curveDirectionRandoms.Count); //Get a random direction
-        CurveDirectionRandom direction = curveDirectionRandoms[rng];
-        Vector2 curveDirection = RandomBetween(direction.minCurveDirection, direction.maxCurveDirection);
+        int rngA = UnityEngine.Random.Range(0, curveDirectionARandoms.Count); //Get a random direction
+        CurveDirectionRandom directionA = curveDirectionARandoms[rngA];
+
+        int rngB = UnityEngine.Random.Range(0, curveDirectionARandoms.Count); //Get a random direction
+        CurveDirectionRandom directionB = curveDirectionARandoms[rngB];
+
+        Vector2 curveDirectionA = RandomBetween(directionA.minCurveDirection, directionA.maxCurveDirection);
+        Vector2 curveDirectionB = RandomBetween(directionB.minCurveDirection, directionB.maxCurveDirection);
 
         //Scale speed depending on arc
         float arcSpeedMultiplier = 1f / (1f + arcHeight * arcSpeedFalloff);
         shootSpeed *= arcSpeedMultiplier;
 
-        ApplySpin(curveDirection, arcHeight, shootSpeed, ballSpawnPos.position, target);
+        ApplySpin(curveDirectionB, arcHeight, shootSpeed, ballSpawnPos.position, target);
 
-        shootScript.StartShoot(spawnedBall, target, shootSpeed, curveStrength, arcHeight, curveDirection);
+        shootScript.StartShoot(spawnedBall, target, shootSpeed, curveStrength, arcHeight, curveDirectionA, curveDirectionB);
     }
 
     void ApplySpin(Vector2 curveDirection, float arcHeight, float shootSpeed, Vector3 startPos, Vector3 targetPos)

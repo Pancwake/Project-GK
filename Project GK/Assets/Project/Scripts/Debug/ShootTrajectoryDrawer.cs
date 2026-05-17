@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class ShootTrajectoryDrawer : MonoBehaviour
 {
@@ -38,14 +39,19 @@ public class ShootTrajectoryDrawer : MonoBehaviour
         float curveStrength = Mathf.Lerp(shooter.minCurveStrength, shooter.maxCurveStrength, t);
         float arcHeight = Mathf.Lerp(shooter.minArcHeight, shooter.maxArcHeight, t);
 
-        int rng = UnityEngine.Random.Range(0, shooter.curveDirectionRandoms.Count); //Get a random direction
-        CurveDirectionRandom direction = shooter.curveDirectionRandoms[rng];
-        Vector2 curveDir = Vector2.Lerp(direction.minCurveDirection, direction.maxCurveDirection, t);
+        int rngA = UnityEngine.Random.Range(0, shooter.curveDirectionARandoms.Count); //Get a random direction
+        CurveDirectionRandom directionA = shooter.curveDirectionARandoms[rngA];
 
-        DebugBezierCurve(curveStrength, arcHeight, curveDir);
+        int rngB = UnityEngine.Random.Range(0, shooter.curveDirectionARandoms.Count); //Get a random direction
+        CurveDirectionRandom directionB = shooter.curveDirectionARandoms[rngB];
+
+        Vector2 curveDirectionA = Vector2.Lerp(directionA.minCurveDirection, directionA.maxCurveDirection, t);
+        Vector2 curveDirectionB = Vector2.Lerp(directionB.minCurveDirection, directionB.maxCurveDirection, t);
+
+        DebugBezierCurve(curveStrength, arcHeight, curveDirectionA, curveDirectionB);
     }
 
-    void DebugBezierCurve(float curveStrength, float arcHeight, Vector2 curveDirection)
+    void DebugBezierCurve(float curveStrength, float arcHeight, Vector2 curveDirectionA, Vector2 curveDirectionB)
     {
         startPos = shooter.ballSpawnPos.position;
         targetPos= shooter.GetTarget();
@@ -60,12 +66,13 @@ public class ShootTrajectoryDrawer : MonoBehaviour
         // Side direction for curve
         Vector3 right = Vector3.Cross(Vector3.up, dir).normalized;
 
-        Vector3 curveOffset = right * curveDirection.x + Vector3.up * curveDirection.y;
+        Vector3 curveOffsetA = right * curveDirectionA.x + Vector3.up * curveDirectionA.y;
+        Vector3 curveOffsetB = right * curveDirectionB.x + Vector3.up * curveDirectionB.y;
 
         // Control points define curve shape
-        controlA = startPos + dir * (distance * 0.25f) + curveOffset * curveStrength + Vector3.up * arcHeight;
+        controlA = startPos + dir * (distance * 0.25f) + curveOffsetA * curveStrength + Vector3.up * arcHeight;
 
-        controlB = startPos + dir * (distance * 0.75f) + curveOffset * curveStrength + Vector3.up * arcHeight;
+        controlB = startPos + dir * (distance * 0.75f) + curveOffsetB * curveStrength + Vector3.up * arcHeight;
 
         DrawBezierCurve();
     }
