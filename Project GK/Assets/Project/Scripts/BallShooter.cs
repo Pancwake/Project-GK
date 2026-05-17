@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
@@ -23,6 +25,7 @@ public class BallShooter : MonoBehaviour
 
     [Header("Speed")]
     [SerializeField] public float baseShootSpeed = 10f;
+    [SerializeField] float arcSpeedFalloff = 0.15f; //Scale speed depending on the arc size (because fast speed high arcs feel too fast)
 
     [Header("Curve Strength")]
     [SerializeField] public float minCurveStrength = 2f;
@@ -32,9 +35,10 @@ public class BallShooter : MonoBehaviour
     [SerializeField] public float minArcHeight = 2f;
     [SerializeField] public float maxArcHeight = 2f;
 
+    //If min direction was -2 and max was 2 then the curve could be 0
+    //With this I can make it from -2 to -1 and 1 to 2 so it can never be 0
     [Header("Curve Direction")]
-    [SerializeField] public Vector2 minCurveDirection = Vector2.up;
-    [SerializeField] public Vector2 maxCurveDirection = Vector2.up;
+    [SerializeField] public List<CurveDirectionRandom> curveDirectionRandoms;
 
     Vector3 spinDirection = Vector3.right;
 
@@ -81,8 +85,8 @@ public class BallShooter : MonoBehaviour
         var goalYMin = goalMouth.transform.position.y - (goalSize.y / 2);
         var goalYMax = goalMouth.transform.position.y + (goalSize.y / 2);
 
-        float rngX = Random.Range(goalXMin, goalXMax);
-        float rngY = Random.Range(goalYMin, goalYMax);
+        float rngX = UnityEngine.Random.Range(goalXMin, goalXMax);
+        float rngY = UnityEngine.Random.Range(goalYMin, goalYMax);
 
         var target = new Vector3(rngX, rngY, goal.transform.position.z);
 
@@ -96,9 +100,16 @@ public class BallShooter : MonoBehaviour
         //Instantiate(ballPrefab, shootPosition, Quaternion.identity);
         spawnedBall = Instantiate(ballPrefab, ballSpawnPos.position, Quaternion.identity);
 
-        float curveStrength = Random.Range(minCurveStrength, maxCurveStrength);
-        float arcHeight = Random.Range(minArcHeight, maxArcHeight);
-        Vector2 curveDirection = RandomBetween(minCurveDirection, maxCurveDirection);
+        float curveStrength = UnityEngine.Random.Range(minCurveStrength, maxCurveStrength);
+        float arcHeight = UnityEngine.Random.Range(minArcHeight, maxArcHeight);
+
+        int rng = UnityEngine.Random.Range(0, curveDirectionRandoms.Count); //Get a random direction
+        CurveDirectionRandom direction = curveDirectionRandoms[rng];
+        Vector2 curveDirection = RandomBetween(direction.minCurveDirection, direction.maxCurveDirection);
+
+        //Scale speed depending on arc
+        float arcSpeedMultiplier = 1f / (1f + arcHeight * arcSpeedFalloff);
+        shootSpeed *= arcSpeedMultiplier;
 
         ApplySpin(curveDirection, arcHeight, shootSpeed, ballSpawnPos.position, target);
 
@@ -154,8 +165,8 @@ public class BallShooter : MonoBehaviour
     Vector2 RandomBetween(Vector2 a, Vector2 b)
     {
         return new Vector2(
-            Random.Range(Mathf.Min(a.x, b.x), Mathf.Max(a.x, b.x)),
-            Random.Range(Mathf.Min(a.y, b.y), Mathf.Max(a.y, b.y))
+            UnityEngine.Random.Range(Mathf.Min(a.x, b.x), Mathf.Max(a.x, b.x)),
+            UnityEngine.Random.Range(Mathf.Min(a.y, b.y), Mathf.Max(a.y, b.y))
         );
     }
 
@@ -179,7 +190,7 @@ public class BallShooter : MonoBehaviour
     {
         yield return new WaitForSeconds(failSafeTimer);
 
-        Destroy(spawnedBall);
+        spawnedBall.GetComponent<BallScript>().DestroyBall();
         ResetShoot();
         GameManager.Instance.FailSafe();
     }
@@ -188,4 +199,11 @@ public class BallShooter : MonoBehaviour
     {
         shootScript.ResetShoot();
     }
+}
+
+[Serializable]
+public struct CurveDirectionRandom
+{
+    public Vector2 minCurveDirection;
+    public Vector2 maxCurveDirection;
 }

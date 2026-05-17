@@ -52,10 +52,12 @@ MonoBehaviour:
     m_Bits: 64
   canCatch: 0
   isCatching: 0
-  catchTime: 0.1
+  catchTime: 0.05
   catchCooldown: 0.3
-  catchAreaPercentage: 30
   repelForce: 10
   holdTime: 1
   repelTime: 1
+  minForwardRepelDirection: 0.1
+  ballInteractedWith: 0
+  ballHeld: 0
   gameInfo: {fileID: 11400000, guid: f0576d067313aa74d8267a9f5e449dd1, type: 2}

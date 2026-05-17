@@ -37,7 +37,10 @@ public class ShootTrajectoryDrawer : MonoBehaviour
     {
         float curveStrength = Mathf.Lerp(shooter.minCurveStrength, shooter.maxCurveStrength, t);
         float arcHeight = Mathf.Lerp(shooter.minArcHeight, shooter.maxArcHeight, t);
-        Vector2 curveDir = Vector2.Lerp(shooter.minCurveDirection, shooter.maxCurveDirection, t);
+
+        int rng = UnityEngine.Random.Range(0, shooter.curveDirectionRandoms.Count); //Get a random direction
+        CurveDirectionRandom direction = shooter.curveDirectionRandoms[rng];
+        Vector2 curveDir = Vector2.Lerp(direction.minCurveDirection, direction.maxCurveDirection, t);
 
         DebugBezierCurve(curveStrength, arcHeight, curveDir);
     }

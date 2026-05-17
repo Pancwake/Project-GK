@@ -13,10 +13,17 @@ public class UpgradeShopManager : MonoBehaviour
 
     [SerializeField] List<IndividualUpgradeShopHandler> upgradeHandlers;
 
+    [SerializeField] TextMeshProUGUI health;
     [SerializeField] TextMeshProUGUI money;
+
+    [SerializeField] GameObject ContinueButton;
+    [SerializeField] GameObject HealButton;
+
+    bool canHeal;
 
     void Start()
     {
+        Cursor.visible = true;
         UpdateInfo();
         OpenShop();
     }
@@ -28,6 +35,8 @@ public class UpgradeShopManager : MonoBehaviour
 
     void OpenShop()
     {
+        canHeal = true;
+
         availableUpgrades = new List<Upgrade>(upgradeManager.upgrades);
         availableUpgrades.Remove(upgradeManager.heldUpgrade); //Remove the held upgrade from available upgrades to assure its placed at the correct slot
 
@@ -58,8 +67,31 @@ public class UpgradeShopManager : MonoBehaviour
         }
     }
 
+    void HideHealButton()
+    {
+        canHeal = false;
+
+        HealButton.SetActive(false);
+        ContinueButton.SetActive(true);
+    }
+
+    public void Heal()
+    {
+        int healAmount = (int)((float)gameInfo.maxHealth * ((float)20 / 100f)); //Get 20% of max health to heal
+
+        gameInfo.currentHealth += healAmount;
+
+        gameInfo.currentHealth = Mathf.Clamp(gameInfo.currentHealth, 0, gameInfo.maxHealth);
+
+        HideHealButton();
+        ExitShop();
+    }
+
     public void BuyUpgrade(Upgrade upgrade)
     {
+        if(canHeal)
+            HideHealButton();
+
         gameInfo.BuyUpgrade(upgrade);
 
         UpdateInfo();
@@ -67,6 +99,8 @@ public class UpgradeShopManager : MonoBehaviour
 
     void UpdateInfo()
     {
+        string healthText = gameInfo.currentHealth + "/" + gameInfo.maxHealth;
+        health.text = healthText;
         money.text = gameInfo.money.ToString();
     }
 
