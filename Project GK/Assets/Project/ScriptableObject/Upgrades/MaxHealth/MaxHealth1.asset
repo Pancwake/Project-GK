@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Upgrade
   type: 0
   image: {fileID: 0}
-  uName: Max Health I
-  description: 'Increase max health by 20 '
+  uName: Stamina Training I
+  description: 'Trains your stamina. Increase max stamina by 20. '
   price: 60
   amount: 20

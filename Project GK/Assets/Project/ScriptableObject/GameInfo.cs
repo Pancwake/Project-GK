@@ -9,7 +9,7 @@ public class GameInfo : ScriptableObject
     [SerializeField] int baseRepelMoneyReward;
     [SerializeField] int baseCatchMoneyReward;
     [SerializeField] int baseCatchHealPercentage;
-    [SerializeField] float basePointsMultiplierIncrease;
+    [SerializeField] float baseMoneyMultiplierIncrease;
     [SerializeField] float baseGoalAreaSize;
     [SerializeField] int baseCatchAreaPercentage;
     [SerializeField] float speedIncreasePercentagePerDifficulty;
@@ -112,7 +112,7 @@ public class GameInfo : ScriptableObject
         repelMoneyReward = baseRepelMoneyReward;
         catchMoneyReward = baseCatchMoneyReward;
         catchHealPercentage = baseCatchHealPercentage;
-        moneyMultiplierIncrease = basePointsMultiplierIncrease;
+        moneyMultiplierIncrease = baseMoneyMultiplierIncrease;
         goalAreaSize = baseGoalAreaSize;
         catchAreaPercentage = baseCatchAreaPercentage;
         forgivingRepelRadius = baseForgivingRepelRadius;

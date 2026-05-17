@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Upgrade
   type: 4
   image: {fileID: 0}
-  uName: Shoot Speed II
-  description: Further decreases the speed of each shot, making reacting to them
-    even easier.
+  uName: Better Reactions II
+  description: Improves your reactions. Makes shots appear even slower.
   price: 150
   amount: 10

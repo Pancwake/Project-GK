@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Upgrade
   type: 2
   image: {fileID: 0}
-  uName: Goal Area I
-  description: 'Increases your defensive reach by 20%, making shots easier to save. '
+  uName: More Reach I
+  description: 'Increases your reach. Makes shots easier to save. '
   price: 120
   amount: 20

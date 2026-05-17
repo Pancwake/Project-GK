@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Upgrade
   type: 1
   image: {fileID: 0}
-  uName: Catch Heal II
-  description: Increase percentage healed by catching by 5%
+  uName: Confidence II
+  description: Improves your confidence with catches. Increase stamina recovery for
+    catching by 5%.
   price: 80
   amount: 5

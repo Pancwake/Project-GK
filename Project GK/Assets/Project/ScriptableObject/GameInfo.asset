@@ -16,7 +16,7 @@ MonoBehaviour:
   baseRepelMoneyReward: 20
   baseCatchMoneyReward: 25
   baseCatchHealPercentage: 10
-  basePointsMultiplierIncrease: 0.1
+  baseMoneyMultiplierIncrease: 0.1
   baseGoalAreaSize: 0.5
   baseCatchAreaPercentage: 10
   speedIncreasePercentagePerDifficulty: 20

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Upgrade
   type: 3
   image: {fileID: 0}
-  uName: Catch Area I
-  description: Makes catching the ball marginally easier.
+  uName: Improved Grip I
+  description: Improves your grip strength. Makes catching the ball marginally easier.
   price: 80
   amount: 5

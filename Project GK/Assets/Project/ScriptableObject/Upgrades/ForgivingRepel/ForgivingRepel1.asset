@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Upgrade
   type: 5
   image: {fileID: 0}
-  uName: Forgiving Repel I
-  description: Hitbox size marginally increased. Making shots easier to save
+  uName: Bigger Gloves I
+  description: Increases the size of your gloves. Makes shots easier to save
   price: 100
   amount: 20

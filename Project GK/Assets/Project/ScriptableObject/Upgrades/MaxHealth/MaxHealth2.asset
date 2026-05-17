@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Upgrade
   type: 0
   image: {fileID: 0}
-  uName: Max Health II
-  description: Increase max health by 30
+  uName: Stamina Training II
+  description: Trains your stamina. Increase max stamina by 30
   price: 80
   amount: 30

@@ -9,10 +9,10 @@ EditorBuildSettings:
     path: Assets/Project/Scenes/MainMenu.unity
     guid: 5a5e5a6c0d880a2418b38936b7b9db13
   - enabled: 1
-    path: Assets/Project/Scenes/Stadiums/Stadium1.unity
+    path: Assets/Project/Scenes/Stadiums/Stadium1Lob.unity
     guid: 5252a1d2d09c1064bae2a77246acb8ba
   - enabled: 1
-    path: Assets/Project/Scenes/Stadiums/Stadium2.unity
+    path: Assets/Project/Scenes/Stadiums/Stadium2SCurve.unity
     guid: 6abf2b1de19e41242827af860960742a
   - enabled: 1
     path: Assets/Project/Scenes/UpgradeShop.unity
