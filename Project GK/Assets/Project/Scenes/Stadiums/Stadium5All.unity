@@ -324,6 +324,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 34c27844c661b834bb58f1a1e64d91a6, type: 3}
+      propertyPath: m_TagString
+      value: Floor
+      objectReference: {fileID: 0}
     - target: {fileID: 3903562195959748615, guid: 34c27844c661b834bb58f1a1e64d91a6, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -357,7 +361,7 @@ GameObject:
   - component: {fileID: 581872771}
   m_Layer: 7
   m_Name: Field
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -723,7 +727,7 @@ GameObject:
   - component: {fileID: 1791713895}
   m_Layer: 7
   m_Name: Collission
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -900,11 +904,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2276123073906544165, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
       propertyPath: minArcHeight
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2276123073906544165, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
       propertyPath: baseShootSpeed
-      value: 8
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2276123073906544165, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
+      propertyPath: arcSpeedFalloff
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2276123073906544165, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
       propertyPath: maxSpinStrength
@@ -920,7 +928,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2276123073906544165, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
       propertyPath: minCurveStrength
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2276123073906544165, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
       propertyPath: maxCurveDirection.x
@@ -944,19 +952,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2276123073906544165, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
       propertyPath: curveDirectionRandoms.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2276123073906544165, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
       propertyPath: curveDirectionRandoms.Array.data[0].maxCurveDirection.x
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2276123073906544165, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
       propertyPath: curveDirectionRandoms.Array.data[0].maxCurveDirection.y
-      value: -1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2276123073906544165, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
       propertyPath: curveDirectionRandoms.Array.data[0].minCurveDirection.x
-      value: 0
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 2276123073906544165, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
       propertyPath: curveDirectionRandoms.Array.data[0].minCurveDirection.y
@@ -964,15 +972,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2276123073906544165, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
       propertyPath: curveDirectionRandoms.Array.data[1].maxCurveDirection.x
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2276123073906544165, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
       propertyPath: curveDirectionRandoms.Array.data[1].maxCurveDirection.y
-      value: -1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2276123073906544165, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
       propertyPath: curveDirectionRandoms.Array.data[1].minCurveDirection.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2276123073906544165, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
       propertyPath: curveDirectionRandoms.Array.data[1].minCurveDirection.y
@@ -1020,7 +1028,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4237556815911955914, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
       propertyPath: m_Name
-      value: RisingShoot
+      value: AllShoots
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8697139053704264698, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
@@ -1143,7 +1151,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4239324465548530973, guid: a9de5e443d749ac42a67e19c5b79f96c, type: 3}
       propertyPath: damageForGoal
-      value: -10
+      value: -25
       objectReference: {fileID: 0}
     - target: {fileID: 5296393990688364991, guid: a9de5e443d749ac42a67e19c5b79f96c, type: 3}
       propertyPath: m_LocalPosition.x

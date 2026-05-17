@@ -130,7 +130,10 @@ public class GameManager : MonoBehaviour
     {
         if (saved)
             currentShot++;
+    }
 
+    public void NextShot()
+    {
         if (currentShot > gameInfo.shotsPerLevel) //If all shots saved this level
         {
             levelOver = true;
@@ -142,14 +145,13 @@ public class GameManager : MonoBehaviour
             else //Load shop after every level
             {
                 StartCoroutine(LoadDelay(ESceneToLoad.shop));
-            }     
+            }
         }
-    }
-
-    public void NextShot()
-    {
-        catchHandler.ResetShot();
-        StartCoroutine(startShootTimer());
+        else
+        {
+            catchHandler.ResetShot();
+            StartCoroutine(startShootTimer());
+        }
     }
 
     IEnumerator LoadDelay(ESceneToLoad scene)

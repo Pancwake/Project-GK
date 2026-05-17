@@ -324,6 +324,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 34c27844c661b834bb58f1a1e64d91a6, type: 3}
+      propertyPath: m_TagString
+      value: Floor
+      objectReference: {fileID: 0}
     - target: {fileID: 3903562195959748615, guid: 34c27844c661b834bb58f1a1e64d91a6, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -357,7 +361,7 @@ GameObject:
   - component: {fileID: 581872771}
   m_Layer: 7
   m_Name: Field
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -723,7 +727,7 @@ GameObject:
   - component: {fileID: 1791713895}
   m_Layer: 7
   m_Name: Collission
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1147,7 +1151,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4239324465548530973, guid: a9de5e443d749ac42a67e19c5b79f96c, type: 3}
       propertyPath: damageForGoal
-      value: -10
+      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 5296393990688364991, guid: a9de5e443d749ac42a67e19c5b79f96c, type: 3}
       propertyPath: m_LocalPosition.x

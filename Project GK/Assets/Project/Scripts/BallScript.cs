@@ -125,7 +125,10 @@ public class BallScript : MonoBehaviour
     {
         if (repelled)
         {
-            StartDespawn(); //Only start despawn after hitting the ground
+            if (collision.transform.CompareTag("Floor"))
+            {
+                StartDespawn(); //Only start despawn after hitting the ground
+            }  
         } 
     }
 }
