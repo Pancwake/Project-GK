@@ -1973,6 +1973,10 @@ PrefabInstance:
       propertyPath: spinStrengthMultiplier
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 2276123073906544165, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
+      propertyPath: curveDirectionRandoms.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3197598896961299962, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2046,6 +2050,7 @@ MonoBehaviour:
   samples: 50
   stepsPerTrajectory: 20
   debugDuration: 5
+  drawKeyPoints: 0
 --- !u!1001 &5987062151857863954
 PrefabInstance:
   m_ObjectHideFlags: 0

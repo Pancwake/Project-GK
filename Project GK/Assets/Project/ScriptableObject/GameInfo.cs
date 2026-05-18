@@ -41,6 +41,7 @@ public class GameInfo : ScriptableObject
     public int money;
     public int combo;
     public float moneyMultiplier;
+    public bool paused;
 
     [SerializeField] UpgradeManager upgradeManager;
 
@@ -125,6 +126,7 @@ public class GameInfo : ScriptableObject
         currentStadiumLevel = 1;
         difficultySpeedModifier = 1;
         upgradeSpeedModifier = 1;
+        paused = false;
     }
 }
 

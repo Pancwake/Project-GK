@@ -172,6 +172,23 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void PauseGame()
+    {
+        gameInfo.paused = true;
+        Time.timeScale = 0;
+    }
+
+    public void ResumeGame()
+    {
+        gameInfo.paused = false;
+        Time.timeScale = 1;
+    }
+
+    public void Exit()
+    {
+        LevelManager.Instance.LoadMainMenu();
+    }
+
     void ResetStats()
     {
         currentShot = 1;

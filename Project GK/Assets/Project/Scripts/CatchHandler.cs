@@ -55,6 +55,9 @@ public class CatchHandler : MonoBehaviour
     {
         DrawDebugs();
 
+        if (gameInfo.paused)
+            return;
+
         if (ballHeld)
             return;
 
