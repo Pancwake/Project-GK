@@ -10,14 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c521ef7be25456e4ca45a6d7c95883ce, type: 3}
-  m_Name: EasyInfo
+  m_Name: 3HardInfo
   m_EditorClassIdentifier: Assembly-CSharp::DifficultyInfo
   baseMaxHealth: 100
   baseRepelMoneyReward: 20
   baseCatchMoneyReward: 25
   baseCatchHealPercentage: 10
   baseMoneyMultiplierIncrease: 0.2
-  baseGoalAreaSize: 0.5
-  baseCatchAreaPercentage: 10
-  speedIncreasePercentagePerDifficulty: 20
-  baseForgivingRepelRadius: 0.5
+  baseGoalAreaSize: 0.3
+  baseCatchAreaPercentage: 6
+  speedIncreasePercentagePerDifficulty: 30
+  baseForgivingRepelRadius: 0.3
+  playerSaveTime: 0.1
+  playerSaveCooldown: 0.8

@@ -17,6 +17,8 @@ public class GameInfo : ScriptableObject
     [SerializeField] public int baseCatchAreaPercentage;
     [SerializeField] public float speedIncreasePercentagePerDifficulty;
     [SerializeField] public float baseForgivingRepelRadius;
+    [SerializeField] public float playerSaveTime; //How early the button can be pressed to still count as a catch
+    [SerializeField] public float playerSaveCooldown; //How long the player has to wait before being able to catch again (Anti spam)
 
     [SerializeField] public int stadiumAmount; //How many stadiums there are
     [SerializeField] public int levelsPerStadium; //The amount of levels that are per stadium
@@ -69,6 +71,8 @@ public class GameInfo : ScriptableObject
         baseGoalAreaSize = selectedDifficulty.baseGoalAreaSize;
         baseCatchAreaPercentage = selectedDifficulty.baseCatchAreaPercentage;
         baseForgivingRepelRadius = selectedDifficulty.baseForgivingRepelRadius;
+        playerSaveTime = selectedDifficulty.playerSaveTime;
+        playerSaveCooldown = selectedDifficulty.playerSaveCooldown;
     }
 
     public void BuyUpgrade(Upgrade upgrade)

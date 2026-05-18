@@ -23,8 +23,6 @@ public class CatchHandler : MonoBehaviour
 
     [SerializeField] bool canCatch; //If the player can press catch
     [SerializeField] bool isCatching; //If the player is currently trying to catch
-    [SerializeField] float catchTime; //How early the button can be pressed to still count as a catch
-    [SerializeField] float catchCooldown; //How long the player has to wait before being able to catch again (Anti spam)
     [SerializeField] float repelForce = 1f;
     [SerializeField] float holdTime = 1f; //Time to hold the ball after catching
     [SerializeField] float repelTime = 1f; //Time for the repel hands to stay after repelling
@@ -96,14 +94,14 @@ public class CatchHandler : MonoBehaviour
 
     IEnumerator CatchTimer()
     {
-        yield return new WaitForSeconds(catchTime);
+        yield return new WaitForSeconds(gameInfo.playerSaveTime);
 
         isCatching = false;
     }
 
     IEnumerator CatchCooldown()
     {
-        yield return new WaitForSeconds(catchCooldown);
+        yield return new WaitForSeconds(gameInfo.playerSaveCooldown);
 
         canCatch = true;
     }

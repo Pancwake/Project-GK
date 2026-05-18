@@ -13,6 +13,8 @@ public class DifficultyInfo : ScriptableObject
     [SerializeField] public int baseCatchAreaPercentage;
     [SerializeField] public float speedIncreasePercentagePerDifficulty;
     [SerializeField] public float baseForgivingRepelRadius;
+    [SerializeField] public float playerSaveTime; //How early the button can be pressed to still count as a catch
+    [SerializeField] public float playerSaveCooldown; //How long the player has to wait before being able to catch again (Anti spam)
 }
 
 public enum EDifficulties
