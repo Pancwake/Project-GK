@@ -4,16 +4,19 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "GameInfo", menuName = "Scriptable Objects/GameInfo")]
 public class GameInfo : ScriptableObject
 {
+    [Header("Difficulty")]
+    [SerializeField] public DifficultyInfo selectedDifficulty;
+    
     [Header("Base Stats")] //The base numbers for each stat
-    [SerializeField] int baseMaxHealth;
-    [SerializeField] int baseRepelMoneyReward;
-    [SerializeField] int baseCatchMoneyReward;
-    [SerializeField] int baseCatchHealPercentage;
-    [SerializeField] float baseMoneyMultiplierIncrease;
-    [SerializeField] float baseGoalAreaSize;
-    [SerializeField] int baseCatchAreaPercentage;
-    [SerializeField] float speedIncreasePercentagePerDifficulty;
-    [SerializeField] float baseForgivingRepelRadius;
+    [SerializeField] public int baseMaxHealth;
+    [SerializeField] public int baseRepelMoneyReward;
+    [SerializeField] public int baseCatchMoneyReward;
+    [SerializeField] public int baseCatchHealPercentage;
+    [SerializeField] public float baseMoneyMultiplierIncrease;
+    [SerializeField] public float baseGoalAreaSize;
+    [SerializeField] public int baseCatchAreaPercentage;
+    [SerializeField] public float speedIncreasePercentagePerDifficulty;
+    [SerializeField] public float baseForgivingRepelRadius;
 
     [SerializeField] public int stadiumAmount; //How many stadiums there are
     [SerializeField] public int levelsPerStadium; //The amount of levels that are per stadium
@@ -52,6 +55,20 @@ public class GameInfo : ScriptableObject
 
         //1.2 = 1 + (0.1 * (3 - 1)) 
         moneyMultiplier = 1 + (moneyMultiplierIncrease * (combo - 1)); //combo -1 so it starts at the second hit
+    }
+
+    public void SelectDifficulty(DifficultyInfo difficulty)
+    {
+        selectedDifficulty = difficulty;
+
+        baseMaxHealth = selectedDifficulty.baseMaxHealth;
+        baseRepelMoneyReward = selectedDifficulty.baseRepelMoneyReward;
+        baseCatchMoneyReward = selectedDifficulty.baseCatchMoneyReward;
+        baseCatchHealPercentage = selectedDifficulty.baseCatchHealPercentage;
+        baseMoneyMultiplierIncrease = selectedDifficulty.baseMoneyMultiplierIncrease;
+        baseGoalAreaSize = selectedDifficulty.baseGoalAreaSize;
+        baseCatchAreaPercentage = selectedDifficulty.baseCatchAreaPercentage;
+        baseForgivingRepelRadius = selectedDifficulty.baseForgivingRepelRadius;
     }
 
     public void BuyUpgrade(Upgrade upgrade)
