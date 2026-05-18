@@ -38,7 +38,7 @@ public class IndividualUpgradeShopHandler : MonoBehaviour
         this.upgrade = upgrade;
 
         upgradeImage.sprite = upgrade.image;
-        upgradeName.text = upgrade.name;
+        upgradeName.text = upgrade.uName;
         upgradeDescription.text = upgrade.description;
         upgradePrice.text = upgrade.price.ToString();
     }

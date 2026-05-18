@@ -64,6 +64,7 @@ public class LevelManager : MonoBehaviour
 
         if (gameInfo.currentStadiumLevel > gameInfo.levelsPerStadium) //If above max difficulty
         {
+            Debug.Log("Load next stadium");
             //Reset difficulty
             gameInfo.currentStadiumIndex += 1; //Enter next stadium
             gameInfo.currentStadiumLevel = 1; 
@@ -71,6 +72,7 @@ public class LevelManager : MonoBehaviour
         }
         else
         {
+            Debug.Log("Load current stadium difficulty: " + gameInfo.currentStadiumLevel);
             LoadStadium();
         }
     }

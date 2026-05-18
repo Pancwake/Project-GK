@@ -24,20 +24,21 @@ MonoBehaviour:
   stadiumAmount: 5
   levelsPerStadium: 3
   shotsPerLevel: 5
-  maxHealth: 4852
+  maxHealth: 1742
   repelMoneyReward: 20
   catchMoneyReward: 25
   catchHealPercentage: 10
   moneyMultiplierIncrease: 0.1
-  goalAreaSize: 0.6
+  goalAreaSize: 0.5
   catchAreaPercentage: 10
   difficultySpeedModifier: 1
   upgradeSpeedModifier: 1
-  forgivingRepelRadius: 0.6
-  currentStadiumIndex: 2
+  forgivingRepelRadius: 0.5
+  currentStadiumIndex: 3
   currentStadiumLevel: 1
-  currentHealth: 4738
-  money: 942
-  combo: 2
-  moneyMultiplier: 1.1
+  currentHealth: 1742
+  money: 254
+  combo: 8
+  moneyMultiplier: 1.7
+  paused: 0
   upgradeManager: {fileID: 11400000, guid: 13bfe694d8b31804eb6b980cf14e6d8a, type: 2}
