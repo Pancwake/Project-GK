@@ -1,11 +1,15 @@
 using System;
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "GameInfo", menuName = "Scriptable Objects/GameInfo")]
 public class GameInfo : ScriptableObject
 {
     [Header("Difficulty")]
+    [SerializeField] List<DifficultyInfo> difficulties;
     [SerializeField] public DifficultyInfo selectedDifficulty;
+    [SerializeField] public int unlockedDifficulties = 0; //0 = easy, 1 = medium, 2 = hard...
     
     [Header("Base Stats")] //The base numbers for each stat
     [SerializeField] public int baseMaxHealth;
@@ -59,9 +63,9 @@ public class GameInfo : ScriptableObject
         moneyMultiplier = 1 + (moneyMultiplierIncrease * (combo - 1)); //combo -1 so it starts at the second hit
     }
 
-    public void SelectDifficulty(DifficultyInfo difficulty)
+    public void SelectDifficulty(int index)
     {
-        selectedDifficulty = difficulty;
+        selectedDifficulty = difficulties[index];
 
         baseMaxHealth = selectedDifficulty.baseMaxHealth;
         baseRepelMoneyReward = selectedDifficulty.baseRepelMoneyReward;
@@ -73,6 +77,40 @@ public class GameInfo : ScriptableObject
         baseForgivingRepelRadius = selectedDifficulty.baseForgivingRepelRadius;
         playerSaveTime = selectedDifficulty.playerSaveTime;
         playerSaveCooldown = selectedDifficulty.playerSaveCooldown;
+    }
+
+    public void TryUnlockDifficulty()
+    {
+        int currentDifficultyIndex = difficulties.IndexOf(selectedDifficulty);
+
+        //2 difficulties = 3 counts
+        //2 >= (3 - 1) = 2 >= 2 (Already at last difficulty, No more difficulty to unlock)
+        if (unlockedDifficulties >= (difficulties.Count - 1))
+            return;
+
+        //Current = 0, unlocked = 0 (If win 0 then unlock 1)
+        //Current = 0, unlocked = 1 (If win 0 but 1 already unlocked, do nothing)
+        if (currentDifficultyIndex == unlockedDifficulties)
+        {
+            Debug.Log("Unlock next difficulty!");
+            unlockedDifficulties += 1;
+            PlayerPrefs.SetInt("UnlockedDifficulties", unlockedDifficulties);
+            PlayerPrefs.Save();
+        }
+    }
+
+    public int GetUnlockedDifficulties()
+    {
+        unlockedDifficulties = PlayerPrefs.GetInt("UnlockedDifficulties", 0);
+
+        Debug.Log("Difficulties unlocked: " + unlockedDifficulties);
+
+        return unlockedDifficulties;
+    }
+
+    public void DeleteSave()
+    {
+        PlayerPrefs.DeleteKey("UnlockedDifficulties");
     }
 
     public void BuyUpgrade(Upgrade upgrade)

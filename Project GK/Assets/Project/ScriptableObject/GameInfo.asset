@@ -12,36 +12,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0139fb3ee256b39428ff431d90dfab58, type: 3}
   m_Name: GameInfo
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
-  selectedDifficulty: {fileID: 0}
+  difficulties:
+  - {fileID: 11400000, guid: 33277eed8885e854e9da4bed42d4e54b, type: 2}
+  - {fileID: 11400000, guid: 9a730370407a1fd4585c68e36b9dbd7e, type: 2}
+  - {fileID: 11400000, guid: aa422af36e6136047bc98b183d01d97f, type: 2}
+  selectedDifficulty: {fileID: 11400000, guid: 33277eed8885e854e9da4bed42d4e54b, type: 2}
+  unlockedDifficulties: 1
   baseMaxHealth: 100
   baseRepelMoneyReward: 20
   baseCatchMoneyReward: 25
   baseCatchHealPercentage: 10
-  baseMoneyMultiplierIncrease: 0.1
+  baseMoneyMultiplierIncrease: 0.2
   baseGoalAreaSize: 0.5
   baseCatchAreaPercentage: 10
   speedIncreasePercentagePerDifficulty: 20
   baseForgivingRepelRadius: 0.5
   playerSaveTime: 0.3
-  playerSaveCooldown: 0.5
+  playerSaveCooldown: 0.4
   stadiumAmount: 5
   levelsPerStadium: 3
   shotsPerLevel: 5
-  maxHealth: 1742
+  maxHealth: 100
   repelMoneyReward: 20
   catchMoneyReward: 25
   catchHealPercentage: 10
-  moneyMultiplierIncrease: 0.1
+  moneyMultiplierIncrease: 0.2
   goalAreaSize: 0.5
   catchAreaPercentage: 10
   difficultySpeedModifier: 1
   upgradeSpeedModifier: 1
   forgivingRepelRadius: 0.5
-  currentStadiumIndex: 3
-  currentStadiumLevel: 1
-  currentHealth: 1742
-  money: 254
-  combo: 8
-  moneyMultiplier: 1.7
+  currentStadiumIndex: 5
+  currentStadiumLevel: 3
+  currentHealth: 100
+  money: 138
+  combo: 5
+  moneyMultiplier: 1.8
   paused: 0
   upgradeManager: {fileID: 11400000, guid: 13bfe694d8b31804eb6b980cf14e6d8a, type: 2}
