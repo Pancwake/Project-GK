@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     CatchHandler catchHandler;
     BallShooter ballShooter;
     GameplayUIManager gameplayUIManager;
+    ScreenShakeHandler screenShakeHandler;
 
     public GameInfo gameInfo;
 
@@ -32,6 +33,9 @@ public class GameManager : MonoBehaviour
         catchHandler = FindFirstObjectByType<CatchHandler>();
         ballShooter = FindFirstObjectByType<BallShooter>();
         gameplayUIManager = FindFirstObjectByType<GameplayUIManager>();
+        screenShakeHandler = GetComponent<ScreenShakeHandler>();
+
+        Time.timeScale = 1f;
 
         ResetStats();
 
@@ -62,6 +66,8 @@ public class GameManager : MonoBehaviour
 
     public void CatchBall()
     {
+        screenShakeHandler.CatchShake();
+
         Debug.Log("Ball caught");
         SoundManager.Instance.PlaySFXFromList(SoundManager.Instance.catchSFX);
         ChangeHealthPercentage(gameInfo.catchHealPercentage);
@@ -78,6 +84,8 @@ public class GameManager : MonoBehaviour
 
     public void RepelBall()
     {
+        screenShakeHandler.RepelShake();
+
         Debug.Log("Ball repelled");
         SoundManager.Instance.PlaySFXFromList(SoundManager.Instance.repelSFX);
         AddPoints(gameInfo.repelMoneyReward);
@@ -89,6 +97,8 @@ public class GameManager : MonoBehaviour
 
     public void Goal()
     {
+        screenShakeHandler.GoalShake();
+
         Debug.Log("Goal");
         ChangeHealth(damageForGoal);
         gameInfo.combo = 0;
