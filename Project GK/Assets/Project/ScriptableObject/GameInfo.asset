@@ -17,7 +17,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9a730370407a1fd4585c68e36b9dbd7e, type: 2}
   - {fileID: 11400000, guid: aa422af36e6136047bc98b183d01d97f, type: 2}
   selectedDifficulty: {fileID: 11400000, guid: 33277eed8885e854e9da4bed42d4e54b, type: 2}
-  unlockedDifficulties: 1
+  unlockedDifficulties: 0
   baseMaxHealth: 100
   baseRepelMoneyReward: 20
   baseCatchMoneyReward: 25
@@ -27,7 +27,7 @@ MonoBehaviour:
   baseCatchAreaPercentage: 10
   speedIncreasePercentagePerDifficulty: 20
   baseForgivingRepelRadius: 0.5
-  playerSaveTime: 0.3
+  playerSaveTime: 0.1
   playerSaveCooldown: 0.4
   stadiumAmount: 5
   levelsPerStadium: 3
@@ -42,11 +42,11 @@ MonoBehaviour:
   difficultySpeedModifier: 1
   upgradeSpeedModifier: 1
   forgivingRepelRadius: 0.5
-  currentStadiumIndex: 5
-  currentStadiumLevel: 3
+  currentStadiumIndex: 1
+  currentStadiumLevel: 1
   currentHealth: 100
-  money: 138
-  combo: 5
-  moneyMultiplier: 1.8
-  paused: 0
+  money: 71
+  combo: 3
+  moneyMultiplier: 1.4
+  paused: 1
   upgradeManager: {fileID: 11400000, guid: 13bfe694d8b31804eb6b980cf14e6d8a, type: 2}
