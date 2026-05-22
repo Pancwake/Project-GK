@@ -48,6 +48,8 @@ public class MainMenuManager : MonoBehaviour
 
         lastSelectedDifficulty = 0;
         difficultyDropDown.value = 0;
+
+        MusicManager.Instance.PlayMusic(MusicManager.Instance.mainMenuMusic);
     }
 
     // Update is called once per frame
@@ -82,6 +84,8 @@ public class MainMenuManager : MonoBehaviour
 
     public void StartGame()
     {
+        MusicManager.Instance.StopMusic();
+
         gameInfo.ResetStats();
 
         LevelManager.Instance.LoadStadium();

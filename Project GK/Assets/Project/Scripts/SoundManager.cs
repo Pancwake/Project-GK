@@ -17,29 +17,26 @@ public class SoundManager : MonoBehaviour
         Instance = this;
 
         DontDestroyOnLoad(gameObject);
+
+        SFXSource = GetComponent<AudioSource>();
     }
 
-    [SerializeField] AudioSource MusicSource;
-    [SerializeField] AudioSource SFXSource;
+    [SerializeField] SettingsInfo settingsInfo;
 
+    AudioSource SFXSource;
+
+    [Header("Sound Effects")]
     [SerializeField] public List<AudioClip> repelSFX;
     [SerializeField] public List<AudioClip> catchSFX;
 
-    void Start()
+    public void UpdateVolume()
     {
-        
-    }
-
-    void Update()
-    {
-        
+        SFXSource.volume = (settingsInfo.soundVolume * settingsInfo.masterVolume);
     }
 
     public void PlaySFXFromList(List<AudioClip> clips)
     {
         int rng = Random.Range(0, clips.Count);
-        //SFXSource.clip = clips[rng];
-        //SFXSource.Play();
         SFXSource.PlayOneShot(clips[rng]);
     }
 }

@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8056080605016515009}
-  - component: {fileID: 8665510310322153709}
+  - component: {fileID: 57352588206177694}
   - component: {fileID: 3480409563913935658}
   m_Layer: 0
-  m_Name: SoundManager
+  m_Name: MusicManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +33,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8665510310322153709
+--- !u!114 &57352588206177694
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,14 +42,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2902835124033857108}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c91327fe57dd1e4d80444c09233875d, type: 3}
+  m_Script: {fileID: 11500000, guid: 3051ec6bacb39f8439ef66deb4d8809a, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SoundManager
+  m_EditorClassIdentifier: Assembly-CSharp::MusicManager
   settingsInfo: {fileID: 11400000, guid: a7c2c0aedb66a434bb673c494c7b636a, type: 2}
-  repelSFX:
-  - {fileID: 8300000, guid: 000f18ce2d1686b4baa76ff1751e3b3a, type: 3}
-  catchSFX:
-  - {fileID: 8300000, guid: 3fc66e9c9a328214c854359c5e2b85ae, type: 3}
+  mainMenuMusic: {fileID: 8300000, guid: 37990a68286132d448113713d9b10b1d, type: 3}
 --- !u!82 &3480409563913935658
 AudioSource:
   m_ObjectHideFlags: 0
@@ -65,7 +62,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
