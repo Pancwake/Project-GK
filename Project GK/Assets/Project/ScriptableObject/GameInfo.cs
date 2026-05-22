@@ -92,7 +92,6 @@ public class GameInfo : ScriptableObject
         //Current = 0, unlocked = 1 (If win 0 but 1 already unlocked, do nothing)
         if (currentDifficultyIndex == unlockedDifficulties)
         {
-            Debug.Log("Unlock next difficulty!");
             unlockedDifficulties += 1;
             PlayerPrefs.SetInt("UnlockedDifficulties", unlockedDifficulties);
             PlayerPrefs.Save();
@@ -103,7 +102,6 @@ public class GameInfo : ScriptableObject
     {
         int difficultyCount = difficulties.Count - 1;
 
-        Debug.Log("Unlocked all difficulties!");
         PlayerPrefs.SetInt("UnlockedDifficulties", difficultyCount);
         PlayerPrefs.Save();
     }
@@ -111,8 +109,6 @@ public class GameInfo : ScriptableObject
     public int GetUnlockedDifficulties()
     {
         unlockedDifficulties = PlayerPrefs.GetInt("UnlockedDifficulties", 0);
-
-        Debug.Log("Difficulties unlocked: " + unlockedDifficulties);
 
         return unlockedDifficulties;
     }

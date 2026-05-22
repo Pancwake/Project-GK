@@ -138,12 +138,6 @@ public class OptionsManager : MonoBehaviour
         displayModeDropdown.RefreshShownValue();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void ExitOptions()
     {
         PlayerPrefs.Save(); //Save settings on option exit

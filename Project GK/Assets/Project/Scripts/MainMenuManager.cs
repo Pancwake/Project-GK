@@ -11,6 +11,7 @@ public class MainMenuManager : MonoBehaviour
 
     [SerializeField] GameObject MainMenu;
     [SerializeField] GameObject OptionsMenu;
+    [SerializeField] GameObject CreditsMenu;
     [SerializeField] TMP_Dropdown difficultyDropDown;
     [SerializeField] GameObject cheatText;
     [SerializeField] float cheatTextTime = 1f;
@@ -138,13 +139,22 @@ public class MainMenuManager : MonoBehaviour
     public void OpenOptions()
     {
         MainMenu.SetActive(false);
+        CreditsMenu.SetActive(false);
         OptionsMenu.SetActive(true);
     }
 
     public void OpenMainMenu()
     {
         OptionsMenu.SetActive(false);
+        CreditsMenu.SetActive(false);
         MainMenu.SetActive(true);
+    }
+
+    public void OpenCreditsMenu()
+    {
+        MainMenu.SetActive(false);
+        OptionsMenu.SetActive(false);
+        CreditsMenu.SetActive(true);
     }
 
     //Update difficulties if save was deleted
@@ -159,5 +169,10 @@ public class MainMenuManager : MonoBehaviour
     public void DeleteSave()
     {
         gameInfo.DeleteSave();
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 }
