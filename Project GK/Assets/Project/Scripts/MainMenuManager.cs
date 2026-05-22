@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -11,7 +12,25 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] GameObject MainMenu;
     [SerializeField] GameObject OptionsMenu;
     [SerializeField] TMP_Dropdown difficultyDropDown;
+    [SerializeField] GameObject cheatText;
+    [SerializeField] float cheatTextTime = 1f;
 
+    List<KeyCode> konamiCode = new List<KeyCode>
+        {
+            KeyCode.UpArrow,
+            KeyCode.UpArrow,
+            KeyCode.DownArrow,
+            KeyCode.DownArrow,
+            KeyCode.LeftArrow,
+            KeyCode.RightArrow,
+            KeyCode.LeftArrow,
+            KeyCode.RightArrow,
+            KeyCode.B,
+            KeyCode.A,
+            KeyCode.Return
+        };
+
+    int currentKonamiCodeIndex = 0;
 
     public List<string> difficultyNames;
 
@@ -21,6 +40,8 @@ public class MainMenuManager : MonoBehaviour
     void Start()
     {
         Cursor.visible = true;
+
+        cheatText.SetActive(false);
 
         UpdateDifficulties();
         OpenMainMenu();
@@ -32,7 +53,31 @@ public class MainMenuManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(konamiCode[currentKonamiCodeIndex]))
+        {
+            currentKonamiCodeIndex++;
+
+            if (currentKonamiCodeIndex == konamiCode.Count)
+            {
+                currentKonamiCodeIndex = 0;
+                gameInfo.UnlockAllDifficulties();
+                UpdateDifficulties();
+
+                cheatText.SetActive(true);
+                StartCoroutine(cheatTextDisappearance());
+            }
+        }
+        else if (Input.anyKeyDown)
+        {
+            currentKonamiCodeIndex = 0;
+        }
+    }
+
+    IEnumerator cheatTextDisappearance()
+    {
+        yield return new WaitForSeconds(cheatTextTime);
+
+        cheatText.SetActive(false);
     }
 
     public void StartGame()

@@ -99,6 +99,15 @@ public class GameInfo : ScriptableObject
         }
     }
 
+    public void UnlockAllDifficulties()
+    {
+        int difficultyCount = difficulties.Count - 1;
+
+        Debug.Log("Unlocked all difficulties!");
+        PlayerPrefs.SetInt("UnlockedDifficulties", difficultyCount);
+        PlayerPrefs.Save();
+    }
+
     public int GetUnlockedDifficulties()
     {
         unlockedDifficulties = PlayerPrefs.GetInt("UnlockedDifficulties", 0);
