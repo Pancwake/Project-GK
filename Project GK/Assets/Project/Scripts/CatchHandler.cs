@@ -240,7 +240,11 @@ public class CatchHandler : MonoBehaviour
 
         ballHeld = false;
         ResetShot();
-        ball.GetComponent<BallScript>().DestroyBall();
+
+        if (ball != null)
+        {
+            ball.GetComponent<BallScript>().DestroyBall();
+        }   
     }
 
     void RepelBall()

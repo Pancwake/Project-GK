@@ -1,9 +1,11 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
+using static UnityEngine.Rendering.DebugUI;
 
 public class OptionsManager : MonoBehaviour
 {
@@ -45,7 +47,8 @@ public class OptionsManager : MonoBehaviour
         PopulateDisplayModeDropdown();
 
         ShowDeletionButton();
-        SetSettings();
+        SetValues();
+        ApplyAllSettings();
     }
 
     void PopulateResolutionDropdown()
@@ -145,15 +148,47 @@ public class OptionsManager : MonoBehaviour
         ShowDeletionButton();
     }
 
-    void SetSettings()
+    void SetValues()
     {
-        resolutionDropdown.value = PlayerPrefs.GetInt("ResolutionIndex", 1);
-        displayModeDropdown.value = PlayerPrefs.GetInt("DisplayModeIndex", 1);
-        screenShakeSlider.value = PlayerPrefs.GetFloat("ScreenShake", 1);
+        resolutionDropdown.SetValueWithoutNotify(PlayerPrefs.GetInt("ResolutionIndex", 1));
+        displayModeDropdown.SetValueWithoutNotify(PlayerPrefs.GetInt("DisplayModeIndex", 1));
+        screenShakeSlider.SetValueWithoutNotify(PlayerPrefs.GetFloat("ScreenShake", 1));
 
-        masterVolumeSlider.value = PlayerPrefs.GetFloat("MasterVolume", 1);
-        musicVolumeSlider.value = PlayerPrefs.GetFloat("MusicVolume", 1);
-        soundVolumeSlider.value = PlayerPrefs.GetFloat("SoundVolume", 1);
+        masterVolumeSlider.SetValueWithoutNotify(PlayerPrefs.GetFloat("MasterVolume", 1));
+        musicVolumeSlider.SetValueWithoutNotify(PlayerPrefs.GetFloat("MusicVolume", 1));
+        soundVolumeSlider.SetValueWithoutNotify(PlayerPrefs.GetFloat("SoundVolume", 1));
+    }
+
+    void ApplyAllSettings()
+    {
+        //Resolution and displayMode
+        int resolutionIndex = PlayerPrefs.GetInt("ResolutionIndex", 1);
+        Resolution resolution = filteredResolutions[resolutionIndex];
+
+        //Get displayMode
+        int displayModeIndex = PlayerPrefs.GetInt("DisplayModeIndex", 1);
+        FullScreenMode displayMode = displayModes[displayModeIndex];
+
+        Screen.SetResolution(resolution.width, resolution.height, displayMode);
+
+        //Screen shake
+        float screenShakeValue = PlayerPrefs.GetFloat("ScreenShake", 1);
+        settingsInfo.screenShake = screenShakeValue;
+
+        //Master volume
+        float masterVolumeValue = PlayerPrefs.GetFloat("MasterVolume", 1);
+        settingsInfo.masterVolume = masterVolumeValue;
+
+        //Music volume
+        float musicVolumeValue = PlayerPrefs.GetFloat("MusicVolume", 1);
+        settingsInfo.musicVolume = musicVolumeValue;
+
+        //Sound volume
+        float soundVolumeValue = PlayerPrefs.GetFloat("SoundVolume", 1);
+        settingsInfo.soundVolume = soundVolumeValue;
+
+        MusicManager.Instance.UpdateVolume();
+        SoundManager.Instance.UpdateVolume();
     }
 
     #region video

@@ -188,9 +188,12 @@ public class BallShooter : MonoBehaviour
     {
         yield return new WaitForSeconds(failSafeTimer);
 
-        spawnedBall.GetComponent<BallScript>().DestroyBall();
-        ResetShoot();
-        GameManager.Instance.FailSafe();
+        if (spawnedBall != null )
+        {
+            spawnedBall.GetComponent<BallScript>().DestroyBall();
+            ResetShoot();
+            GameManager.Instance.FailSafe();
+        }
     }
 
     public void ResetShoot()
