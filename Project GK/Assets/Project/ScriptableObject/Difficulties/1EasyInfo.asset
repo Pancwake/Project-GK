@@ -18,7 +18,7 @@ MonoBehaviour:
   baseCatchHealPercentage: 10
   baseMoneyMultiplierIncrease: 0.2
   baseGoalAreaSize: 0.5
-  baseCatchAreaPercentage: 10
+  baseCatchAreaPercentage: 20
   speedIncreasePercentagePerDifficulty: 20
   baseForgivingRepelRadius: 0.5
   playerSaveTime: 0.1

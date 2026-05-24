@@ -24,6 +24,11 @@ public class BallScript : MonoBehaviour
 
     [SerializeField] GameObject ballMesh;
 
+    //sounds
+    bool playedHitFloorSFX;
+    bool playedGoalSFX;
+    bool playedWindSFX;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -125,10 +130,62 @@ public class BallScript : MonoBehaviour
     {
         if (repelled)
         {
-            if (collision.transform.CompareTag("Floor"))
+            if (collision.transform.CompareTag("Grass"))
             {
+                if (!playedHitFloorSFX)
+                {
+                    SoundManager.Instance.PlaySFXFromList(SoundManager.Instance.grassSFX);
+                    playedHitFloorSFX = true;
+                }
+                
                 StartDespawn(); //Only start despawn after hitting the ground
-            }  
-        } 
+            }
+            else if (collision.transform.CompareTag("Asphalt"))
+            {
+                if (!playedHitFloorSFX)
+                {
+                    SoundManager.Instance.PlaySFXFromList(SoundManager.Instance.asphaltSFX);
+                    playedHitFloorSFX = true;
+                }
+            }
+        }
+        else if (collision.transform.CompareTag("Grass"))
+        {
+            if (!playedHitFloorSFX)
+            {
+                SoundManager.Instance.PlaySFXFromList(SoundManager.Instance.grassSFX);
+                playedHitFloorSFX = true;
+            }
+        }
+        else if (collision.transform.CompareTag("Asphalt"))
+        {
+            if (!playedHitFloorSFX)
+            {
+                SoundManager.Instance.PlaySFXFromList(SoundManager.Instance.asphaltSFX);
+                playedHitFloorSFX = true;
+            }
+        }
+        else if (collision.transform.CompareTag("Goal"))
+        {
+            if (!playedGoalSFX)
+            {
+                SoundManager.Instance.PlaySFXFromList(SoundManager.Instance.goalSFX);
+                playedGoalSFX = true;
+            }
+            
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.transform.CompareTag("Goal"))
+        {
+            if (!playedWindSFX)
+            {
+                SoundManager.Instance.PlaySFXFromList(SoundManager.Instance.windSFX);
+                playedWindSFX = true;
+            }
+            
+        }
     }
 }

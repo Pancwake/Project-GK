@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7996230378409609782}
   m_Layer: 0
   m_Name: Bar
-  m_TagString: Untagged
+  m_TagString: Goal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49,7 +49,7 @@ GameObject:
   - component: {fileID: 93405236771694977}
   m_Layer: 0
   m_Name: CatchArea
-  m_TagString: Untagged
+  m_TagString: Goal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -171,7 +171,7 @@ GameObject:
   - component: {fileID: 2176896892104417525}
   m_Layer: 0
   m_Name: Goal
-  m_TagString: Untagged
+  m_TagString: Goal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -184,7 +184,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 611960104634526696}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.0000002533197, z: -0, w: -1}
+  m_LocalRotation: {x: 0, y: 0, z: -0, w: -1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -219,7 +219,7 @@ GameObject:
   - component: {fileID: 4629406493122755287}
   m_Layer: 0
   m_Name: CatchAreaRoot
-  m_TagString: Untagged
+  m_TagString: Goal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -252,7 +252,7 @@ GameObject:
   - component: {fileID: 1860953730963992852}
   m_Layer: 0
   m_Name: CatchAreaVisual
-  m_TagString: Untagged
+  m_TagString: Goal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -287,7 +287,7 @@ GameObject:
   - component: {fileID: 3092803200979295232}
   m_Layer: 0
   m_Name: Cube (2)
-  m_TagString: Untagged
+  m_TagString: Goal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -399,7 +399,7 @@ GameObject:
   - component: {fileID: 8642734684779774755}
   m_Layer: 0
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: Goal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -511,7 +511,7 @@ GameObject:
   - component: {fileID: 2610509352464661973}
   m_Layer: 0
   m_Name: PossibleShootPositions
-  m_TagString: Untagged
+  m_TagString: Goal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -623,7 +623,7 @@ GameObject:
   - component: {fileID: 9213140594653253331}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Goal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -736,7 +736,7 @@ GameObject:
   - component: {fileID: 833656895922520096}
   m_Layer: 0
   m_Name: GoalMouth
-  m_TagString: Untagged
+  m_TagString: Goal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -903,6 +903,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GoalCollission
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 617c16a053850044c997124593e2d6b6, type: 3}
+      propertyPath: m_TagString
+      value: Goal
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -999,6 +1003,14 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 1b2991e2d6197e5489386eb8e24610aa, type: 2}
+    - target: {fileID: -4531697456006879905, guid: 1d37b513a77e07c49b81eef08cdd635c, type: 3}
+      propertyPath: m_TagString
+      value: Goal
+      objectReference: {fileID: 0}
+    - target: {fileID: -2854287886412019295, guid: 1d37b513a77e07c49b81eef08cdd635c, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1b2991e2d6197e5489386eb8e24610aa, type: 2}
     - target: {fileID: -1806680513116206669, guid: 1d37b513a77e07c49b81eef08cdd635c, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -1023,8 +1035,20 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: bc2b627e24e1b3c44b91fff12e4af2f8, type: 2}
+    - target: {fileID: -261800541303201763, guid: 1d37b513a77e07c49b81eef08cdd635c, type: 3}
+      propertyPath: m_TagString
+      value: Goal
+      objectReference: {fileID: 0}
+    - target: {fileID: -74727802449553687, guid: 1d37b513a77e07c49b81eef08cdd635c, type: 3}
+      propertyPath: 'm_Materials.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d796e2d0385500944abde051cc0d519b, type: 2}
     - target: {fileID: 919132149155446097, guid: 1d37b513a77e07c49b81eef08cdd635c, type: 3}
       propertyPath: m_Name
+      value: Goal
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1d37b513a77e07c49b81eef08cdd635c, type: 3}
+      propertyPath: m_TagString
       value: Goal
       objectReference: {fileID: 0}
     - target: {fileID: 1180609491110669565, guid: 1d37b513a77e07c49b81eef08cdd635c, type: 3}
@@ -1035,6 +1059,22 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[3]'
       value: 
       objectReference: {fileID: 2100000, guid: d796e2d0385500944abde051cc0d519b, type: 2}
+    - target: {fileID: 1690452839780571734, guid: 1d37b513a77e07c49b81eef08cdd635c, type: 3}
+      propertyPath: m_TagString
+      value: Goal
+      objectReference: {fileID: 0}
+    - target: {fileID: 3332853380541173807, guid: 1d37b513a77e07c49b81eef08cdd635c, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: bc2b627e24e1b3c44b91fff12e4af2f8, type: 2}
+    - target: {fileID: 4408418536448387045, guid: 1d37b513a77e07c49b81eef08cdd635c, type: 3}
+      propertyPath: m_TagString
+      value: Goal
+      objectReference: {fileID: 0}
+    - target: {fileID: 7442209758544110599, guid: 1d37b513a77e07c49b81eef08cdd635c, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1b2991e2d6197e5489386eb8e24610aa, type: 2}
     m_RemovedComponents:
     - {fileID: -1806680513116206669, guid: 1d37b513a77e07c49b81eef08cdd635c, type: 3}
     - {fileID: -6093592463355912122, guid: 1d37b513a77e07c49b81eef08cdd635c, type: 3}
@@ -1106,6 +1146,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 18969dcd5542497458de4e49f8ba9e8f, type: 3}
       propertyPath: m_Name
       value: CatchArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 18969dcd5542497458de4e49f8ba9e8f, type: 3}
+      propertyPath: m_TagString
+      value: Goal
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

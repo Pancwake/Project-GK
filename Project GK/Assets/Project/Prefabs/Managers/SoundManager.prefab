@@ -46,10 +46,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundManager
   settingsInfo: {fileID: 11400000, guid: a7c2c0aedb66a434bb673c494c7b636a, type: 2}
-  repelSFX:
-  - {fileID: 8300000, guid: 000f18ce2d1686b4baa76ff1751e3b3a, type: 3}
   catchSFX:
   - {fileID: 8300000, guid: 3fc66e9c9a328214c854359c5e2b85ae, type: 3}
+  repelSFX:
+  - {fileID: 8300000, guid: 000f18ce2d1686b4baa76ff1751e3b3a, type: 3}
+  goalSFX:
+  - {fileID: 8300000, guid: 8844e9e42f720e94eba08c9c82ca64e1, type: 3}
+  - {fileID: 8300000, guid: 4c9c9d2ea543e5c45b28c89e4bd54521, type: 3}
+  - {fileID: 8300000, guid: 3506bfd9a8a297348a99064fb77dd413, type: 3}
+  windSFX:
+  - {fileID: 8300000, guid: 2a42aaadd31eea2408e2b5cb9038dd97, type: 3}
+  - {fileID: 8300000, guid: 020d00e7033ce4243aa014455d5518a2, type: 3}
+  - {fileID: 8300000, guid: de75e0bbfd3253842863b41368610ba3, type: 3}
+  kickSFX:
+  - {fileID: 8300000, guid: 6a3b2baf43dd6c849afd263bd850500d, type: 3}
+  - {fileID: 8300000, guid: 131048d17d7f8ac4e87490c0fc846348, type: 3}
+  - {fileID: 8300000, guid: 8404d76fad2b2054fbd3f747e0374e9e, type: 3}
+  grassSFX:
+  - {fileID: 8300000, guid: 33019fd3eed7a4944ad56077f2424a73, type: 3}
+  - {fileID: 8300000, guid: 7e3f7487f2b66b74ebf15bdf1a589b91, type: 3}
 --- !u!82 &3480409563913935658
 AudioSource:
   m_ObjectHideFlags: 0

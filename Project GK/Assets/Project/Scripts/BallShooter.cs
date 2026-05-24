@@ -109,6 +109,8 @@ public class BallShooter : MonoBehaviour
         float arcSpeedMultiplier = 1f / (1f + arcHeight * arcSpeedFalloff);
         shootSpeed *= arcSpeedMultiplier;
 
+        SoundManager.Instance.PlaySFXFromList(SoundManager.Instance.kickSFX);
+
         ApplySpin(curveDirection, arcHeight, shootSpeed, ballSpawnPos.position, target);
 
         shootScript.StartShoot(spawnedBall, target, shootSpeed, curveStrength, arcHeight, curveDirection);

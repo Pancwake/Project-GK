@@ -18,7 +18,7 @@ public class CatchAreaScript : MonoBehaviour
     {
         if (other.CompareTag("Ball"))
         {
-            other.GetComponent<BallScript>().SetCatchable(true);
+            //other.GetComponent<BallScript>().SetCatchable(true);
         }
     }
 
@@ -26,7 +26,7 @@ public class CatchAreaScript : MonoBehaviour
     {
         if (other.CompareTag("Ball"))
         {
-            other.GetComponent<BallScript>().SetCatchable(false);
+            //other.GetComponent<BallScript>().SetCatchable(false);
         }
     }
 }

@@ -26,8 +26,13 @@ public class SoundManager : MonoBehaviour
     AudioSource SFXSource;
 
     [Header("Sound Effects")]
-    [SerializeField] public List<AudioClip> repelSFX;
     [SerializeField] public List<AudioClip> catchSFX;
+    [SerializeField] public List<AudioClip> repelSFX;
+    [SerializeField] public List<AudioClip> goalSFX;
+    [SerializeField] public List<AudioClip> windSFX;
+    [SerializeField] public List<AudioClip> kickSFX;
+    [SerializeField] public List<AudioClip> grassSFX;
+    [SerializeField] public List<AudioClip> asphaltSFX;
 
     public void UpdateVolume()
     {
@@ -37,6 +42,8 @@ public class SoundManager : MonoBehaviour
     public void PlaySFXFromList(List<AudioClip> clips)
     {
         int rng = Random.Range(0, clips.Count);
+
+        Debug.Log("Play sound: " + clips[rng]);
         SFXSource.PlayOneShot(clips[rng]);
     }
 }
