@@ -203,6 +203,7 @@ public class CatchHandler : MonoBehaviour
     {
         ballHeld = true;
         ball.GetComponent<BallScript>().StopInteraction();
+        ball.GetComponentInChildren<MeshRenderer>().enabled = false; //Hide actual ball and show fake ball
         SpawnCatchHands();
         StartCoroutine(LetGoOfBall());
 
