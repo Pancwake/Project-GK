@@ -73,7 +73,7 @@ public class CustomCursorHandler : MonoBehaviour
 
         cursorMiddle.localScale = new Vector3(scaleX, scaleY, 1f);
 
-        PlaceEdgeVisualizers();
+        //PlaceEdgeVisualizers();
     }
 
     void PlaceEdgeVisualizers()
