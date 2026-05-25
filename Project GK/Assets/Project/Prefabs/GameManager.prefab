@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5296393990688364991}
   - component: {fileID: 4239324465548530973}
+  - component: {fileID: 4852933478466376941}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -44,4 +45,61 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471ce52763ae4594f8a296f45bb3a68f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  playerStats: {fileID: 11400000, guid: f0576d067313aa74d8267a9f5e449dd1, type: 2}
+  gameInfo: {fileID: 11400000, guid: f0576d067313aa74d8267a9f5e449dd1, type: 2}
+  currentShot: 0
+  damageForGoal: -10
+  timeBetweenShots: 1
+  levelOver: 0
+--- !u!114 &4852933478466376941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6692457457369078478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c020c27c4a7e6e54f95dd2eb9a009819, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScreenShakeHandler
+  settingsInfo: {fileID: 11400000, guid: a7c2c0aedb66a434bb673c494c7b636a, type: 2}
+  screenShakeDuration: 1
+  shakeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.12270275
+      outSlope: 0.12270275
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.15329342
+      value: 0.018809523
+      inSlope: -0.03162893
+      outSlope: -0.03162893
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.062234804
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -0.022214925
+      outSlope: -0.022214925
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  goalShakeModifier: 1
+  repelShakeModifier: 0.6
+  catchShakeModifier: 0.1
+  goalShakeTimeodifier: 1
+  repelShakeTimeModifier: 0.3
+  catchShakeTimeModifier: 0.2

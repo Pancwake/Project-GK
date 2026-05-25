@@ -36,7 +36,7 @@ public class ShootBase : MonoBehaviour
 
     public void Update()
     {
-        if (!shooting) 
+        if (!shooting || ball.GetComponent<BallScript>().ballInteractable == false) 
             return;
 
         ball.transform.position = Bezier(t, startPos, controlA, controlB, targetPos);

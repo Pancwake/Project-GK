@@ -824,82 +824,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8665510310322153709, guid: ccb62b535b265124f8892c438517771a, type: 3}
-      propertyPath: catchSFX.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8665510310322153709, guid: ccb62b535b265124f8892c438517771a, type: 3}
-      propertyPath: grassSFX.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8665510310322153709, guid: ccb62b535b265124f8892c438517771a, type: 3}
-      propertyPath: repelSFX.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8665510310322153709, guid: ccb62b535b265124f8892c438517771a, type: 3}
-      propertyPath: asphaltSFX.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8665510310322153709, guid: ccb62b535b265124f8892c438517771a, type: 3}
-      propertyPath: 'goalSFX.Array.data[0]'
-      value: 
-      objectReference: {fileID: 8300000, guid: 70a9678a56be2d44882c1c788887d8eb, type: 3}
-    - target: {fileID: 8665510310322153709, guid: ccb62b535b265124f8892c438517771a, type: 3}
-      propertyPath: 'goalSFX.Array.data[1]'
-      value: 
-      objectReference: {fileID: 8300000, guid: a470706526380fb45bea90d373e2425b, type: 3}
-    - target: {fileID: 8665510310322153709, guid: ccb62b535b265124f8892c438517771a, type: 3}
-      propertyPath: 'goalSFX.Array.data[2]'
-      value: 
-      objectReference: {fileID: 8300000, guid: bfafd514aacccae46a91af99a075ad45, type: 3}
-    - target: {fileID: 8665510310322153709, guid: ccb62b535b265124f8892c438517771a, type: 3}
-      propertyPath: 'catchSFX.Array.data[0]'
-      value: 
-      objectReference: {fileID: 8300000, guid: ad6b5ac6f8809b44c8196d113dc0b7b7, type: 3}
-    - target: {fileID: 8665510310322153709, guid: ccb62b535b265124f8892c438517771a, type: 3}
-      propertyPath: 'catchSFX.Array.data[1]'
-      value: 
-      objectReference: {fileID: 8300000, guid: cf6ea769a05d76349b8e3630ab3cd35b, type: 3}
-    - target: {fileID: 8665510310322153709, guid: ccb62b535b265124f8892c438517771a, type: 3}
-      propertyPath: 'catchSFX.Array.data[2]'
-      value: 
-      objectReference: {fileID: 8300000, guid: ab5620f7575955147b247119e0636eda, type: 3}
-    - target: {fileID: 8665510310322153709, guid: ccb62b535b265124f8892c438517771a, type: 3}
-      propertyPath: 'grassSFX.Array.data[0]'
-      value: 
-      objectReference: {fileID: 8300000, guid: b4f3c08718f76e64f97c4984b0b5a725, type: 3}
-    - target: {fileID: 8665510310322153709, guid: ccb62b535b265124f8892c438517771a, type: 3}
-      propertyPath: 'grassSFX.Array.data[1]'
-      value: 
-      objectReference: {fileID: 8300000, guid: 940d0b2a57916ba42a161e16f84dfdb1, type: 3}
-    - target: {fileID: 8665510310322153709, guid: ccb62b535b265124f8892c438517771a, type: 3}
-      propertyPath: 'grassSFX.Array.data[2]'
-      value: 
-      objectReference: {fileID: 8300000, guid: 11ebd09857435cf4d91cbf67cfce5ace, type: 3}
-    - target: {fileID: 8665510310322153709, guid: ccb62b535b265124f8892c438517771a, type: 3}
-      propertyPath: 'repelSFX.Array.data[0]'
-      value: 
-      objectReference: {fileID: 8300000, guid: 03ac92e3d4aec884d81291f4cf667f8f, type: 3}
-    - target: {fileID: 8665510310322153709, guid: ccb62b535b265124f8892c438517771a, type: 3}
-      propertyPath: 'repelSFX.Array.data[1]'
-      value: 
-      objectReference: {fileID: 8300000, guid: 489bab2a27c0ead439d7a70099d472fa, type: 3}
-    - target: {fileID: 8665510310322153709, guid: ccb62b535b265124f8892c438517771a, type: 3}
-      propertyPath: 'repelSFX.Array.data[2]'
-      value: 
-      objectReference: {fileID: 8300000, guid: ea7ebbcfd84e7744986a357f9073b5bd, type: 3}
-    - target: {fileID: 8665510310322153709, guid: ccb62b535b265124f8892c438517771a, type: 3}
-      propertyPath: 'asphaltSFX.Array.data[0]'
-      value: 
-      objectReference: {fileID: 8300000, guid: d0a494d544934234186ca2d7f9a846c1, type: 3}
-    - target: {fileID: 8665510310322153709, guid: ccb62b535b265124f8892c438517771a, type: 3}
-      propertyPath: 'asphaltSFX.Array.data[1]'
-      value: 
-      objectReference: {fileID: 8300000, guid: 57b16642ffd517d4cb7843ead8235864, type: 3}
-    - target: {fileID: 8665510310322153709, guid: ccb62b535b265124f8892c438517771a, type: 3}
-      propertyPath: 'asphaltSFX.Array.data[2]'
-      value: 
-      objectReference: {fileID: 8300000, guid: 7d87e3573f377f74ebf8fed7d8d9919b, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -931,7 +855,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2276123073906544165, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
       propertyPath: baseShootSpeed
-      value: 15
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2276123073906544165, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
       propertyPath: arcSpeedFalloff
@@ -1116,33 +1040,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 93405236771694977, guid: 5c00b9feb32cb864fbd01f7b450b5200, type: 3}
-      propertyPath: m_Size.x
-      value: 0.99999964
-      objectReference: {fileID: 0}
-    - target: {fileID: 93405236771694977, guid: 5c00b9feb32cb864fbd01f7b450b5200, type: 3}
-      propertyPath: m_Size.z
-      value: 2.748786
-      objectReference: {fileID: 0}
-    - target: {fileID: 93405236771694977, guid: 5c00b9feb32cb864fbd01f7b450b5200, type: 3}
-      propertyPath: m_Center.x
-      value: 7.7560605e-16
-      objectReference: {fileID: 0}
-    - target: {fileID: 93405236771694977, guid: 5c00b9feb32cb864fbd01f7b450b5200, type: 3}
-      propertyPath: m_Center.z
-      value: 0.87439275
-      objectReference: {fileID: 0}
-    - target: {fileID: 549240839440682065, guid: 5c00b9feb32cb864fbd01f7b450b5200, type: 3}
-      propertyPath: m_Name
-      value: WindSoundArea
-      objectReference: {fileID: 0}
     - target: {fileID: 611960104634526696, guid: 5c00b9feb32cb864fbd01f7b450b5200, type: 3}
       propertyPath: m_Name
       value: Goal
-      objectReference: {fileID: 0}
-    - target: {fileID: 1342733851685526218, guid: 5c00b9feb32cb864fbd01f7b450b5200, type: 3}
-      propertyPath: m_Name
-      value: WindSoundAreaRoot
       objectReference: {fileID: 0}
     - target: {fileID: 7822215069374133063, guid: 5c00b9feb32cb864fbd01f7b450b5200, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1197,18 +1097,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4239324465548530973, guid: a9de5e443d749ac42a67e19c5b79f96c, type: 3}
-      propertyPath: gameInfo
-      value: 
-      objectReference: {fileID: 11400000, guid: f0576d067313aa74d8267a9f5e449dd1, type: 2}
-    - target: {fileID: 4239324465548530973, guid: a9de5e443d749ac42a67e19c5b79f96c, type: 3}
-      propertyPath: upgradeInfo
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4239324465548530973, guid: a9de5e443d749ac42a67e19c5b79f96c, type: 3}
-      propertyPath: damageForGoal
-      value: -10
-      objectReference: {fileID: 0}
     - target: {fileID: 5296393990688364991, guid: a9de5e443d749ac42a67e19c5b79f96c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.07044
@@ -1256,69 +1144,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6692457457369078478, guid: a9de5e443d749ac42a67e19c5b79f96c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7055052721594843228}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9de5e443d749ac42a67e19c5b79f96c, type: 3}
---- !u!1 &7055052721594843227 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6692457457369078478, guid: a9de5e443d749ac42a67e19c5b79f96c, type: 3}
-  m_PrefabInstance: {fileID: 7055052721594843226}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7055052721594843228
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7055052721594843227}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c020c27c4a7e6e54f95dd2eb9a009819, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ScreenShakeHandler
-  settingsInfo: {fileID: 11400000, guid: a7c2c0aedb66a434bb673c494c7b636a, type: 2}
-  screenShakeDuration: 1
-  shakeCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0.12270275
-      outSlope: 0.12270275
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.15329342
-      value: 0.018809523
-      inSlope: -0.03162893
-      outSlope: -0.03162893
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.062234804
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: -0.022214925
-      outSlope: -0.022214925
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  goalShakeModifier: 1
-  repelShakeModifier: 0.6
-  catchShakeModifier: 0.1
-  goalShakeTimeodifier: 1
-  repelShakeTimeModifier: 0.3
-  catchShakeTimeModifier: 0.2
 --- !u!1001 &7540670845381958364
 PrefabInstance:
   m_ObjectHideFlags: 0

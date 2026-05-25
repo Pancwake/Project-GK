@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 1065560915812826170}
   - component: {fileID: 93405236771694977}
   m_Layer: 0
-  m_Name: CatchArea
+  m_Name: WindSoundArea
   m_TagString: Goal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -157,8 +157,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.99999964, y: 1, z: 2.748786}
+  m_Center: {x: 7.7560605e-16, y: 0, z: 0.87439275}
 --- !u!1 &611960104634526696
 GameObject:
   m_ObjectHideFlags: 0
@@ -218,7 +218,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4629406493122755287}
   m_Layer: 0
-  m_Name: CatchAreaRoot
+  m_Name: WindSoundAreaRoot
   m_TagString: Goal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -21,5 +21,5 @@ MonoBehaviour:
   baseCatchAreaPercentage: 20
   speedIncreasePercentagePerDifficulty: 20
   baseForgivingRepelRadius: 0.5
-  playerSaveTime: 0.1
-  playerSaveCooldown: 0.4
+  playerSaveTime: 0.05
+  playerSaveCooldown: 0.5

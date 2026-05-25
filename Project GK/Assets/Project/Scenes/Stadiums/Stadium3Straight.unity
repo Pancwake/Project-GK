@@ -316,6 +316,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: -4522559835550113459, guid: 34c27844c661b834bb58f1a1e64d91a6, type: 3}
+      propertyPath: m_TagString
+      value: Grass
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 34c27844c661b834bb58f1a1e64d91a6, type: 3}
       propertyPath: m_Name
       value: Field
@@ -326,7 +330,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 34c27844c661b834bb58f1a1e64d91a6, type: 3}
       propertyPath: m_TagString
-      value: Floor
+      value: Grass
       objectReference: {fileID: 0}
     - target: {fileID: 3903562195959748615, guid: 34c27844c661b834bb58f1a1e64d91a6, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -335,6 +339,10 @@ PrefabInstance:
     - target: {fileID: 6909700029996896762, guid: 34c27844c661b834bb58f1a1e64d91a6, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6909700029996896762, guid: 34c27844c661b834bb58f1a1e64d91a6, type: 3}
+      propertyPath: m_TagString
+      value: Grass
       objectReference: {fileID: 0}
     - target: {fileID: 7177521023893003953, guid: 34c27844c661b834bb58f1a1e64d91a6, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -361,7 +369,7 @@ GameObject:
   - component: {fileID: 581872771}
   m_Layer: 7
   m_Name: Field
-  m_TagString: Floor
+  m_TagString: Grass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -666,7 +674,7 @@ GameObject:
   - component: {fileID: 1791713895}
   m_Layer: 7
   m_Name: Collission
-  m_TagString: Floor
+  m_TagString: Grass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -847,7 +855,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2276123073906544165, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
       propertyPath: baseShootSpeed
-      value: 15
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2276123073906544165, guid: 262616a0d082997459ec0a0a9228d52c, type: 3}
       propertyPath: maxSpinStrength

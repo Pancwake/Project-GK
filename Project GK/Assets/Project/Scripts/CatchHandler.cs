@@ -112,8 +112,9 @@ public class CatchHandler : MonoBehaviour
         Vector3 mousePos = Input.mousePosition;
         mousePos.z = 10f;
         mousePos = cam.ScreenToWorldPoint(mousePos);
+        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(cam.transform.position, mousePos - cam.transform.position, out hit, 100f, ballLayer)) //If ball hit
+        if (Physics.Raycast(ray, out hit, 100f, ballLayer)) //If ball hit
         {
             ball = hit.collider.gameObject;
             
@@ -157,9 +158,10 @@ public class CatchHandler : MonoBehaviour
         }
         else //If raycast didn't hit anything
         {
-            Vector3 direction = (mousePos - cam.transform.position).normalized;
+            Vector3 origin = ray.origin;
+            Vector3 direction = ray.direction;
 
-            if (Physics.BoxCast(cam.transform.position, Vector3.one * gameInfo.forgivingRepelRadius, direction, out hit, Quaternion.identity, 100f, ballLayer))
+            if (Physics.BoxCast(origin, Vector3.one * gameInfo.forgivingRepelRadius, direction, out hit, Quaternion.identity, 100f, ballLayer))
             {
                 ball = hit.collider.gameObject;
 
