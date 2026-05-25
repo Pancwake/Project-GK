@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BallScript : MonoBehaviour
@@ -28,6 +29,10 @@ public class BallScript : MonoBehaviour
     bool playedHitFloorSFX;
     bool playedGoalSFX;
     bool playedWindSFX;
+
+    [Header("Hit Floor Sound Speeds")]
+    [SerializeField] float minImpactSpeed = 1f;
+    [SerializeField] float maxImpactSpeed = 20f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -132,38 +137,21 @@ public class BallScript : MonoBehaviour
         {
             if (collision.transform.CompareTag("Grass"))
             {
-                if (!playedHitFloorSFX)
-                {
-                    SoundManager.Instance.PlaySFXFromList(SoundManager.Instance.grassSFX);
-                    playedHitFloorSFX = true;
-                }
-                
+                PlayHitGroundSound(EGroundType.Grass);
                 StartDespawn(); //Only start despawn after hitting the ground
             }
             else if (collision.transform.CompareTag("Asphalt"))
             {
-                if (!playedHitFloorSFX)
-                {
-                    SoundManager.Instance.PlaySFXFromList(SoundManager.Instance.asphaltSFX);
-                    playedHitFloorSFX = true;
-                }
+                PlayHitGroundSound(EGroundType.Asphalt);
             }
         }
         else if (collision.transform.CompareTag("Grass"))
         {
-            if (!playedHitFloorSFX)
-            {
-                SoundManager.Instance.PlaySFXFromList(SoundManager.Instance.grassSFX);
-                playedHitFloorSFX = true;
-            }
+            PlayHitGroundSound(EGroundType.Grass);
         }
         else if (collision.transform.CompareTag("Asphalt"))
         {
-            if (!playedHitFloorSFX)
-            {
-                SoundManager.Instance.PlaySFXFromList(SoundManager.Instance.asphaltSFX);
-                playedHitFloorSFX = true;
-            }
+            PlayHitGroundSound(EGroundType.Asphalt);
         }
         else if (collision.transform.CompareTag("Goal"))
         {
@@ -171,9 +159,32 @@ public class BallScript : MonoBehaviour
             {
                 SoundManager.Instance.PlaySFXFromList(SoundManager.Instance.goalSFX);
                 playedGoalSFX = true;
-            }
-            
+            }  
         }
+    }
+
+    void PlayHitGroundSound(EGroundType groundType)
+    {
+        if (playedHitFloorSFX) //Dont play floor sound twice
+            return;
+
+        float speed = rb.linearVelocity.magnitude;
+
+        Debug.Log("Impact speed: " + speed);
+
+        float volumeModifier = Mathf.InverseLerp(minImpactSpeed, maxImpactSpeed, speed);
+
+        switch (groundType)
+        {
+            case EGroundType.Asphalt:
+                SoundManager.Instance.PlaySFXFromList(SoundManager.Instance.asphaltSFX, volumeModifier);
+                break;
+            case EGroundType.Grass:
+                SoundManager.Instance.PlaySFXFromList(SoundManager.Instance.grassSFX, volumeModifier);
+                break;
+        }
+
+        playedHitFloorSFX = true;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -185,7 +196,12 @@ public class BallScript : MonoBehaviour
                 SoundManager.Instance.PlaySFXFromList(SoundManager.Instance.windSFX);
                 playedWindSFX = true;
             }
-            
         }
     }
+}
+
+public enum EGroundType
+{
+    Asphalt,
+    Grass
 }

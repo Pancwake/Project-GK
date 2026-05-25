@@ -86,8 +86,6 @@ public class CustomCursorHandler : MonoBehaviour
         Vector3 leftEdge = (-cursorMiddle.right) * halfHeight;
         Vector3 rightEdge = cursorMiddle.right * halfHeight;
 
-        Debug.Log("Height: " + halfHeight);
-
         cursorTop.transform.localPosition = topEdge;
         cursorBottom.transform.localPosition = bottomEdge;
         cursorLeft.transform.localPosition = leftEdge;

@@ -824,6 +824,82 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8665510310322153709, guid: ccb62b535b265124f8892c438517771a, type: 3}
+      propertyPath: catchSFX.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8665510310322153709, guid: ccb62b535b265124f8892c438517771a, type: 3}
+      propertyPath: grassSFX.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8665510310322153709, guid: ccb62b535b265124f8892c438517771a, type: 3}
+      propertyPath: repelSFX.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8665510310322153709, guid: ccb62b535b265124f8892c438517771a, type: 3}
+      propertyPath: asphaltSFX.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8665510310322153709, guid: ccb62b535b265124f8892c438517771a, type: 3}
+      propertyPath: 'goalSFX.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 70a9678a56be2d44882c1c788887d8eb, type: 3}
+    - target: {fileID: 8665510310322153709, guid: ccb62b535b265124f8892c438517771a, type: 3}
+      propertyPath: 'goalSFX.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: a470706526380fb45bea90d373e2425b, type: 3}
+    - target: {fileID: 8665510310322153709, guid: ccb62b535b265124f8892c438517771a, type: 3}
+      propertyPath: 'goalSFX.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8300000, guid: bfafd514aacccae46a91af99a075ad45, type: 3}
+    - target: {fileID: 8665510310322153709, guid: ccb62b535b265124f8892c438517771a, type: 3}
+      propertyPath: 'catchSFX.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: ad6b5ac6f8809b44c8196d113dc0b7b7, type: 3}
+    - target: {fileID: 8665510310322153709, guid: ccb62b535b265124f8892c438517771a, type: 3}
+      propertyPath: 'catchSFX.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: cf6ea769a05d76349b8e3630ab3cd35b, type: 3}
+    - target: {fileID: 8665510310322153709, guid: ccb62b535b265124f8892c438517771a, type: 3}
+      propertyPath: 'catchSFX.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8300000, guid: ab5620f7575955147b247119e0636eda, type: 3}
+    - target: {fileID: 8665510310322153709, guid: ccb62b535b265124f8892c438517771a, type: 3}
+      propertyPath: 'grassSFX.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: b4f3c08718f76e64f97c4984b0b5a725, type: 3}
+    - target: {fileID: 8665510310322153709, guid: ccb62b535b265124f8892c438517771a, type: 3}
+      propertyPath: 'grassSFX.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 940d0b2a57916ba42a161e16f84dfdb1, type: 3}
+    - target: {fileID: 8665510310322153709, guid: ccb62b535b265124f8892c438517771a, type: 3}
+      propertyPath: 'grassSFX.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 11ebd09857435cf4d91cbf67cfce5ace, type: 3}
+    - target: {fileID: 8665510310322153709, guid: ccb62b535b265124f8892c438517771a, type: 3}
+      propertyPath: 'repelSFX.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 03ac92e3d4aec884d81291f4cf667f8f, type: 3}
+    - target: {fileID: 8665510310322153709, guid: ccb62b535b265124f8892c438517771a, type: 3}
+      propertyPath: 'repelSFX.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 489bab2a27c0ead439d7a70099d472fa, type: 3}
+    - target: {fileID: 8665510310322153709, guid: ccb62b535b265124f8892c438517771a, type: 3}
+      propertyPath: 'repelSFX.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8300000, guid: ea7ebbcfd84e7744986a357f9073b5bd, type: 3}
+    - target: {fileID: 8665510310322153709, guid: ccb62b535b265124f8892c438517771a, type: 3}
+      propertyPath: 'asphaltSFX.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: d0a494d544934234186ca2d7f9a846c1, type: 3}
+    - target: {fileID: 8665510310322153709, guid: ccb62b535b265124f8892c438517771a, type: 3}
+      propertyPath: 'asphaltSFX.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 57b16642ffd517d4cb7843ead8235864, type: 3}
+    - target: {fileID: 8665510310322153709, guid: ccb62b535b265124f8892c438517771a, type: 3}
+      propertyPath: 'asphaltSFX.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 7d87e3573f377f74ebf8fed7d8d9919b, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -104,6 +104,8 @@ MonoBehaviour:
   ballInteractable: 0
   baseSpinSpeed: 1000
   ballMesh: {fileID: 4259073755695561234}
+  minImpactSpeed: 1
+  maxImpactSpeed: 10
 --- !u!114 &2366440889612827303
 MonoBehaviour:
   m_ObjectHideFlags: 0

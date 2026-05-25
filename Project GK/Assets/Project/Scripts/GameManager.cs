@@ -36,6 +36,8 @@ public class GameManager : MonoBehaviour
         screenShakeHandler = GetComponent<ScreenShakeHandler>();
 
         Time.timeScale = 1f;
+       
+        gameInfo.paused = false;
 
         ResetStats();
 

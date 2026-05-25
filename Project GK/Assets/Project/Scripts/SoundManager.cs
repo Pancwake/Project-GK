@@ -39,11 +39,9 @@ public class SoundManager : MonoBehaviour
         SFXSource.volume = (settingsInfo.soundVolume * settingsInfo.masterVolume);
     }
 
-    public void PlaySFXFromList(List<AudioClip> clips)
+    public void PlaySFXFromList(List<AudioClip> clips, float volumeModifier = 1)
     {
         int rng = Random.Range(0, clips.Count);
-
-        Debug.Log("Play sound: " + clips[rng]);
-        SFXSource.PlayOneShot(clips[rng]);
+        SFXSource.PlayOneShot(clips[rng], volumeModifier);
     }
 }

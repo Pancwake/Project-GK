@@ -38,15 +38,15 @@ MonoBehaviour:
   catchHealPercentage: 10
   moneyMultiplierIncrease: 0.2
   goalAreaSize: 0.5
-  catchAreaPercentage: 10
-  difficultySpeedModifier: 1
+  catchAreaPercentage: 100
+  difficultySpeedModifier: 1.2
   upgradeSpeedModifier: 1
   forgivingRepelRadius: 0.5
   currentStadiumIndex: 1
-  currentStadiumLevel: 1
-  currentHealth: 3951
-  money: 361
-  combo: 4
-  moneyMultiplier: 1.6
-  paused: 0
+  currentStadiumLevel: 2
+  currentHealth: 4171
+  money: 690
+  combo: 2
+  moneyMultiplier: 1.2
+  paused: 1
   upgradeManager: {fileID: 11400000, guid: 13bfe694d8b31804eb6b980cf14e6d8a, type: 2}
