@@ -34,6 +34,9 @@ public class BallScript : MonoBehaviour
     [SerializeField] float minImpactSpeed = 1f;
     [SerializeField] float maxImpactSpeed = 20f;
 
+    [SerializeField] GameObject grassParticle;
+    [SerializeField] GameObject asphaltParticle;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -137,21 +140,21 @@ public class BallScript : MonoBehaviour
         {
             if (collision.transform.CompareTag("Grass"))
             {
-                PlayHitGroundSound(EGroundType.Grass);
+                HitGround(EGroundType.Grass);
                 StartDespawn(); //Only start despawn after hitting the ground
             }
             else if (collision.transform.CompareTag("Asphalt"))
             {
-                PlayHitGroundSound(EGroundType.Asphalt);
+                HitGround(EGroundType.Asphalt);
             }
         }
         else if (collision.transform.CompareTag("Grass"))
         {
-            PlayHitGroundSound(EGroundType.Grass);
+            HitGround(EGroundType.Grass);
         }
         else if (collision.transform.CompareTag("Asphalt"))
         {
-            PlayHitGroundSound(EGroundType.Asphalt);
+            HitGround(EGroundType.Asphalt);
         }
         else if (collision.transform.CompareTag("Goal"))
         {
@@ -163,7 +166,7 @@ public class BallScript : MonoBehaviour
         }
     }
 
-    void PlayHitGroundSound(EGroundType groundType)
+    void HitGround(EGroundType groundType)
     {
         if (playedHitFloorSFX) //Dont play floor sound twice
             return;
@@ -177,9 +180,11 @@ public class BallScript : MonoBehaviour
         switch (groundType)
         {
             case EGroundType.Asphalt:
+                Instantiate(asphaltParticle, transform.position, Quaternion.identity);
                 SoundManager.Instance.PlaySFXFromList(SoundManager.Instance.asphaltSFX, volumeModifier);
                 break;
             case EGroundType.Grass:
+                Instantiate(grassParticle, transform.position, Quaternion.identity);
                 SoundManager.Instance.PlaySFXFromList(SoundManager.Instance.grassSFX, volumeModifier);
                 break;
         }

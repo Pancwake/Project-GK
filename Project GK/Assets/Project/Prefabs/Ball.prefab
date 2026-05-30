@@ -106,6 +106,8 @@ MonoBehaviour:
   ballMesh: {fileID: 4259073755695561234}
   minImpactSpeed: 1
   maxImpactSpeed: 10
+  grassParticle: {fileID: 8485403032681479204, guid: 962ab01a823a2d8479891d35ea5186ed, type: 3}
+  asphaltParticle: {fileID: 8485403032681479204, guid: c364e295ebe61f44bbb76ccb8a614802, type: 3}
 --- !u!114 &2366440889612827303
 MonoBehaviour:
   m_ObjectHideFlags: 0
