@@ -47,9 +47,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SoundManager
   settingsInfo: {fileID: 11400000, guid: a7c2c0aedb66a434bb673c494c7b636a, type: 2}
   catchSFX:
-  - {fileID: 8300000, guid: ad6b5ac6f8809b44c8196d113dc0b7b7, type: 3}
-  - {fileID: 8300000, guid: cf6ea769a05d76349b8e3630ab3cd35b, type: 3}
-  - {fileID: 8300000, guid: ab5620f7575955147b247119e0636eda, type: 3}
+  - {fileID: 8300000, guid: 80bdea1b35c902c4486937634684e3a0, type: 3}
+  - {fileID: 8300000, guid: de6d7e985eb8eae41bc6356d9189fa0c, type: 3}
+  - {fileID: 8300000, guid: 15e95e866967fb84889afef9e8e6a25f, type: 3}
   repelSFX:
   - {fileID: 8300000, guid: 03ac92e3d4aec884d81291f4cf667f8f, type: 3}
   - {fileID: 8300000, guid: 489bab2a27c0ead439d7a70099d472fa, type: 3}
