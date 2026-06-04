@@ -25,7 +25,7 @@ public class SoundManager : MonoBehaviour
 
     AudioSource SFXSource;
 
-    [Header("Sound Effects")]
+    [Header("Gameplay")]
     [SerializeField] public List<AudioClip> catchSFX;
     [SerializeField] public List<AudioClip> repelSFX;
     [SerializeField] public List<AudioClip> goalSFX;
@@ -33,6 +33,10 @@ public class SoundManager : MonoBehaviour
     [SerializeField] public List<AudioClip> kickSFX;
     [SerializeField] public List<AudioClip> grassSFX;
     [SerializeField] public List<AudioClip> asphaltSFX;
+
+    [Header("Crowd")]
+    [SerializeField] public List<AudioClip> crowdBooSFX;
+    [SerializeField] public List<AudioClip> crowdCheerSFX;
 
     public void UpdateVolume()
     {

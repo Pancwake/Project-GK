@@ -25,7 +25,7 @@ public class OptionsManager : MonoBehaviour
     [SerializeField] Slider masterVolumeSlider;
     [SerializeField] Slider musicVolumeSlider;
     [SerializeField] Slider soundVolumeSlider;
-
+    [SerializeField] Slider crowdVolumeSlider;
 
     //Resolutions
     Resolution[] resolutions;
@@ -157,6 +157,7 @@ public class OptionsManager : MonoBehaviour
         masterVolumeSlider.SetValueWithoutNotify(PlayerPrefs.GetFloat("MasterVolume", 1));
         musicVolumeSlider.SetValueWithoutNotify(PlayerPrefs.GetFloat("MusicVolume", 1));
         soundVolumeSlider.SetValueWithoutNotify(PlayerPrefs.GetFloat("SoundVolume", 1));
+        crowdVolumeSlider.SetValueWithoutNotify(PlayerPrefs.GetFloat("CrowdVolume", 1));
     }
 
     void ApplyAllSettings()
@@ -187,8 +188,13 @@ public class OptionsManager : MonoBehaviour
         float soundVolumeValue = PlayerPrefs.GetFloat("SoundVolume", 1);
         settingsInfo.soundVolume = soundVolumeValue;
 
+        //Crowd volume
+        float crowdVolumeValue = PlayerPrefs.GetFloat("CrowdVolume", 1);
+        settingsInfo.crowdVolume = soundVolumeValue;
+
         MusicManager.Instance.UpdateVolume();
         SoundManager.Instance.UpdateVolume();
+        CrowdSoundManager.Instance.UpdateVolume();
     }
 
     #region video
@@ -244,6 +250,14 @@ public class OptionsManager : MonoBehaviour
         PlayerPrefs.SetFloat("SoundVolume", value);
 
         SoundManager.Instance.UpdateVolume();
+    }
+
+    public void ChangeCrowdVolume(float value)
+    {
+        settingsInfo.crowdVolume = value;
+        PlayerPrefs.SetFloat("CrowdVolume", value);
+
+        CrowdSoundManager.Instance.UpdateVolume();
     }
     #endregion
 

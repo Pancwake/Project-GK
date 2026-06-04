@@ -11,4 +11,5 @@ public class SettingsInfo : ScriptableObject
     public float masterVolume;
     public float musicVolume;
     public float soundVolume;
+    public float crowdVolume;
 }

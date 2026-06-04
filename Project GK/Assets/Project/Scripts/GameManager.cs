@@ -46,6 +46,8 @@ public class GameManager : MonoBehaviour
         NextShot();
 
         gameplayUIManager.UpdateUI();
+
+        CrowdSoundManager.Instance.PlayCrowdAmbience();
     }
 
     // Update is called once per frame
@@ -72,6 +74,7 @@ public class GameManager : MonoBehaviour
 
         Debug.Log("Ball caught");
         SoundManager.Instance.PlaySFXFromList(SoundManager.Instance.catchSFX);
+        CrowdSoundManager.Instance.PlaySFXFromList(CrowdSoundManager.Instance.crowdCheerSFX);
         ChangeHealthPercentage(gameInfo.catchHealPercentage);
 
         int healAmount = (int)((float)gameInfo.maxHealth * ((float)gameInfo.catchHealPercentage / 100f)); //Get 10% of max health to heal
@@ -90,6 +93,7 @@ public class GameManager : MonoBehaviour
 
         Debug.Log("Ball repelled");
         SoundManager.Instance.PlaySFXFromList(SoundManager.Instance.repelSFX);
+        CrowdSoundManager.Instance.PlaySFXFromList(CrowdSoundManager.Instance.crowdCheerSFX);
         AddPoints(gameInfo.repelMoneyReward);
         ballShooter.RepelBall();
 
@@ -102,6 +106,7 @@ public class GameManager : MonoBehaviour
         screenShakeHandler.GoalShake();
 
         Debug.Log("Goal");
+        CrowdSoundManager.Instance.PlaySFXFromList(CrowdSoundManager.Instance.crowdBooSFX);
         ChangeHealth(damageForGoal);
         gameInfo.combo = 0;
         gameInfo.CalculateMultiplier();
