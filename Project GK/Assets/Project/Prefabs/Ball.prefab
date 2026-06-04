@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 921011409654494164}
   - component: {fileID: 2366440889612827303}
   - component: {fileID: 382935410334376970}
+  - component: {fileID: 983882933117489091}
   m_Layer: 6
   m_Name: Ball
   m_TagString: Ball
@@ -244,6 +245,28 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
+--- !u!95 &983882933117489091
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5830056157333830587}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 351ac492d5d1c4f4c962de0d480bdfaa, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7728408646085547911
 GameObject:
   m_ObjectHideFlags: 0
